@@ -49,6 +49,16 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `ioasys pokédex`
+  String get homeScreenSplashModuleIoasysPokedex {
+    return Intl.message(
+      'ioasys pokédex',
+      name: 'homeScreenSplashModuleIoasysPokedex',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

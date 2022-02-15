@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class PokemonConstantsColors {
+class SplashConstantsColors {
   static const primaryColor = Color(0XFFEC0344);
 }

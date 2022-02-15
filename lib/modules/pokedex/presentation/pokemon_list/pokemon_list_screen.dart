@@ -9,5 +9,9 @@ class PokemonListScreen extends StatefulWidget {
 
 class _PokemonListScreenState extends State<PokemonListScreen> {
   @override
-  Widget build(BuildContext context) => Container();
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.orange,
+        appBar: AppBar(),
+        body: Center(),
+      );
 }

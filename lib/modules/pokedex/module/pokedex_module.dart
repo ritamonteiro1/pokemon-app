@@ -6,12 +6,21 @@ import '../presentation/pokemon_details/pokemon_details_screen.dart';
 
 class PokedexModule extends Module {
   @override
+  List<Bind> get binds => [];
+
+  @override
   List<ModularRoute> get routes => [
-        ChildRoute(PokedexConstantsRoutes.pokemonListScreen,
-            child: (context, args) => const PokemonDetailsScreen()),
-        ChildRoute(PokedexConstantsRoutes.pokemonDetailsScreen,
-            child: (context, args) => const PokemonDetailsScreen()),
-        ChildRoute(PokedexConstantsRoutes.favoritePokemonListScreen,
-            child: (context, args) => const FavoritePokemonListScreen()),
+        ChildRoute(
+          PokedexConstantsRoutes.pokemonListScreen,
+          child: (context, args) => const PokemonDetailsScreen(),
+        ),
+        ChildRoute(
+          PokedexConstantsRoutes.pokemonDetailsScreen,
+          child: (context, args) => const PokemonDetailsScreen(),
+        ),
+        ChildRoute(
+          PokedexConstantsRoutes.favoritePokemonListScreen,
+          child: (context, args) => const FavoritePokemonListScreen(),
+        ),
       ];
 }

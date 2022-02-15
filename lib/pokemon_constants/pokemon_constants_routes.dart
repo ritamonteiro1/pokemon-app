@@ -1,5 +1,4 @@
-
 class PokemonConstantsRoutes {
   static const splashModule = '/';
-  static const pokedexModule = '/pokedex';
+  static const pokedexModule = '/pokedex/';
 }
