@@ -17,7 +17,7 @@ class _SplashScreenState extends ModularState<SplashScreen, SplashController> {
   @override
   void initState() {
     super.initState();
-    controller.load();
+    controller.loadToPokemonModule();
   }
 
   @override
