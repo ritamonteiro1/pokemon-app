@@ -13,7 +13,7 @@ class PokemonResponse {
       _$PokemonResponseFromJson(json);
 
   final int id;
-  final String name;
+  final String? name;
 
   Map<String, dynamic> toJson() => _$PokemonResponseToJson(this);
 }

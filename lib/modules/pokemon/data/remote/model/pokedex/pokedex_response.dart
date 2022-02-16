@@ -6,7 +6,7 @@ part 'pokedex_response.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class PokedexResponse {
   PokedexResponse(
-    this.pokemons,
+    this.pokemonUrlList,
     this.nextUrl,
   );
 
@@ -14,7 +14,8 @@ class PokedexResponse {
       _$PokedexResponseFromJson(json);
 
   @JsonKey(name: 'results')
-  final List<PokemonUrlResponse> pokemons;
+  final List<PokemonUrlResponse> pokemonUrlList;
+  @JsonKey(name: 'next')
   final String nextUrl;
 
   Map<String, dynamic> toJson() => _$PokedexResponseToJson(this);

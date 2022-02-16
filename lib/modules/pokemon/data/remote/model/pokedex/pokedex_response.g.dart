@@ -11,11 +11,11 @@ PokedexResponse _$PokedexResponseFromJson(Map<String, dynamic> json) =>
       (json['results'] as List<dynamic>)
           .map((e) => PokemonUrlResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['next_url'] as String,
+      json['next'] as String,
     );
 
 Map<String, dynamic> _$PokedexResponseToJson(PokedexResponse instance) =>
     <String, dynamic>{
-      'results': instance.pokemons,
-      'next_url': instance.nextUrl,
+      'results': instance.pokemonUrlList,
+      'next': instance.nextUrl,
     };
