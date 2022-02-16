@@ -1,4 +1,6 @@
 {
   "@@ locale": "en_US",
-  "appName": "ioasys pokédex"
+  "appName": "ioasys pokédex",
+  "pokemonListScreenTextFieldLabelTextSearch": "Search",
+  "pokemonListScreenTextFieldHintTextSearch": "Search pokemon"
 }

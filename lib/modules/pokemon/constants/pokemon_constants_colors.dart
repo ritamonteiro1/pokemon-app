@@ -24,4 +24,5 @@ class PokemonConstantsColors {
   static const lightGray = Color(0XFFE0E0E0);
   static const white = Color(0XFFFFFFFF);
   static const background = Color(0XFFF7F7F7);
+  static const grey = Color(0XFF666666);
 }

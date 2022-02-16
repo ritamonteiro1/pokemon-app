@@ -59,6 +59,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Search`
+  String get pokemonListScreenTextFieldLabelTextSearch {
+    return Intl.message(
+      'Search',
+      name: 'pokemonListScreenTextFieldLabelTextSearch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search pokemon`
+  String get pokemonListScreenTextFieldHintTextSearch {
+    return Intl.message(
+      'Search pokemon',
+      name: 'pokemonListScreenTextFieldHintTextSearch',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
