@@ -9,11 +9,13 @@ part of 'pokedex_response.dart';
 PokedexResponse _$PokedexResponseFromJson(Map<String, dynamic> json) =>
     PokedexResponse(
       (json['results'] as List<dynamic>)
-          .map((e) => PokemonResponse.fromJson(e as Map<String, dynamic>))
+          .map((e) => PokemonUrlResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
+      json['next_url'] as String,
     );
 
 Map<String, dynamic> _$PokedexResponseToJson(PokedexResponse instance) =>
     <String, dynamic>{
       'results': instance.pokemons,
+      'next_url': instance.nextUrl,
     };

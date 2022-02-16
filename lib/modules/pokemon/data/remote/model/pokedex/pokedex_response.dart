@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
-import 'pokemon_response.dart';
+import '../pokemon_url/pokemon_url_response.dart';
 
 part 'pokedex_response.g.dart';
 
@@ -8,13 +7,15 @@ part 'pokedex_response.g.dart';
 class PokedexResponse {
   PokedexResponse(
     this.pokemons,
+    this.nextUrl,
   );
 
   factory PokedexResponse.fromJson(Map<String, dynamic> json) =>
       _$PokedexResponseFromJson(json);
 
   @JsonKey(name: 'results')
-  final List<PokemonResponse> pokemons;
+  final List<PokemonUrlResponse> pokemons;
+  final String nextUrl;
 
   Map<String, dynamic> toJson() => _$PokedexResponseToJson(this);
 }
