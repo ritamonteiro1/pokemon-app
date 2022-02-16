@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pokemon_app/generated/l10n.dart';
+import 'package:pokedex_app/modules/splash/constants/splash_constants_colors.dart';
+import '../../../../generated/l10n.dart';
 import '../../constants/splash_constants_images.dart';
 import 'home_controller.dart';
 
@@ -20,7 +21,7 @@ class _HomeScreenState extends ModularState<HomeScreen, HomeController> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Colors.pink,
+        backgroundColor: SplashConstantsColors.primaryColor,
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

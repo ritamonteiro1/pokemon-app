@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../pokemon_constants/pokemon_constants_routes.dart';
+import 'package:pokedex_app/pokedex_constants/pokedex_constants_routes.dart';
+import '../../constants/splash_constants_routes.dart';
 
 class HomeController {
   Future<void> load() async {
@@ -7,6 +8,8 @@ class HomeController {
       const Duration(seconds: 3),
     );
 
-    Modular.to.navigate(PokemonConstantsRoutes.pokedexModule);
+    Modular.to.navigate(
+      PokedexConstantsRoutes.pokemonModule,
+    );
   }
 }

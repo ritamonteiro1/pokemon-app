@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../generated/l10n.dart';
 
-class PokemonApp extends StatelessWidget {
-  const PokemonApp({Key? key}) : super(key: key);
+class PokedexApp extends StatelessWidget {
+  const PokedexApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => MaterialApp(
