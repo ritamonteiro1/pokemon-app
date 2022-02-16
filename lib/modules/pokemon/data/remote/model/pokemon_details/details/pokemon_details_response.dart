@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon_details/others/sprites_response.dart';
+import '../others/sprites_response.dart';
 
 import '../ability/abilities_response.dart';
 import '../stat/stats_response.dart';
