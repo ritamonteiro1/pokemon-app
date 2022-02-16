@@ -77,6 +77,14 @@ flutter:
   assets:
     - assets/images/logo_ioasys.png
     - assets/images/logo_ioasys_splash.png
+    - assets/images/back_arrow.png
+    - assets/images/close.png
+    - assets/images/down_arrow.png
+    - assets/images/reload.png
+    - assets/images/right_arrow.png
+    - assets/images/ruler_height.png
+    - assets/images/search.png
+    - assets/images/weight_scales.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
