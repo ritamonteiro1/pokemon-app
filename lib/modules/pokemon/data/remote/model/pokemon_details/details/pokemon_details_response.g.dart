@@ -22,6 +22,9 @@ PokemonDetailsResponse _$PokemonDetailsResponseFromJson(
           ?.map((e) => TypesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['weight'] as int?,
+      json['sprites'] == null
+          ? null
+          : SpritesResponse.fromJson(json['sprites'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PokemonDetailsResponseToJson(
@@ -34,4 +37,5 @@ Map<String, dynamic> _$PokemonDetailsResponseToJson(
       'stats': instance.stats,
       'types': instance.types,
       'weight': instance.weight,
+      'sprites': instance.sprites,
     };

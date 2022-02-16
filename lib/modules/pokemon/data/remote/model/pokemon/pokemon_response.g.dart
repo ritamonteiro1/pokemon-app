@@ -9,7 +9,7 @@ part of 'pokemon_response.dart';
 PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
     PokemonResponse(
       json['id'] as int,
-      json['name'] as String,
+      json['name'] as String?,
     );
 
 Map<String, dynamic> _$PokemonResponseToJson(PokemonResponse instance) =>
