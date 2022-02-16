@@ -51,10 +51,10 @@ class S {
   }
 
   /// `ioasys pokédex`
-  String get homeScreenSplashModuleIoasysPokedex {
+  String get appName {
     return Intl.message(
       'ioasys pokédex',
-      name: 'homeScreenSplashModuleIoasysPokedex',
+      name: 'appName',
       desc: '',
       args: [],
     );

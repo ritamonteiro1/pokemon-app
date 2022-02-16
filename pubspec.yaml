@@ -85,6 +85,7 @@ flutter:
     - assets/images/ruler_height.png
     - assets/images/search.png
     - assets/images/weight_scales.png
+    - assets/images/heart.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

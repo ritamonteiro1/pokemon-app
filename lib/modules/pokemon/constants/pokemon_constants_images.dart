@@ -8,4 +8,5 @@ class PokemonConstantsImages {
   static const rulerHeight = 'assets/images/ruler_height.png';
   static const search = 'assets/images/search.png';
   static const weightScales = 'assets/images/weight_scales.png';
+  static const heart = 'assets/images/heart.png';
 }

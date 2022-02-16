@@ -22,7 +22,6 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "homeScreenSplashModuleIoasysPokedex":
-            MessageLookupByLibrary.simpleMessage("ioasys pokédex")
+        "appName": MessageLookupByLibrary.simpleMessage("ioasys pokédex")
       };
 }
