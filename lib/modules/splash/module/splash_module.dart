@@ -1,22 +1,22 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../constants/splash_constants_routes.dart';
-import '../presentation/home/home_controller.dart';
-import '../presentation/home/home_screen.dart';
+import '../presentation/home/splash_controller.dart';
+import '../presentation/home/splash_screen.dart';
 
 class SplashModule extends Module {
   @override
   List<Bind> get binds => [
         Bind.factory(
-          (i) => HomeController(),
+          (i) => SplashController(),
         )
       ];
 
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          SplashConstantsRoutes.homeScreen,
-          child: (context, args) => const HomeScreen(),
+          SplashConstantsRoutes.splashScreen,
+          child: (context, args) => const SplashScreen(),
         ),
       ];
 }

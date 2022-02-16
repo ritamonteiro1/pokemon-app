@@ -1,3 +1,3 @@
 class SplashConstantsRoutes {
-  static const homeScreen = '/';
+  static const splashScreen = '/';
 }

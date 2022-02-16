@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:pokedex_app/modules/splash/constants/splash_constants_colors.dart';
+
 import '../../../../generated/l10n.dart';
 import '../../constants/splash_constants_images.dart';
-import 'home_controller.dart';
+import 'splash_controller.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _HomeScreenState extends ModularState<HomeScreen, HomeController> {
+class _SplashScreenState extends ModularState<SplashScreen, SplashController> {
   @override
   void initState() {
     super.initState();
