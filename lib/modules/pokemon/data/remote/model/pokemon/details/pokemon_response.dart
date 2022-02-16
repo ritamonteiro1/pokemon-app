@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../ability/abilities_response.dart';
+import '../sprite/sprites_response.dart';
 import '../stat/stats_response.dart';
 import '../type/types_response.dart';
-import '../sprite/sprites_response.dart';
 
 part 'pokemon_response.g.dart';
 

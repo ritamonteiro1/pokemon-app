@@ -1,8 +1,8 @@
 class StatModel {
-  StatModel(
-    this.name,
-    this.base,
-  );
+  StatModel({
+    required this.name,
+    required this.base,
+  });
 
   final String name;
   final int base;

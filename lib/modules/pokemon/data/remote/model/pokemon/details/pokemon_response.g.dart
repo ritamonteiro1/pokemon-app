@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'pokemon_details_response.dart';
+part of 'pokemon_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PokemonDetailsResponse _$PokemonDetailsResponseFromJson(
-        Map<String, dynamic> json) =>
-    PokemonDetailsResponse(
+PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
+    PokemonResponse(
       (json['abilities'] as List<dynamic>?)
           ?.map((e) => AbilitiesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -27,8 +26,7 @@ PokemonDetailsResponse _$PokemonDetailsResponseFromJson(
           : SpritesResponse.fromJson(json['sprites'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PokemonDetailsResponseToJson(
-        PokemonDetailsResponse instance) =>
+Map<String, dynamic> _$PokemonResponseToJson(PokemonResponse instance) =>
     <String, dynamic>{
       'abilities': instance.abilities,
       'height': instance.height,

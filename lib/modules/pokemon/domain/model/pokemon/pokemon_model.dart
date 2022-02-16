@@ -1,16 +1,16 @@
 import 'stat_model.dart';
 
 class PokemonModel {
-  PokemonModel(
-    this.abilityList,
-    this.height,
-    this.id,
-    this.name,
-    this.statList,
-    this.typeList,
-    this.weight,
-    this.image,
-  );
+  PokemonModel({
+    required this.abilityList,
+    required this.height,
+    required this.id,
+    required this.name,
+    required this.statList,
+    required this.typeList,
+    required this.weight,
+    required this.image,
+  });
 
   final List<String> abilityList;
   final int height;
