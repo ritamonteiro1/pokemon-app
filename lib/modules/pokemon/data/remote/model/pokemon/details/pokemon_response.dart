@@ -1,15 +1,15 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon_details/sprit/sprites_response.dart';
 
 import '../ability/abilities_response.dart';
 import '../stat/stats_response.dart';
 import '../type/types_response.dart';
+import '../sprite/sprites_response.dart';
 
-part 'pokemon_details_response.g.dart';
+part 'pokemon_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class PokemonDetailsResponse {
-  PokemonDetailsResponse(
+class PokemonResponse {
+  PokemonResponse(
     this.abilities,
     this.height,
     this.id,
@@ -20,8 +20,8 @@ class PokemonDetailsResponse {
     this.sprites,
   );
 
-  factory PokemonDetailsResponse.fromJson(Map<String, dynamic> json) =>
-      _$PokemonDetailsResponseFromJson(json);
+  factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
+      _$PokemonResponseFromJson(json);
 
   final List<AbilitiesResponse>? abilities;
   final int? height;
@@ -32,5 +32,5 @@ class PokemonDetailsResponse {
   final int? weight;
   final SpritesResponse? sprites;
 
-  Map<String, dynamic> toJson() => _$PokemonDetailsResponseToJson(this);
+  Map<String, dynamic> toJson() => _$PokemonResponseToJson(this);
 }

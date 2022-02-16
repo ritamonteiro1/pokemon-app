@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon_details/dream_world/dream_world_response.dart';
+import '../dream_world/dream_world_response.dart';
 
 part 'sprite_response.g.dart';
 
