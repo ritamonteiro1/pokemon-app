@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon_details/sprit/sprites_response.dart';
 
 import '../ability/abilities_response.dart';
 import '../stat/stats_response.dart';
 import '../type/types_response.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon_details/sprit/sprites_response.dart';
 
 part 'pokemon_details_response.g.dart';
 

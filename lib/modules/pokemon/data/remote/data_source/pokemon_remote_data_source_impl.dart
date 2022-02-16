@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_url_api.dart';
-import 'package:pokedex_app/modules/pokemon/data/mapper/remote_to_model.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokedex/pokedex_response.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/pokemon_response.dart';
-import 'package:pokedex_app/modules/pokemon/domain/exception/generic_error_status_code_exception.dart';
-import 'package:pokedex_app/modules/pokemon/domain/exception/network_error_exception.dart';
 
+import '../../../constants/pokemon_constants_url_api.dart';
+import '../../../domain/exception/generic_error_status_code_exception.dart';
+import '../../../domain/exception/network_error_exception.dart';
 import '../../../domain/model/pokemon/pokemon_model.dart';
 import '../../../domain/model/pokemon_details/pokemon_details_model.dart';
+import '../../mapper/remote_to_model.dart';
+import '../model/pokedex/pokedex_response.dart';
+import '../model/pokemon/pokemon_response.dart';
+import '../model/pokemon_details/details/pokemon_details_response.dart';
 import 'pokemon_remote_data_source.dart';
 
 class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
@@ -45,7 +46,19 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
 
   @override
   Future<PokemonDetailsModel> getPokemonDetails(int pokemonId) async {
-    throw UnimplementedError();
+    try {
+      final response =
+          await _dio.get('${PokemonConstantsUrlApi.pokemonBaseUrl}$pokemonId');
+      final pokemonDetailsResponse =
+          PokemonDetailsResponse.fromJson(response.data);
+      return pokemonDetailsResponse.toPokemonDetailsModel();
+    } on DioError catch (dioError, _) {
+      if (dioError.type == DioErrorType.response) {
+        throw GenericErrorStatusCodeException();
+      } else {
+        throw NetworkErrorException();
+      }
+    }
   }
 
   String _setUrl() {
