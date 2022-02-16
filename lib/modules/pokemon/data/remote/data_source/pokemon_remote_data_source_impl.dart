@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/details/pokemon_response.dart';
 
 import '../../../constants/pokemon_constants_url_api.dart';
 import '../../../domain/exception/generic_error_status_code_exception.dart';
@@ -7,6 +6,7 @@ import '../../../domain/exception/network_error_exception.dart';
 import '../../../domain/model/pokemon/pokemon_model.dart';
 import '../../mapper/remote_to_model.dart';
 import '../model/pokedex/pokedex_response.dart';
+import '../model/pokemon/details/pokemon_response.dart';
 import 'pokemon_remote_data_source.dart';
 
 class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {

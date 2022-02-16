@@ -1,6 +1,6 @@
-import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
-import 'package:pokedex_app/modules/pokemon/domain/repository/pokemon_repository.dart';
-import 'package:pokedex_app/modules/pokemon/domain/use_case/get_pokemon_list_use_case.dart';
+import '../model/pokemon/pokemon_model.dart';
+import '../repository/pokemon_repository.dart';
+import 'get_pokemon_list_use_case.dart';
 
 class GetPokemonListUseCaseImpl implements GetPokemonListUseCase {
   GetPokemonListUseCaseImpl({

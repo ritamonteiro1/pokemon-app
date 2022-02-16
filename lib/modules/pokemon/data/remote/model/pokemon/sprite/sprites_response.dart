@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/sprite/sprite_response.dart';
+import 'sprite_response.dart';
 part 'sprites_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
