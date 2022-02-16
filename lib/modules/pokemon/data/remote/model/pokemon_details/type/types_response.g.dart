@@ -8,7 +8,6 @@ part of 'types_response.dart';
 
 TypesResponse _$TypesResponseFromJson(Map<String, dynamic> json) =>
     TypesResponse(
-      json['slot'] as int?,
       json['type'] == null
           ? null
           : TypeResponse.fromJson(json['type'] as Map<String, dynamic>),
@@ -16,6 +15,5 @@ TypesResponse _$TypesResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$TypesResponseToJson(TypesResponse instance) =>
     <String, dynamic>{
-      'slot': instance.slot,
       'type': instance.type,
     };

@@ -8,11 +8,9 @@ part of 'type_response.dart';
 
 TypeResponse _$TypeResponseFromJson(Map<String, dynamic> json) => TypeResponse(
       json['name'] as String?,
-      json['url'] as String?,
     );
 
 Map<String, dynamic> _$TypeResponseToJson(TypeResponse instance) =>
     <String, dynamic>{
       'name': instance.name,
-      'url': instance.url,
     };

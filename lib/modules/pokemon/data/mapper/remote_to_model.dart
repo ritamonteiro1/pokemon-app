@@ -5,7 +5,7 @@ extension PokemonResponseToPokemonModel on PokemonResponse {
   PokemonModel toPokemonModel() => PokemonModel(
         id,
         name ?? ' - ',
-        'https://unpkg.com/pokeapi-others@2.0.2/'
-            'others/pokemon/other/dream-world/$id.svg',
+        'https://unpkg.com/pokeapi-sprit@2.0.2/'
+        'sprit/pokemon/other/dream-world/$id.svg',
       );
 }

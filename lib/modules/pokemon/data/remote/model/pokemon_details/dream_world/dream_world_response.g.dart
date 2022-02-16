@@ -8,10 +8,10 @@ part of 'dream_world_response.dart';
 
 DreamWorldResponse _$DreamWorldResponseFromJson(Map<String, dynamic> json) =>
     DreamWorldResponse(
-      json['front_default'] as String?,
+      json['frontDefault'] as String?,
     );
 
 Map<String, dynamic> _$DreamWorldResponseToJson(DreamWorldResponse instance) =>
     <String, dynamic>{
-      'front_default': instance.frontDefault,
+      'frontDefault': instance.image,
     };

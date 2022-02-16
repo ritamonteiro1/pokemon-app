@@ -7,7 +7,6 @@ part 'stats_response.g.dart';
 class StatsResponse {
   StatsResponse(
     this.baseStat,
-    this.effort,
     this.stat,
   );
 
@@ -15,7 +14,6 @@ class StatsResponse {
       _$StatsResponseFromJson(json);
 
   final int? baseStat;
-  final int? effort;
   final StatResponse? stat;
 
   Map<String, dynamic> toJson() => _$StatsResponseToJson(this);

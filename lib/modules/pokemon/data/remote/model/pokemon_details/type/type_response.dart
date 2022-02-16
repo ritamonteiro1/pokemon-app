@@ -6,13 +6,11 @@ part 'type_response.g.dart';
 class TypeResponse {
   TypeResponse(
     this.name,
-    this.url,
   );
   factory TypeResponse.fromJson(Map<String, dynamic> json) =>
       _$TypeResponseFromJson(json);
 
   final String? name;
-  final String? url;
 
   Map<String, dynamic> toJson() => _$TypeResponseToJson(this);
 }

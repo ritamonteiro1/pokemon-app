@@ -6,14 +6,12 @@ part 'stat_response.g.dart';
 class StatResponse {
   StatResponse(
     this.name,
-    this.url,
   );
 
   factory StatResponse.fromJson(Map<String, dynamic> json) =>
       _$StatResponseFromJson(json);
 
   final String? name;
-  final String? url;
 
   Map<String, dynamic> toJson() => _$StatResponseToJson(this);
 }
