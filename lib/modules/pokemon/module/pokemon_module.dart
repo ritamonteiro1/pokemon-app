@@ -21,10 +21,10 @@ class PokemonModule extends Module {
   List<Bind> get binds => [
         Bind.lazySingleton((i) => Dio()),
         Bind.lazySingleton((i) => Hive),
-        Bind.lazySingleton<PokemonCacheDataSource>(
-            (i) => PokemonCacheDataSourceImpl(hive: i())),
         Bind.lazySingleton<PokemonRemoteDataSource>(
             (i) => PokemonRemoteDataSourceImpl(dio: i())),
+        Bind.lazySingleton<PokemonCacheDataSource>(
+            (i) => PokemonCacheDataSourceImpl(hive: i())),
         Bind.lazySingleton<PokemonRepository>(
             (i) => PokemonRepositoryImpl(pokemonRemoteDataSource: i())),
         Bind.lazySingleton<GetPokemonListUseCase>(

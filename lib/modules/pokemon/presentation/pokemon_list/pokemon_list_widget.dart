@@ -9,14 +9,33 @@ class PokemonListWidget extends StatelessWidget {
   final List<PokemonModel> pokemonList;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(
-          top: 42,
+  Widget build(BuildContext context) => Expanded(
+        child: GridView.builder(
+          shrinkWrap: true,
+          itemCount: pokemonList.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisSpacing: 4,
+            crossAxisCount: 3,
+            mainAxisSpacing: 4,
+            childAspectRatio: 1,
+          ),
+          itemBuilder: (context, index) => Card(
+            margin: const EdgeInsets.all(4),
+            color: Colors.transparent,
+            child: Container(
+              height: 112,
+              width: 104,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Text(
+                      pokemonList[index].name,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-        child: ListView.builder(
-            itemCount: pokemonList.length,
-            itemBuilder: (context, index) => ListTile(
-                  title: Text(pokemonList[index].name),
-                )),
       );
 }

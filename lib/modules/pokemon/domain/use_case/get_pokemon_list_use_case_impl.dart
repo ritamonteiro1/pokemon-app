@@ -10,5 +10,6 @@ class GetPokemonListUseCaseImpl implements GetPokemonListUseCase {
   final PokemonRepository _pokemonRepository;
 
   @override
-  Future<List<PokemonModel>> call() => _pokemonRepository.getPokemonList();
+  Future<List<PokemonModel>> call() async =>
+      _pokemonRepository.getPokemonList();
 }

@@ -108,30 +108,32 @@ class _PokemonListScreenState
                 const SizedBox(
                   height: 42,
                 ),
-                Observer(builder: (context) {
-                  final pokemonListState = controller.pokemonListState;
-                  if (pokemonListState is LoadingPokemonListState) {
-                    return const Expanded(
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: PokedexConstantsColors.primaryColor,
+                Container(
+                  child: Observer(builder: (context) {
+                    final pokemonListState = controller.pokemonListState;
+                    if (pokemonListState is LoadingPokemonListState) {
+                      return const Expanded(
+                        child: Center(
+                          child: CircularProgressIndicator(
+                            color: PokedexConstantsColors.primaryColor,
+                          ),
                         ),
-                      ),
-                    );
-                  } else if (pokemonListState is SuccessPokemonListState) {
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                        top: 90,
-                      ),
-                      child: PokemonListWidget(
-                          pokemonList: pokemonListState.pokemonList),
-                    );
-                  } else if (pokemonListState is ErrorPokemonListState) {
-                    return const Text('error');
-                  } else {
-                    throw UnknownStateTypeException();
-                  }
-                }),
+                      );
+                    } else if (pokemonListState is SuccessPokemonListState) {
+                      return PokemonListWidget(
+                          pokemonList: pokemonListState.pokemonList);
+                    } else if (pokemonListState is ErrorPokemonListState) {
+                      return const Padding(
+                        padding: EdgeInsets.only(
+                          top: 42,
+                        ),
+                        child: Text('error'),
+                      );
+                    } else {
+                      throw UnknownStateTypeException();
+                    }
+                  }),
+                ),
               ],
             ),
           ),
