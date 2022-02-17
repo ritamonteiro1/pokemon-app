@@ -27,12 +27,12 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       final pokedexResponse = PokedexResponse.fromJson(response.data);
       nextPage = pokedexResponse.nextUrl;
       final pokemonModelList = <PokemonModel>[];
-      pokedexResponse.pokemonUrlList.forEach((pokemonUrl) async {
+      for (final pokemonUrl in pokedexResponse.pokemonUrlList) {
         final response = await _dio.get(pokemonUrl.url);
         final pokemonResponse = PokemonResponse.fromJson(response.data);
         final pokemonModel = pokemonResponse.toPokemonModel();
         pokemonModelList.add(pokemonModel);
-      });
+      }
       return pokemonModelList;
     } on DioError catch (dioError, _) {
       if (dioError.type == DioErrorType.response) {

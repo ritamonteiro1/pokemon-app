@@ -31,109 +31,105 @@ class _PokemonListScreenState
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        resizeToAvoidBottomInset: true,
         backgroundColor: PokemonConstantsColors.white,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(
-              left: 40,
-              top: 52,
-              right: 40,
-              bottom: 16,
-            ),
-            child: Column(
-              children: [
-                Row(
+        body: Padding(
+          padding: const EdgeInsets.only(
+            left: 40,
+            top: 52,
+            right: 40,
+            bottom: 16,
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Image.asset(
+                      PokemonConstantsImages.logoIoasys,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 14,
+                  ),
+                  Text(
+                    S.of(context).appName,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: PokedexConstantsColors.primaryColor,
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 82,
+                  ),
+                  Expanded(child: Switch(value: false, onChanged: (value) {})),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 52,
+                  bottom: 42,
+                ),
+                child: Row(
                   children: [
                     Expanded(
-                      child: Image.asset(
-                        PokemonConstantsImages.logoIoasys,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 14,
-                    ),
-                    Text(
-                      S.of(context).appName,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        color: PokedexConstantsColors.primaryColor,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 82,
-                    ),
-                    Expanded(
-                        child: Switch(value: false, onChanged: (value) {})),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 52),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            labelText: S
-                                .of(context)
-                                .pokemonListScreenTextFieldLabelTextSearch,
-                            hintText: S
-                                .of(context)
-                                .pokemonListScreenTextFieldHintTextSearch,
-                            hintStyle: const TextStyle(
-                              color: PokemonConstantsColors.grey,
-                              fontSize: 14,
-                            ),
-                            labelStyle: const TextStyle(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          labelText: S
+                              .of(context)
+                              .pokemonListScreenTextFieldLabelTextSearch,
+                          hintText: S
+                              .of(context)
+                              .pokemonListScreenTextFieldHintTextSearch,
+                          hintStyle: const TextStyle(
+                            color: PokemonConstantsColors.grey,
+                            fontSize: 14,
+                          ),
+                          labelStyle: const TextStyle(
+                            color: PokedexConstantsColors.primaryColor,
+                            fontSize: 16,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(
                               color: PokedexConstantsColors.primaryColor,
-                              fontSize: 16,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            enabledBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: PokedexConstantsColors.primaryColor,
-                              ),
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 22,
-                      ),
-                      Image.asset(
-                        PokemonConstantsImages.heart,
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(
+                      width: 22,
+                    ),
+                    Image.asset(
+                      PokemonConstantsImages.heart,
+                    ),
+                  ],
                 ),
-                Expanded(
-                  child: Observer(builder: (context) {
-                    final pokemonListState = controller.pokemonListState;
-                    if (pokemonListState is LoadingPokemonListState) {
-                      return const LoadingWidget();
-                    } else if (pokemonListState is SuccessPokemonListState) {
-                      return PokemonListWidget(
-                          pokemonList: pokemonListState.pokemonList);
-                    } else if (pokemonListState is ErrorPokemonListState) {
-                      if (pokemonListState.exception
-                          is GenericErrorStatusCodeException) {
-                        return ErrorPokemonListWidget(
-                            message:
-                                S.of(context).messageGenericStatusCodeError);
-                      } else {
-                        return ErrorPokemonListWidget(
-                            message: S.of(context).messageNetworkError);
-                      }
-                    } else {
-                      throw UnknownStateTypeException();
-                    }
-                  }),
-                ),
-              ],
-            ),
+              ),
+              Observer(builder: (context) {
+                final pokemonListState = controller.pokemonListState;
+                if (pokemonListState is LoadingPokemonListState) {
+                  return const LoadingWidget();
+                } else if (pokemonListState is SuccessPokemonListState) {
+                  return PokemonListWidget(
+                      pokemonList: pokemonListState.pokemonList);
+                } else if (pokemonListState is ErrorPokemonListState) {
+                  if (pokemonListState.exception
+                      is GenericErrorStatusCodeException) {
+                    return ErrorPokemonListWidget(
+                        message: S.of(context).messageGenericStatusCodeError);
+                  } else {
+                    return ErrorPokemonListWidget(
+                        message: S.of(context).messageNetworkError);
+                  }
+                } else {
+                  throw UnknownStateTypeException();
+                }
+              }),
+            ],
           ),
         ),
       );
