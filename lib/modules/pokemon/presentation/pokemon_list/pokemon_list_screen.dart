@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
+import '../../domain/exception/unknown_state_type_exception.dart';
+import 'pokemon_list_state.dart';
 import 'pokemon_list_store.dart';
+import 'pokemon_list_widget.dart';
 
 class PokemonListScreen extends StatefulWidget {
   const PokemonListScreen({Key? key}) : super(key: key);
@@ -19,23 +23,23 @@ class _PokemonListScreenState
   @override
   void initState() {
     super.initState();
+    controller.getPokemonList();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: PokemonConstantsColors.white,
-        body: Container(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 48,
-                  right: 32,
-                ),
-                child: Row(
+        body: Padding(
+          padding: const EdgeInsets.only(
+            left: 40,
+            top: 52,
+            right: 40,
+            bottom: 16,
+          ),
+          child: Container(
+            child: Column(
+              children: [
+                Row(
                   children: [
                     Expanded(
                       child: Image.asset(
@@ -43,7 +47,7 @@ class _PokemonListScreenState
                       ),
                     ),
                     const SizedBox(
-                      width: 13,
+                      width: 14,
                     ),
                     Text(
                       S.of(context).appName,
@@ -59,16 +63,10 @@ class _PokemonListScreenState
                         child: Switch(value: false, onChanged: (value) {})),
                   ],
                 ),
-              ),
-              const SizedBox(
-                height: 51,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 40,
-                  right: 42,
+                const SizedBox(
+                  height: 52,
                 ),
-                child: Row(
+                Row(
                   children: [
                     Expanded(
                       child: TextField(
@@ -107,8 +105,35 @@ class _PokemonListScreenState
                     ),
                   ],
                 ),
-              )
-            ],
+                const SizedBox(
+                  height: 42,
+                ),
+                Observer(builder: (context) {
+                  final pokemonListState = controller.pokemonListState;
+                  if (pokemonListState is LoadingPokemonListState) {
+                    return const Expanded(
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: PokedexConstantsColors.primaryColor,
+                        ),
+                      ),
+                    );
+                  } else if (pokemonListState is SuccessPokemonListState) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        top: 90,
+                      ),
+                      child: PokemonListWidget(
+                          pokemonList: pokemonListState.pokemonList),
+                    );
+                  } else if (pokemonListState is ErrorPokemonListState) {
+                    return const Text('error');
+                  } else {
+                    throw UnknownStateTypeException();
+                  }
+                }),
+              ],
+            ),
           ),
         ),
       );

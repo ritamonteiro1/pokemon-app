@@ -1,0 +1,1 @@
+class UnknownStateTypeException implements Exception {}

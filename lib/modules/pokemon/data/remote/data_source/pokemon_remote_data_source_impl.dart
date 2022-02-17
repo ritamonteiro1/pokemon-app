@@ -30,7 +30,8 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       pokedexResponse.pokemonUrlList.forEach((pokemonUrl) async {
         final response = await _dio.get(pokemonUrl.url);
         final pokemonResponse = PokemonResponse.fromJson(response.data);
-        pokemonModelList.add(pokemonResponse.toPokemonModel());
+        final pokemonModel = pokemonResponse.toPokemonModel();
+        pokemonModelList.add(pokemonModel);
       });
       return pokemonModelList;
     } on DioError catch (dioError, _) {
@@ -45,7 +46,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   String _setUrl() {
     String url;
     if (nextPage == null) {
-      url = PokemonConstantsUrlApi.pokemonBaseUrl;
+      url = '${PokemonConstantsUrlApi.pokemonBaseUrl}${'?limit=15'}';
     } else {
       url = nextPage!;
     }
