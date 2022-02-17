@@ -23,6 +23,25 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("ioasys pokédex"),
+        "favoritePokemonListScreenBackText":
+            MessageLookupByLibrary.simpleMessage("Regreso"),
+        "favoritePokemonListScreenMyFavoritePokemons":
+            MessageLookupByLibrary.simpleMessage("Mis favoritos"),
+        "messageAlertOps": MessageLookupByLibrary.simpleMessage("Ops"),
+        "messageGenericStatusCodeError": MessageLookupByLibrary.simpleMessage(
+            "Ocurrio un error. Inténtalo de nuevo"),
+        "messageNetworkError": MessageLookupByLibrary.simpleMessage(
+            "Conexión fallida. Inténtalo de nuevo"),
+        "messageNotFoundPokemon": MessageLookupByLibrary.simpleMessage(
+            "Este pokemon no esta aqui ;("),
+        "pokemonDetailsScreenBaseStatsText":
+            MessageLookupByLibrary.simpleMessage("Estadísticas básicas"),
+        "pokemonDetailsScreenHeightText":
+            MessageLookupByLibrary.simpleMessage("Altura"),
+        "pokemonDetailsScreenMovesText":
+            MessageLookupByLibrary.simpleMessage("Movimentos"),
+        "pokemonDetailsScreenWeightText":
+            MessageLookupByLibrary.simpleMessage("Peso"),
         "pokemonListScreenTextFieldHintTextSearch":
             MessageLookupByLibrary.simpleMessage("Búsqueda pokemon"),
         "pokemonListScreenTextFieldLabelTextSearch":

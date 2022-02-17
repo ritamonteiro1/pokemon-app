@@ -6,7 +6,10 @@ import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
+import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
+import '../common/loading_widget.dart';
+import 'error_pokemon_list_widget.dart';
 import 'pokemon_list_state.dart';
 import 'pokemon_list_store.dart';
 import 'pokemon_list_widget.dart';
@@ -108,32 +111,26 @@ class _PokemonListScreenState
                 const SizedBox(
                   height: 42,
                 ),
-                Container(
-                  child: Observer(builder: (context) {
-                    final pokemonListState = controller.pokemonListState;
-                    if (pokemonListState is LoadingPokemonListState) {
-                      return const Expanded(
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            color: PokedexConstantsColors.primaryColor,
-                          ),
-                        ),
-                      );
-                    } else if (pokemonListState is SuccessPokemonListState) {
-                      return PokemonListWidget(
-                          pokemonList: pokemonListState.pokemonList);
-                    } else if (pokemonListState is ErrorPokemonListState) {
-                      return const Padding(
-                        padding: EdgeInsets.only(
-                          top: 42,
-                        ),
-                        child: Text('error'),
-                      );
+                Observer(builder: (context) {
+                  final pokemonListState = controller.pokemonListState;
+                  if (pokemonListState is LoadingPokemonListState) {
+                    return LoadingWidget();
+                  } else if (pokemonListState is SuccessPokemonListState) {
+                    return PokemonListWidget(
+                        pokemonList: pokemonListState.pokemonList);
+                  } else if (pokemonListState is ErrorPokemonListState) {
+                    if (pokemonListState.exception
+                        is GenericErrorStatusCodeException) {
+                      return ErrorPokemonListWidget(
+                          message: S.of(context).messageGenericStatusCodeError);
                     } else {
-                      throw UnknownStateTypeException();
+                      return ErrorPokemonListWidget(
+                          message: S.of(context).messageNetworkError);
                     }
-                  }),
-                ),
+                  } else {
+                    throw UnknownStateTypeException();
+                  }
+                }),
               ],
             ),
           ),

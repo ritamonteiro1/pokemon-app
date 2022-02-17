@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../ability/abilities_response.dart';
-import '../sprite/sprites_response.dart';
 import '../stat/stats_response.dart';
 import '../type/types_response.dart';
 
@@ -17,7 +16,6 @@ class PokemonResponse {
     this.stats,
     this.types,
     this.weight,
-    this.sprites,
   );
 
   factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
@@ -30,7 +28,6 @@ class PokemonResponse {
   final List<StatsResponse>? stats;
   final List<TypesResponse>? types;
   final int? weight;
-  final SpritesResponse? sprites;
 
   Map<String, dynamic> toJson() => _$PokemonResponseToJson(this);
 }

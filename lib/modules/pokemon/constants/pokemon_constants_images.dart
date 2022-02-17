@@ -11,4 +11,5 @@ class PokemonConstantsImages {
   static const heart = 'assets/images/heart.png';
   static const loading = 'assets/images/loading.png';
   static const error = 'assets/images/error.png';
+  static const pokeball = 'assets/images/pokeball.png';
 }

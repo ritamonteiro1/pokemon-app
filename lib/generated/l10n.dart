@@ -79,6 +79,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Connection fail. Try again`
+  String get messageNetworkError {
+    return Intl.message(
+      'Connection fail. Try again',
+      name: 'messageNetworkError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Occurred error. Try again`
+  String get messageGenericStatusCodeError {
+    return Intl.message(
+      'Occurred error. Try again',
+      name: 'messageGenericStatusCodeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ops`
+  String get messageAlertOps {
+    return Intl.message(
+      'Ops',
+      name: 'messageAlertOps',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This pokemon is not here ;(`
+  String get messageNotFoundPokemon {
+    return Intl.message(
+      'This pokemon is not here ;(',
+      name: 'messageNotFoundPokemon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My favorites`
+  String get favoritePokemonListScreenMyFavoritePokemons {
+    return Intl.message(
+      'My favorites',
+      name: 'favoritePokemonListScreenMyFavoritePokemons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get favoritePokemonListScreenBackText {
+    return Intl.message(
+      'Back',
+      name: 'favoritePokemonListScreenBackText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Weight`
+  String get pokemonDetailsScreenWeightText {
+    return Intl.message(
+      'Weight',
+      name: 'pokemonDetailsScreenWeightText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Height`
+  String get pokemonDetailsScreenHeightText {
+    return Intl.message(
+      'Height',
+      name: 'pokemonDetailsScreenHeightText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Moves`
+  String get pokemonDetailsScreenMovesText {
+    return Intl.message(
+      'Moves',
+      name: 'pokemonDetailsScreenMovesText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Base Stats`
+  String get pokemonDetailsScreenBaseStatsText {
+    return Intl.message(
+      'Base Stats',
+      name: 'pokemonDetailsScreenBaseStatsText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

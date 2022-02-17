@@ -2,5 +2,15 @@
   "@@ locale": "pt_BR",
   "appName": "ioasys pokédex",
   "pokemonListScreenTextFieldLabelTextSearch": "Buscar",
-  "pokemonListScreenTextFieldHintTextSearch": "Buscar pokemon"
+  "pokemonListScreenTextFieldHintTextSearch": "Buscar pokemon",
+  "messageNetworkError": "Falha na conexão. Tente novamente",
+  "messageGenericStatusCodeError": "Ocorreu um erro. Tente novamente",
+  "messageAlertOps": "Ops",
+  "messageNotFoundPokemon": "Este pokemon não está aqui ;(",
+  "favoritePokemonListScreenMyFavoritePokemons": "Meus favoritos",
+  "favoritePokemonListScreenBackText": "Voltar",
+  "pokemonDetailsScreenWeightText": "Peso",
+  "pokemonDetailsScreenHeightText": "Altura",
+  "pokemonDetailsScreenMovesText": "Movimentos",
+  "pokemonDetailsScreenBaseStatsText": "Estatísticas básicas"
 }

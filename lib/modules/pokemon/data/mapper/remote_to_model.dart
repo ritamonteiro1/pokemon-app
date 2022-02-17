@@ -17,6 +17,7 @@ extension PokemonResponseToPokemonModel on PokemonResponse {
             [],
         typeList: types?.map((item) => item.type?.name ?? ' - ').toList() ?? [],
         weight: weight ?? -1,
-        image: sprites?.sprite?.dreamWorld?.image ?? ' - ',
+        image:
+            'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/$id.svg',
       );
 }
