@@ -19,20 +19,26 @@ class PokemonListWidget extends StatelessWidget {
             mainAxisSpacing: 4,
             childAspectRatio: 1,
           ),
-          itemBuilder: (context, index) => Card(
-            margin: const EdgeInsets.all(4),
+          itemBuilder: (context, index) => Container(
             color: Colors.transparent,
-            child: Container(
-              height: 112,
-              width: 104,
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Text(
-                      pokemonList[index].name,
+            child: Card(
+              margin: const EdgeInsets.all(4),
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(color: Colors.blue, width: 1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Container(
+                height: 112,
+                width: 104,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        pokemonList[index].name,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
