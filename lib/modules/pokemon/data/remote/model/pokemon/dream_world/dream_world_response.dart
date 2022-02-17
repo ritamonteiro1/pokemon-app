@@ -11,7 +11,7 @@ class DreamWorldResponse {
   factory DreamWorldResponse.fromJson(Map<String, dynamic> json) =>
       _$DreamWorldResponseFromJson(json);
 
-  @JsonKey(name: 'frontDefault')
+  @JsonKey(name: 'front_default')
   final String? image;
 
   Map<String, dynamic> toJson() => _$DreamWorldResponseToJson(this);

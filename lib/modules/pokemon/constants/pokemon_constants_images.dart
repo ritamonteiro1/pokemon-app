@@ -9,4 +9,6 @@ class PokemonConstantsImages {
   static const search = 'assets/images/search.png';
   static const weightScales = 'assets/images/weight_scales.png';
   static const heart = 'assets/images/heart.png';
+  static const loading = 'assets/images/loading.png';
+  static const error = 'assets/images/error.png';
 }

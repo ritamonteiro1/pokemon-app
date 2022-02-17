@@ -12,6 +12,7 @@ class SpriteResponse {
   factory SpriteResponse.fromJson(Map<String, dynamic> json) =>
       _$SpriteResponseFromJson(json);
 
+  @JsonKey(name: 'dream_world')
   final DreamWorldResponse? dreamWorld;
   Map<String, dynamic> toJson() => _$SpriteResponseToJson(this);
 }

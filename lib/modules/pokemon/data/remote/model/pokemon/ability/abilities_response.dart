@@ -8,16 +8,12 @@ part 'abilities_response.g.dart';
 class AbilitiesResponse {
   AbilitiesResponse(
     this.ability,
-    this.isHidden,
-    this.slot,
   );
 
   factory AbilitiesResponse.fromJson(Map<String, dynamic> json) =>
       _$AbilitiesResponseFromJson(json);
 
   final AbilityResponse? ability;
-  final bool? isHidden;
-  final int? slot;
 
   Map<String, dynamic> toJson() => _$AbilitiesResponseToJson(this);
 }
