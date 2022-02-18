@@ -73,13 +73,11 @@ class _PokemonDetailsScreenState
                     ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: const [
                       Padding(
-                        padding: EdgeInsets.only(
-                          right: 4,
-                          top: 4,
-                          left: 4,
-                          bottom: 10,
+                        padding: EdgeInsets.all(
+                          20,
                         ),
                         child: Image(
                           image: AssetImage(
