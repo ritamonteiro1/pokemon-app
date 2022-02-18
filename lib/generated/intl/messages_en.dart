@@ -29,11 +29,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("My favorites"),
         "messageAlertOps": MessageLookupByLibrary.simpleMessage("Ops"),
         "messageGenericStatusCodeError":
-            MessageLookupByLibrary.simpleMessage("Occurred error. Try again"),
+            MessageLookupByLibrary.simpleMessage("Occurred error"),
         "messageNetworkError":
-            MessageLookupByLibrary.simpleMessage("Connection fail. Try again"),
+            MessageLookupByLibrary.simpleMessage("Connection fail"),
         "messageNotFoundPokemon":
             MessageLookupByLibrary.simpleMessage("This pokemon is not here ;("),
+        "messageTryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "pokemonDetailsScreenBaseStatsText":
             MessageLookupByLibrary.simpleMessage("Base Stats"),
         "pokemonDetailsScreenHeightText":

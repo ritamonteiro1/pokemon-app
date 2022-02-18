@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/common/loading_widget.dart';
+import 'package:pokedex_app/pokedex_constants/pokedex_constants_colors.dart';
 
 import '../../domain/model/pokemon/pokemon_model.dart';
 
@@ -25,7 +26,10 @@ class PokemonListWidget extends StatelessWidget {
               elevation: 0,
               margin: const EdgeInsets.all(2),
               shape: RoundedRectangleBorder(
-                side: const BorderSide(color: Colors.white, width: 1),
+                side: const BorderSide(
+                  color: PokedexConstantsColors.primaryColor,
+                  width: 1,
+                ),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Center(

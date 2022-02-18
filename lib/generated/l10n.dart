@@ -80,21 +80,31 @@ class S {
     );
   }
 
-  /// `Connection fail. Try again`
+  /// `Connection fail`
   String get messageNetworkError {
     return Intl.message(
-      'Connection fail. Try again',
+      'Connection fail',
       name: 'messageNetworkError',
       desc: '',
       args: [],
     );
   }
 
-  /// `Occurred error. Try again`
+  /// `Occurred error`
   String get messageGenericStatusCodeError {
     return Intl.message(
-      'Occurred error. Try again',
+      'Occurred error',
       name: 'messageGenericStatusCodeError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Try again`
+  String get messageTryAgain {
+    return Intl.message(
+      'Try again',
+      name: 'messageTryAgain',
       desc: '',
       args: [],
     );
