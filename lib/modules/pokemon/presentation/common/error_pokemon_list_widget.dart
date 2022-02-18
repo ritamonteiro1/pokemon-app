@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_app/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 import '../../constants/pokemon_constants_colors.dart';
 
 class ErrorPokemonListWidget extends StatelessWidget {

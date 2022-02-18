@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -9,11 +8,11 @@ import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
-import '../common/loading_widget.dart';
 import '../common/error_pokemon_list_widget.dart';
+import '../common/loading_widget.dart';
+import '../common/pokemon_list_widget.dart';
 import 'pokemon_list_state.dart';
 import 'pokemon_list_store.dart';
-import '../common/pokemon_list_widget.dart';
 
 class PokemonListScreen extends StatefulWidget {
   const PokemonListScreen({Key? key}) : super(key: key);

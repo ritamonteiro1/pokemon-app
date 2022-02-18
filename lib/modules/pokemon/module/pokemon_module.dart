@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
-import 'package:pokedex_app/modules/pokemon/presentation/pokemon_details/pokemon_details_store.dart';
 
 import '../constants/pokemon_constants_routes.dart';
 import '../data/cache/data_source/pokemon_cache_data_source.dart';
@@ -14,6 +13,7 @@ import '../domain/use_case/get_pokemon_list_use_case.dart';
 import '../domain/use_case/get_pokemon_list_use_case_impl.dart';
 import '../presentation/favorite_pokemon_list/favorite_pokemon_list_screen.dart';
 import '../presentation/pokemon_details/pokemon_details_screen.dart';
+import '../presentation/pokemon_details/pokemon_details_store.dart';
 import '../presentation/pokemon_list/pokemon_list_screen.dart';
 import '../presentation/pokemon_list/pokemon_list_store.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokedex_app/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
