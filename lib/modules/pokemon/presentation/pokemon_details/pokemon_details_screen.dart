@@ -99,20 +99,23 @@ class _PokemonDetailsScreenState
                   child: Card(
                     child: Column(
                       children: [
-                        const Image(
-                          image: AssetImage(PokemonConstantsImages.heart),
+                        const Padding(
+                          padding: EdgeInsets.all(4),
+                          child: Image(
+                            image: AssetImage(PokemonConstantsImages.heart),
+                          ),
                         ),
                         const SizedBox(
                           height: 6,
                         ),
-                        Expanded(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: widget.pokemon.typeList.length,
-                              itemBuilder: (context, index) {
-                                final type = widget.pokemon.typeList[index];
-                                return Card(
+                        ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: widget.pokemon.typeList.length,
+                            itemBuilder: (context, index) {
+                              final type = widget.pokemon.typeList[index];
+                              return Container(
+                                child: Card(
                                   color: PokedexConstantsColors.primaryColor,
                                   shape: RoundedRectangleBorder(
                                     side: const BorderSide(
@@ -128,9 +131,9 @@ class _PokemonDetailsScreenState
                                       color: Colors.white,
                                     ),
                                   ),
-                                );
-                              }),
-                        ),
+                                ),
+                              );
+                            }),
                       ],
                     ),
                   ),
