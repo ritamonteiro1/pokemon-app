@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,68 +24,45 @@ class _PokemonDetailsScreenState
   @override
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: PokedexConstantsColors.primaryColor,
-        body: Padding(
-          padding: const EdgeInsets.only(
-            top: 52,
-            right: 8,
-            left: 8,
-            bottom: 8,
-          ),
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    const SizedBox(
-                      width: 44,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Modular.to.pop();
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.all(
-                          10,
-                        ),
-                        child: Image(
-                          image: AssetImage(
-                            PokemonConstantsImages.back,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      child: Text(
-                        widget.pokemon.name,
-                        style:
-                            const TextStyle(fontSize: 24, color: Colors.white),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      widget.pokemon.id.toString(),
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                  ],
+        appBar: AppBar(
+          title: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  widget.pokemon.name,
+                  style: const TextStyle(fontSize: 24, color: Colors.white),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 24,
-                    bottom: 16,
-                  ),
-                  child: Container(
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              Text(
+                widget.pokemon.id.toString(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+            ],
+          ),
+        ),
+        body: SizedBox.expand(
+          child: SingleChildScrollView(
+              child: Padding(
+            padding: const EdgeInsets.only(
+              top: 220,
+              left: 8,
+              right: 8,
+              bottom: 200,
+            ),
+            child: Card(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Container(
                     height: 200,
                     width: 200,
                     child: SvgPicture.network(
@@ -94,53 +72,44 @@ class _PokemonDetailsScreenState
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Card(
-                    child: Column(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.all(4),
-                          child: Image(
-                            image: AssetImage(PokemonConstantsImages.heart),
+                  Row(
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          right: 4,
+                          top: 4,
+                          left: 4,
+                          bottom: 10,
+                        ),
+                        child: Image(
+                          image: AssetImage(
+                            PokemonConstantsImages.heart,
                           ),
                         ),
-                        const SizedBox(
-                          height: 6,
-                        ),
-                        ListView.builder(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            itemCount: widget.pokemon.typeList.length,
-                            itemBuilder: (context, index) {
-                              final type = widget.pokemon.typeList[index];
-                              return Container(
-                                child: Card(
-                                  color: PokedexConstantsColors.primaryColor,
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                      color:
-                                          PokedexConstantsColors.primaryColor,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Text(
-                                    type,
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  // Expanded(
+                  //   child: ListView.builder(
+                  //       shrinkWrap: true,
+                  //       itemCount: widget.pokemon.typeList.length,
+                  //       itemBuilder: (context, index) {
+                  //         final type = widget.pokemon.typeList[index];
+                  //         return Padding(
+                  //           padding: const EdgeInsets.all(4),
+                  //           child: Text(
+                  //             type,
+                  //             style: const TextStyle(
+                  //               color: PokedexConstantsColors.primaryColor,
+                  //             ),
+                  //           ),
+                  //         );
+                  //       }),
+                  // ),
+                ],
+              ),
             ),
-          ),
+          )),
         ),
       );
 }
