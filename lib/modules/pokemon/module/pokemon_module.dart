@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
+import 'package:pokedex_app/modules/pokemon/presentation/pokemon_details/pokemon_details_store.dart';
 
 import '../constants/pokemon_constants_routes.dart';
 import '../data/cache/data_source/pokemon_cache_data_source.dart';
@@ -30,6 +31,7 @@ class PokemonModule extends Module {
         Bind.lazySingleton<GetPokemonListUseCase>(
             (i) => GetPokemonListUseCaseImpl(pokemonRepository: i())),
         Bind.factory((i) => PokemonListStore(getPokemonListUseCase: i())),
+        Bind.factory((i) => PokemonDetailsStore()),
       ];
 
   @override

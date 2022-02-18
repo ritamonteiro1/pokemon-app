@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_routes.dart';
-import 'package:pokedex_app/modules/pokemon/presentation/common/loading_widget.dart';
 import 'package:pokedex_app/pokedex_constants/pokedex_constants_colors.dart';
 
 import '../../domain/model/pokemon/pokemon_model.dart';
