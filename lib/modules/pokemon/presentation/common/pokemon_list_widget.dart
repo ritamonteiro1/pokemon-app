@@ -26,7 +26,7 @@ class PokemonListWidget extends StatelessWidget {
             final pokemon = pokemonList[index];
             return GestureDetector(
               onTap: () => Modular.to.pushNamed(
-                PokemonConstantsRoutes.pokemonDetailsScreen,
+                PokemonConstantsRoutes.pokemonDetails,
                 arguments: pokemon,
               ),
               child: Card(
