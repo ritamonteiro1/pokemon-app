@@ -25,6 +25,22 @@ mixin _$PokemonListStore on _PokemonListStore, Store {
     });
   }
 
+  final _$isBackgroundDarkAtom =
+      Atom(name: '_PokemonListStore.isBackgroundDark');
+
+  @override
+  bool get isBackgroundDark {
+    _$isBackgroundDarkAtom.reportRead();
+    return super.isBackgroundDark;
+  }
+
+  @override
+  set isBackgroundDark(bool value) {
+    _$isBackgroundDarkAtom.reportWrite(value, super.isBackgroundDark, () {
+      super.isBackgroundDark = value;
+    });
+  }
+
   final _$getPokemonListAsyncAction =
       AsyncAction('_PokemonListStore.getPokemonList');
 
@@ -33,10 +49,25 @@ mixin _$PokemonListStore on _PokemonListStore, Store {
     return _$getPokemonListAsyncAction.run(() => super.getPokemonList());
   }
 
+  final _$_PokemonListStoreActionController =
+      ActionController(name: '_PokemonListStore');
+
+  @override
+  void toggleBackground() {
+    final _$actionInfo = _$_PokemonListStoreActionController.startAction(
+        name: '_PokemonListStore.toggleBackground');
+    try {
+      return super.toggleBackground();
+    } finally {
+      _$_PokemonListStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-pokemonListState: ${pokemonListState}
+pokemonListState: ${pokemonListState},
+isBackgroundDark: ${isBackgroundDark}
     ''';
   }
 }

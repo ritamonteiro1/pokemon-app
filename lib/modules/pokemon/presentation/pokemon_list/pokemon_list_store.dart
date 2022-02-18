@@ -17,6 +17,9 @@ abstract class _PokemonListStore with Store {
   @observable
   PokemonListState pokemonListState = LoadingPokemonListState();
 
+  @observable
+  bool isBackgroundDark = false;
+
   @action
   Future<void> getPokemonList() async {
     pokemonListState = LoadingPokemonListState();
@@ -26,5 +29,10 @@ abstract class _PokemonListStore with Store {
     } on Exception catch (e) {
       pokemonListState = ErrorPokemonListState(e);
     }
+  }
+
+  @action
+  void toggleBackground() {
+    isBackgroundDark = !isBackgroundDark;
   }
 }
