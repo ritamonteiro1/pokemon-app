@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 import '../../../constants/pokemon_constants_url_api.dart';
+import '../../../domain/exception/not_found_pokemon_exception.dart';
 import '../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../domain/exception/network_error_exception.dart';
 import '../../../domain/model/pokemon/pokemon_model.dart';
@@ -51,5 +52,25 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       url = nextPage!;
     }
     return url;
+  }
+
+  @override
+  Future<PokemonModel> getPokemonTyped(String typedPokemon) async {
+    try {
+      final response = await _dio
+          .get('${PokemonConstantsUrlApi.pokemonBaseUrl}$typedPokemon');
+      final pokemonResponse = PokemonResponse.fromJson(response.data);
+      final pokemonModel = pokemonResponse.toPokemonModel();
+      return pokemonModel;
+    } on DioError catch (dioError, _) {
+      if (dioError.type == DioErrorType.response) {
+        if (dioError.response?.statusCode == 404) {
+          throw NotFoundPokemonException();
+        }
+        throw GenericErrorStatusCodeException();
+      } else {
+        throw NetworkErrorException();
+      }
+    }
   }
 }

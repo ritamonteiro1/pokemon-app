@@ -1,6 +1,8 @@
 import 'package:mobx/mobx.dart';
 
+import '../../domain/model/pokemon/pokemon_model.dart';
 import '../../domain/use_case/get_pokemon_list_use_case.dart';
+import '../../domain/use_case/get_pokemon_typed_use_case.dart';
 import 'pokemon_list_state.dart';
 
 part 'pokemon_list_store.g.dart';
@@ -10,15 +12,21 @@ class PokemonListStore = _PokemonListStore with _$PokemonListStore;
 abstract class _PokemonListStore with Store {
   _PokemonListStore({
     required GetPokemonListUseCase getPokemonListUseCase,
-  }) : _getPokemonListUseCase = getPokemonListUseCase;
+    required GetPokemonTypedUseCase getPokemonTypedUseCase,
+  })  : _getPokemonListUseCase = getPokemonListUseCase,
+        _getPokemonTypedUseCase = getPokemonTypedUseCase;
 
   final GetPokemonListUseCase _getPokemonListUseCase;
+  final GetPokemonTypedUseCase _getPokemonTypedUseCase;
 
   @observable
   PokemonListState pokemonListState = LoadingPokemonListState();
 
   @observable
   bool isBackgroundDark = false;
+
+  @observable
+  bool isEmptyPokemonTextField = true;
 
   @action
   Future<void> getPokemonList() async {
@@ -28,6 +36,22 @@ abstract class _PokemonListStore with Store {
       pokemonListState = SuccessPokemonListState(pokemonList);
     } on Exception catch (e) {
       pokemonListState = ErrorPokemonListState(e);
+    }
+  }
+
+  @action
+  Future<void> getPokemonTyped(String pokemonTyped) async {
+    isEmptyPokemonTextField = false;
+    pokemonListState = LoadingPokemonListState();
+    try {
+      final pokemon = await _getPokemonTypedUseCase.call(pokemonTyped);
+      final pokemonList = <PokemonModel>[pokemon];
+      pokemonListState = SuccessPokemonListState(pokemonList);
+    } on Exception catch (e) {
+      pokemonListState = ErrorPokemonListState(e);
+    }
+    if (pokemonTyped.isEmpty) {
+      isEmptyPokemonTextField = true;
     }
   }
 

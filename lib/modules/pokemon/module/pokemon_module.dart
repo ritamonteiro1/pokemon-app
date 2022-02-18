@@ -11,6 +11,8 @@ import '../data/repository_impl/pokemon_repository_impl.dart';
 import '../domain/repository/pokemon_repository.dart';
 import '../domain/use_case/get_pokemon_list_use_case.dart';
 import '../domain/use_case/get_pokemon_list_use_case_impl.dart';
+import '../domain/use_case/get_pokemon_typed_use_case.dart';
+import '../domain/use_case/get_pokemon_typed_use_case_impl.dart';
 import '../presentation/favorite_pokemon_list/favorite_pokemon_list_screen.dart';
 import '../presentation/pokemon_details/pokemon_details_screen.dart';
 import '../presentation/pokemon_details/pokemon_details_store.dart';
@@ -30,7 +32,10 @@ class PokemonModule extends Module {
             (i) => PokemonRepositoryImpl(pokemonRemoteDataSource: i())),
         Bind.lazySingleton<GetPokemonListUseCase>(
             (i) => GetPokemonListUseCaseImpl(pokemonRepository: i())),
-        Bind.factory((i) => PokemonListStore(getPokemonListUseCase: i())),
+        Bind.lazySingleton<GetPokemonTypedUseCase>(
+            (i) => GetPokemonTypedUseCaseImpl(pokemonRepository: i())),
+        Bind.factory((i) => PokemonListStore(
+            getPokemonListUseCase: i(), getPokemonTypedUseCase: i())),
         Bind.factory((i) => PokemonDetailsStore()),
       ];
 

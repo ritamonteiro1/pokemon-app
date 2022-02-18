@@ -13,4 +13,8 @@ class PokemonRepositoryImpl implements PokemonRepository {
   @override
   Future<List<PokemonModel>> getPokemonList() async =>
       _pokemonRemoteDataSource.getPokemonList();
+
+  @override
+  Future<PokemonModel> getPokemonTyped(String typedPokemon) async =>
+      _pokemonRemoteDataSource.getPokemonTyped(typedPokemon);
 }

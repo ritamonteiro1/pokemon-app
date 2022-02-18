@@ -41,12 +41,38 @@ mixin _$PokemonListStore on _PokemonListStore, Store {
     });
   }
 
+  final _$isEmptyPokemonTextFieldAtom =
+      Atom(name: '_PokemonListStore.isEmptyPokemonTextField');
+
+  @override
+  bool get isEmptyPokemonTextField {
+    _$isEmptyPokemonTextFieldAtom.reportRead();
+    return super.isEmptyPokemonTextField;
+  }
+
+  @override
+  set isEmptyPokemonTextField(bool value) {
+    _$isEmptyPokemonTextFieldAtom
+        .reportWrite(value, super.isEmptyPokemonTextField, () {
+      super.isEmptyPokemonTextField = value;
+    });
+  }
+
   final _$getPokemonListAsyncAction =
       AsyncAction('_PokemonListStore.getPokemonList');
 
   @override
   Future<void> getPokemonList() {
     return _$getPokemonListAsyncAction.run(() => super.getPokemonList());
+  }
+
+  final _$getPokemonTypedAsyncAction =
+      AsyncAction('_PokemonListStore.getPokemonTyped');
+
+  @override
+  Future<void> getPokemonTyped(String pokemonTyped) {
+    return _$getPokemonTypedAsyncAction
+        .run(() => super.getPokemonTyped(pokemonTyped));
   }
 
   final _$_PokemonListStoreActionController =
@@ -67,7 +93,8 @@ mixin _$PokemonListStore on _PokemonListStore, Store {
   String toString() {
     return '''
 pokemonListState: ${pokemonListState},
-isBackgroundDark: ${isBackgroundDark}
+isBackgroundDark: ${isBackgroundDark},
+isEmptyPokemonTextField: ${isEmptyPokemonTextField}
     ''';
   }
 }

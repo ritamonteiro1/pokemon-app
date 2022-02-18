@@ -218,15 +218,6 @@ class _PokemonDetailsScreenState
                     const SizedBox(
                       height: 8,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        right: 32,
-                        left: 32,
-                      ),
-                      child: Text(
-                        S.of(context).pokemonDetailsScreenBaseStatsText,
-                      ),
-                    ),
                   ],
                 ),
               ),
