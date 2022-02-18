@@ -90,6 +90,7 @@ flutter:
     - assets/images/error.png
     - assets/images/loading.png
     - assets/images/pokeball.png
+    - assets/images/back.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
