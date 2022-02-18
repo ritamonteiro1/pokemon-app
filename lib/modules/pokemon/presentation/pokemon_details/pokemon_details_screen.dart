@@ -39,9 +39,14 @@ class _PokemonDetailsScreenState
                       const SizedBox(
                         width: 44,
                       ),
-                      const Image(
-                        image: AssetImage(
-                          PokemonConstantsImages.backArrow,
+                      GestureDetector(
+                        onTap: () {
+                          Modular.to.pop();
+                        },
+                        child: const Image(
+                          image: AssetImage(
+                            PokemonConstantsImages.backArrow,
+                          ),
                         ),
                       ),
                       const SizedBox(
