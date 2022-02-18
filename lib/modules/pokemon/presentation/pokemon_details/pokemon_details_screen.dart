@@ -3,10 +3,10 @@ import '../../domain/model/pokemon/pokemon_model.dart';
 
 class PokemonDetailsScreen extends StatefulWidget {
   const PokemonDetailsScreen({
-    required this.pokemonModel,
+    required this.pokemon,
     Key? key,
   }) : super(key: key);
-  final PokemonModel pokemonModel;
+  final PokemonModel pokemon;
 
   @override
   _PokemonDetailsScreenState createState() => _PokemonDetailsScreenState();
@@ -14,5 +14,7 @@ class PokemonDetailsScreen extends StatefulWidget {
 
 class _PokemonDetailsScreenState extends State<PokemonDetailsScreen> {
   @override
-  Widget build(BuildContext context) => Container();
+  Widget build(BuildContext context) => Center(
+        child: Text(widget.pokemon.name),
+      );
 }

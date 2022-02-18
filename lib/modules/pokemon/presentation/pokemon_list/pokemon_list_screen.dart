@@ -66,15 +66,12 @@ class _PokemonListScreenState
                         width: 82,
                       ),
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Switch(
-                              value: controller.isBackgroundDark,
-                              activeColor: PokedexConstantsColors.primaryColor,
-                              onChanged: (_) {
-                                controller.toggleBackground();
-                              }),
-                        ),
+                        child: Switch(
+                            value: controller.isBackgroundDark,
+                            activeColor: PokedexConstantsColors.primaryColor,
+                            onChanged: (_) {
+                              controller.toggleBackground();
+                            }),
                       ),
                     ],
                   ),
