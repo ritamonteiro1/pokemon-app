@@ -10,9 +10,11 @@ class LoadingWidget extends StatefulWidget {
 
 class _LoadingWidgetState extends State<LoadingWidget> {
   @override
-  Widget build(BuildContext context) => const Center(
-        child: CircularProgressIndicator(
-          color: PokedexConstantsColors.primaryColor,
+  Widget build(BuildContext context) => const Expanded(
+        child: Center(
+          child: CircularProgressIndicator(
+            color: PokedexConstantsColors.primaryColor,
+          ),
         ),
       );
 }

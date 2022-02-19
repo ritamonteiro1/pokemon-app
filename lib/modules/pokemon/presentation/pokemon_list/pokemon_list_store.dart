@@ -41,7 +41,6 @@ abstract class _PokemonListStore with Store {
 
   @action
   Future<void> getPokemonTyped(String pokemonTyped) async {
-    isEmptyPokemonTextField = false;
     pokemonListState = LoadingPokemonListState();
     try {
       final pokemon = await _getPokemonTypedUseCase.call(pokemonTyped);
@@ -50,8 +49,14 @@ abstract class _PokemonListStore with Store {
     } on Exception catch (e) {
       pokemonListState = ErrorPokemonListState(e);
     }
-    if (pokemonTyped.isEmpty) {
+  }
+
+  @action
+  void toggleSuffixIconTextFieldSearchPokemon(String? typed) {
+    if (typed?.isEmpty ?? true) {
       isEmptyPokemonTextField = true;
+    } else {
+      isEmptyPokemonTextField = false;
     }
   }
 

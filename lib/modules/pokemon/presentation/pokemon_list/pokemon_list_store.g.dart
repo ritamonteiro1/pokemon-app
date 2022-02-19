@@ -79,6 +79,17 @@ mixin _$PokemonListStore on _PokemonListStore, Store {
       ActionController(name: '_PokemonListStore');
 
   @override
+  void toggleSuffixIconTextFieldSearchPokemon(String? typed) {
+    final _$actionInfo = _$_PokemonListStoreActionController.startAction(
+        name: '_PokemonListStore.toggleSuffixIconTextFieldSearchPokemon');
+    try {
+      return super.toggleSuffixIconTextFieldSearchPokemon(typed);
+    } finally {
+      _$_PokemonListStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void toggleBackground() {
     final _$actionInfo = _$_PokemonListStoreActionController.startAction(
         name: '_PokemonListStore.toggleBackground');

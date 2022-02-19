@@ -15,6 +15,7 @@ class NotFoundPokemonWidget extends StatelessWidget {
               children: [
                 Text(
                   S.of(context).messageAlertOps,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: PokemonConstantsColors.grey,
                     fontSize: 148,
@@ -25,6 +26,7 @@ class NotFoundPokemonWidget extends StatelessWidget {
                 ),
                 Text(
                   S.of(context).messageNotFoundPokemon,
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: PokemonConstantsColors.grey,
                     fontSize: 30,
