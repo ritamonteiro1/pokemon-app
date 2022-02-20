@@ -47,196 +47,179 @@ class _PokemonListScreenState
           backgroundColor: controller.isBackgroundDark
               ? PokemonConstantsColors.darkGray
               : PokemonConstantsColors.white,
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 52,
-                bottom: 16,
-                right: 40,
-                left: 40,
-              ),
-              child: Center(
-                child: Column(
-                  children: [
-                    Row(
+          body: Padding(
+            padding: const EdgeInsets.only(
+              top: 52,
+              bottom: 16,
+              right: 40,
+              left: 40,
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          PokemonConstantsImages.logoIoasys,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 14,
+                      ),
+                      Text(
+                        S.of(context).appName,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          color: PokedexConstantsColors.primaryColor,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 82,
+                      ),
+                      Expanded(
+                        child: Switch(
+                            value: controller.isBackgroundDark,
+                            activeColor: PokedexConstantsColors.primaryColor,
+                            onChanged: (_) {
+                              controller.toggleBackground();
+                            }),
+                      ),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      top: 52,
+                      bottom: 42,
+                    ),
+                    child: Row(
                       children: [
                         Expanded(
-                          child: Image.asset(
-                            PokemonConstantsImages.logoIoasys,
-                          ),
+                          child: Observer(builder: (context) {
+                            final isEmptyTextField =
+                                controller.isEmptyPokemonTextField;
+                            return TextField(
+                              textInputAction: TextInputAction.search,
+                              onChanged: (typed) {
+                                controller
+                                    .toggleSuffixIconTextFieldSearchPokemon(
+                                        typed);
+                              },
+                              onEditingComplete: () {
+                                if (pokemonTypedTextEditingController
+                                    .text.isNotEmpty) {
+                                  controller.getPokemonTyped(
+                                    pokemonTypedTextEditingController.text
+                                        .toString(),
+                                  );
+                                } else {
+                                  controller.getPokemonList();
+                                }
+                              },
+                              controller: pokemonTypedTextEditingController,
+                              decoration: InputDecoration(
+                                suffixIcon: isEmptyTextField
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          if (pokemonTypedTextEditingController
+                                              .text.isNotEmpty) {
+                                            controller.getPokemonTyped(
+                                              pokemonTypedTextEditingController
+                                                  .text
+                                                  .toString(),
+                                            );
+                                          } else {
+                                            controller.getPokemonList();
+                                          }
+                                        },
+                                        child: const Icon(
+                                          Icons.search,
+                                        ),
+                                      )
+                                    : GestureDetector(
+                                        onTap: () {
+                                          pokemonTypedTextEditingController
+                                              .clear();
+                                          controller
+                                              .toggleSuffixIconTextFieldSearchPokemon(
+                                            pokemonTypedTextEditingController
+                                                .text,
+                                          );
+                                        },
+                                        child: const Icon(
+                                          Icons.clear,
+                                        ),
+                                      ),
+                                floatingLabelBehavior:
+                                    FloatingLabelBehavior.always,
+                                labelText: S
+                                    .of(context)
+                                    .pokemonListScreenTextFieldLabelTextSearch,
+                                hintText: S
+                                    .of(context)
+                                    .pokemonListScreenTextFieldHintTextSearch,
+                                hintStyle: const TextStyle(
+                                  color: PokemonConstantsColors.grey,
+                                  fontSize: 14,
+                                ),
+                                labelStyle: const TextStyle(
+                                  color: PokedexConstantsColors.primaryColor,
+                                  fontSize: 16,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                enabledBorder: const OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: PokedexConstantsColors.primaryColor,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
                         ),
                         const SizedBox(
-                          width: 14,
+                          width: 22,
                         ),
-                        Text(
-                          S.of(context).appName,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            color: PokedexConstantsColors.primaryColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 82,
-                        ),
-                        Expanded(
-                          child: Switch(
-                              value: controller.isBackgroundDark,
-                              activeColor: PokedexConstantsColors.primaryColor,
-                              onChanged: (_) {
-                                controller.toggleBackground();
-                              }),
+                        Image.asset(
+                          PokemonConstantsImages.heart,
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 52,
-                        bottom: 42,
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Observer(builder: (context) {
-                              final isEmptyTextField =
-                                  controller.isEmptyPokemonTextField;
-                              return TextField(
-                                textInputAction: TextInputAction.search,
-                                onChanged: (typed) {
-                                  controller
-                                      .toggleSuffixIconTextFieldSearchPokemon(
-                                          typed);
-                                },
-                                onEditingComplete: () {
-                                  if (pokemonTypedTextEditingController
-                                      .text.isNotEmpty) {
-                                    controller.getPokemonTyped(
-                                      pokemonTypedTextEditingController.text
-                                          .toString(),
-                                    );
-                                  } else {
-                                    controller.getPokemonList();
-                                  }
-                                },
-                                controller: pokemonTypedTextEditingController,
-                                decoration: InputDecoration(
-                                  suffixIcon: isEmptyTextField
-                                      ? GestureDetector(
-                                          onTap: () {
-                                            if (pokemonTypedTextEditingController
-                                                .text.isNotEmpty) {
-                                              controller.getPokemonTyped(
-                                                pokemonTypedTextEditingController
-                                                    .text
-                                                    .toString(),
-                                              );
-                                            } else {
-                                              controller.getPokemonList();
-                                            }
-                                          },
-                                          child: const Icon(
-                                            Icons.search,
-                                          ),
-                                        )
-                                      : GestureDetector(
-                                          onTap: () {
-                                            pokemonTypedTextEditingController
-                                                .clear();
-                                            controller
-                                                .toggleSuffixIconTextFieldSearchPokemon(
-                                              pokemonTypedTextEditingController
-                                                  .text,
-                                            );
-                                          },
-                                          child: const Icon(
-                                            Icons.clear,
-                                          ),
-                                        ),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
-                                  labelText: S
-                                      .of(context)
-                                      .pokemonListScreenTextFieldLabelTextSearch,
-                                  hintText: S
-                                      .of(context)
-                                      .pokemonListScreenTextFieldHintTextSearch,
-                                  hintStyle: const TextStyle(
-                                    color: PokemonConstantsColors.grey,
-                                    fontSize: 14,
-                                  ),
-                                  labelStyle: const TextStyle(
-                                    color: PokedexConstantsColors.primaryColor,
-                                    fontSize: 16,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  enabledBorder: const OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color:
-                                          PokedexConstantsColors.primaryColor,
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                          ),
-                          const SizedBox(
-                            width: 22,
-                          ),
-                          Image.asset(
-                            PokemonConstantsImages.heart,
-                          ),
-                        ],
-                      ),
-                    ),
-                    Observer(builder: (context) {
-                      final pokemonListState = controller.pokemonListState;
-                      if (pokemonListState is LoadingPokemonListState) {
-                        return const Expanded(
-                          child: LoadingWidget(
-                            colorCircularProgressIndicator:
-                                PokedexConstantsColors.primaryColor,
-                          ),
-                        );
-                      } else if (pokemonListState is SuccessPokemonListState) {
-                        return PokemonListWidget(
-                            pokemonList: pokemonListState.pokemonList);
-                      } else if (pokemonListState is ErrorPokemonListState) {
-                        if (pokemonListState.exception
-                            is GenericErrorStatusCodeException) {
-                          return ErrorPokemonListWidget(
-                            message:
-                                S.of(context).messageGenericStatusCodeError,
-                            tryAgain: () => controller.getPokemonList(),
-                          );
-                        } else if (pokemonListState.exception
-                            is NetworkErrorException) {
-                          return ErrorPokemonListWidget(
-                            message: S.of(context).messageNetworkError,
-                            tryAgain: () => controller.getPokemonList(),
-                          );
-                        } else {
-                          return const NotFoundPokemonWidget();
-                        }
-                      } else {
-                        throw UnknownStateTypeException();
-                      }
-                    }),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        top: 10,
-                      ),
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: const Image(
-                          image: AssetImage(
-                            PokemonConstantsImages.down,
-                          ),
+                  ),
+                  Observer(builder: (context) {
+                    final pokemonListState = controller.pokemonListState;
+                    if (pokemonListState is LoadingPokemonListState) {
+                      return const Expanded(
+                        child: LoadingWidget(
+                          colorCircularProgressIndicator:
+                              PokedexConstantsColors.primaryColor,
                         ),
-                      ),
-                    ),
-                  ],
-                ),
+                      );
+                    } else if (pokemonListState is SuccessPokemonListState) {
+                      return PokemonListWidget(
+                          pokemonList: pokemonListState.pokemonList);
+                    } else if (pokemonListState is ErrorPokemonListState) {
+                      if (pokemonListState.exception
+                          is GenericErrorStatusCodeException) {
+                        return ErrorPokemonListWidget(
+                          message: S.of(context).messageGenericStatusCodeError,
+                          tryAgain: () => controller.getPokemonList(),
+                        );
+                      } else if (pokemonListState.exception
+                          is NetworkErrorException) {
+                        return ErrorPokemonListWidget(
+                          message: S.of(context).messageNetworkError,
+                          tryAgain: () => controller.getPokemonList(),
+                        );
+                      } else {
+                        return const NotFoundPokemonWidget();
+                      }
+                    } else {
+                      throw UnknownStateTypeException();
+                    }
+                  }),
+                ],
               ),
             ),
           ),
