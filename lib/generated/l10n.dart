@@ -189,6 +189,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Under implementation`
+  String get favoritePokemonListScreenText {
+    return Intl.message(
+      'Under implementation',
+      name: 'favoritePokemonListScreenText',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

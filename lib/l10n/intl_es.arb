@@ -13,5 +13,6 @@
   "pokemonDetailsScreenWeightText": "Peso",
   "pokemonDetailsScreenHeightText": "Altura",
   "pokemonDetailsScreenMovesText": "Movimentos",
-  "pokemonDetailsScreenBaseStatsText": "Estadísticas básicas"
+  "pokemonDetailsScreenBaseStatsText": "Estadísticas básicas",
+  "favoritePokemonListScreenText": "En fase de ejecución"
 }

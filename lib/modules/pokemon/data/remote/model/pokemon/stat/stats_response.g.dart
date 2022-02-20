@@ -8,7 +8,7 @@ part of 'stats_response.dart';
 
 StatsResponse _$StatsResponseFromJson(Map<String, dynamic> json) =>
     StatsResponse(
-      json['base_url'] as int?,
+      json['base_stat'] as int?,
       json['stat'] == null
           ? null
           : StatResponse.fromJson(json['stat'] as Map<String, dynamic>),
@@ -16,6 +16,6 @@ StatsResponse _$StatsResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$StatsResponseToJson(StatsResponse instance) =>
     <String, dynamic>{
-      'base_url': instance.baseStat,
+      'base_stat': instance.baseStat,
       'stat': instance.stat,
     };

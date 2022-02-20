@@ -13,7 +13,7 @@ class StatsResponse {
   factory StatsResponse.fromJson(Map<String, dynamic> json) =>
       _$StatsResponseFromJson(json);
 
-  @JsonKey(name: 'base_star')
+  @JsonKey(name: 'base_stat')
   final int? baseStat;
   final StatResponse? stat;
 
