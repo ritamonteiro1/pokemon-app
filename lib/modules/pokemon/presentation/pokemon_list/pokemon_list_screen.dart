@@ -189,7 +189,12 @@ class _PokemonListScreenState
                   Observer(builder: (context) {
                     final pokemonListState = controller.pokemonListState;
                     if (pokemonListState is LoadingPokemonListState) {
-                      return const LoadingWidget();
+                      return const Expanded(
+                        child: LoadingWidget(
+                          colorCircularProgressIndicator:
+                              PokedexConstantsColors.primaryColor,
+                        ),
+                      );
                     } else if (pokemonListState is SuccessPokemonListState) {
                       return PokemonListWidget(
                           pokemonList: pokemonListState.pokemonList);

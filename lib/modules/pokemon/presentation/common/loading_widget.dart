@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 
-class LoadingWidget extends StatefulWidget {
-  const LoadingWidget({Key? key}) : super(key: key);
+class LoadingWidget extends StatelessWidget {
+  const LoadingWidget({
+    required this.colorCircularProgressIndicator,
+    Key? key,
+  }) : super(key: key);
+  final Color colorCircularProgressIndicator;
 
   @override
-  _LoadingWidgetState createState() => _LoadingWidgetState();
-}
-
-class _LoadingWidgetState extends State<LoadingWidget> {
-  @override
-  Widget build(BuildContext context) => const Expanded(
-        child: Center(
-          child: CircularProgressIndicator(
-            color: PokedexConstantsColors.primaryColor,
-          ),
+  Widget build(BuildContext context) => Center(
+        child: CircularProgressIndicator(
+          color: colorCircularProgressIndicator,
         ),
       );
 }
