@@ -27,14 +27,24 @@ abstract class _PokemonListStore with Store {
 
   @observable
   bool isEmptyPokemonTextField = true;
+  bool isFetchData = false;
+  List<PokemonModel> pokemons = [];
 
   @action
   Future<void> getPokemonList() async {
+    if (isFetchData) {
+      return;
+    }
+    isFetchData = true;
+
     pokemonListState = LoadingPokemonListState();
     try {
       final pokemonList = await _getPokemonListUseCase.call();
-      pokemonListState = SuccessPokemonListState(pokemonList);
+      pokemons.addAll(pokemonList);
+      isFetchData = false;
+      pokemonListState = SuccessPokemonListState(pokemons);
     } on Exception catch (e) {
+      isFetchData = false;
       pokemonListState = ErrorPokemonListState(e);
     }
   }

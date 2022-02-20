@@ -10,9 +10,11 @@ import '../../domain/model/pokemon/pokemon_model.dart';
 class PokemonListWidget extends StatelessWidget {
   const PokemonListWidget({
     required this.pokemonList,
+    required this.scrollController,
     Key? key,
   }) : super(key: key);
   final List<PokemonModel> pokemonList;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -20,6 +22,8 @@ class PokemonListWidget extends StatelessWidget {
           children: [
             Expanded(
               child: GridView.builder(
+                key: const PageStorageKey(0),
+                controller: scrollController,
                 itemCount: pokemonList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 4,

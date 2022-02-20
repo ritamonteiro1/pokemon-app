@@ -26,10 +26,20 @@ class PokemonListScreen extends StatefulWidget {
 class _PokemonListScreenState
     extends ModularState<PokemonListScreen, PokemonListStore> {
   late TextEditingController pokemonTypedTextEditingController;
+  late ScrollController scrollController;
 
   @override
   void initState() {
     super.initState();
+    scrollController =
+        ScrollController(initialScrollOffset: 15, keepScrollOffset: true);
+    scrollController.addListener(() {
+      if (scrollController.offset >=
+              scrollController.position.maxScrollExtent &&
+          !scrollController.position.outOfRange) {
+        controller.getPokemonList();
+      }
+    });
     pokemonTypedTextEditingController = TextEditingController();
     controller.getPokemonList();
   }
@@ -198,7 +208,9 @@ class _PokemonListScreenState
                       );
                     } else if (pokemonListState is SuccessPokemonListState) {
                       return PokemonListWidget(
-                          pokemonList: pokemonListState.pokemonList);
+                        pokemonList: pokemonListState.pokemonList,
+                        scrollController: scrollController,
+                      );
                     } else if (pokemonListState is ErrorPokemonListState) {
                       if (pokemonListState.exception
                           is GenericErrorStatusCodeException) {
