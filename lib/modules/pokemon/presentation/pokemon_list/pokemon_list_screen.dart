@@ -218,6 +218,19 @@ class _PokemonListScreenState
                       throw UnknownStateTypeException();
                     }
                   }),
+                  const SizedBox(
+                    height: 6,
+                  ),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: const Image(
+                        image: AssetImage(
+                          PokemonConstantsImages.down,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
