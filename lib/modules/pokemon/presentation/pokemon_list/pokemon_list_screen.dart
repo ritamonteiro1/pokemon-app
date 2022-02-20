@@ -6,6 +6,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
+import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
@@ -47,6 +48,7 @@ class _PokemonListScreenState
   @override
   void dispose() {
     pokemonTypedTextEditingController.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -191,8 +193,15 @@ class _PokemonListScreenState
                         const SizedBox(
                           width: 22,
                         ),
-                        Image.asset(
-                          PokemonConstantsImages.heart,
+                        GestureDetector(
+                          onTap: () {
+                            Modular.to.pushNamed(
+                              PokemonConstantsRoutes.favoritePokemonList,
+                            );
+                          },
+                          child: Image.asset(
+                            PokemonConstantsImages.heart,
+                          ),
                         ),
                       ],
                     ),

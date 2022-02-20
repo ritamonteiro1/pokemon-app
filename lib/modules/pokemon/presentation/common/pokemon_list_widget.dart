@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_images.dart';
 
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../constants/pokemon_constants_images.dart';
 import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 
@@ -33,10 +33,12 @@ class PokemonListWidget extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final pokemon = pokemonList[index];
                   return GestureDetector(
-                    onTap: () => Modular.to.pushNamed(
-                      PokemonConstantsRoutes.pokemonDetails,
-                      arguments: pokemon,
-                    ),
+                    onTap: () {
+                      Modular.to.pushNamed(
+                        PokemonConstantsRoutes.pokemonDetails,
+                        arguments: pokemon,
+                      );
+                    },
                     child: Card(
                       color: Colors.transparent,
                       elevation: 0,

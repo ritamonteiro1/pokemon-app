@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 import '../../../constants/pokemon_constants_url_api.dart';
-import '../../../domain/exception/not_found_pokemon_exception.dart';
 import '../../../domain/exception/generic_error_status_code_exception.dart';
 import '../../../domain/exception/network_error_exception.dart';
+import '../../../domain/exception/not_found_pokemon_exception.dart';
 import '../../../domain/model/pokemon/pokemon_model.dart';
 import '../../mapper/remote_to_model.dart';
 import '../model/pokedex/pokedex_response.dart';

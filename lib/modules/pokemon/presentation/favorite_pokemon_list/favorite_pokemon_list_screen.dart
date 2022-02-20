@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_app/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 class FavoritePokemonListScreen extends StatefulWidget {
   const FavoritePokemonListScreen({Key? key}) : super(key: key);
@@ -12,6 +12,7 @@ class FavoritePokemonListScreen extends StatefulWidget {
 class _FavoritePokemonListScreenState extends State<FavoritePokemonListScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(),
         body: Center(
           child: Text(
             S.of(context).favoritePokemonListScreenText,
