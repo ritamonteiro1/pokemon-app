@@ -75,7 +75,8 @@ class _PokemonDetailsScreenState
             final pokemonDetailsState = controller.pokemonDetailsState;
             if (pokemonDetailsState is LoadingPokemonDetailsState) {
               return const LoadingWidget(
-                colorCircularProgressIndicator: Colors.white,
+                colorCircularProgressIndicator:
+                    PokedexConstantsColors.primaryColor,
               );
             } else if (pokemonDetailsState is InitialPokemonDetailsState) {
               return SizedBox.expand(

@@ -8,7 +8,7 @@ part of 'stat_cache.dart';
 
 class StatCacheAdapter extends TypeAdapter<StatCache> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   StatCache read(BinaryReader reader) {

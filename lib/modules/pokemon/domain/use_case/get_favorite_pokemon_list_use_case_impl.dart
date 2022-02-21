@@ -11,7 +11,6 @@ class GetFavoritePokemonListUseCaseImpl
   final PokemonRepository _pokemonRepository;
 
   @override
-  Future<List<PokemonModel>> call() {
-    throw UnimplementedError();
-  }
+  Future<List<PokemonModel>> call() async =>
+      _pokemonRepository.getFavoritePokemonList();
 }

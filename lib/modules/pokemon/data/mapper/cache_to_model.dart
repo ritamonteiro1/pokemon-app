@@ -17,3 +17,18 @@ extension PokemonCacheToPokemonModel on PokemonCache {
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/$id.svg',
       );
 }
+
+extension PokemonCacheListToPokemonModelList on List<PokemonCache> {
+  List<PokemonModel> toPokemonModelList() => map((item) => PokemonModel(
+        id: item.id,
+        image: item.image,
+        height: item.height,
+        name: item.name,
+        typeList: item.typeList,
+        statList: item.statList
+            .map((e) => StatModel(name: e.name, base: e.base))
+            .toList(),
+        weight: item.weight,
+        abilityList: item.abilityList,
+      )).toList();
+}

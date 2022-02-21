@@ -11,7 +11,6 @@ class RemoveFavoritePokemonUseCaseImpl implements RemoveFavoritePokemonUseCase {
   final PokemonRepository _pokemonRepository;
 
   @override
-  Future<void> call(PokemonModel pokemonModel) {
-    throw UnimplementedError();
-  }
+  Future<void> call(PokemonModel pokemonModel) async =>
+      _pokemonRepository.removeFavoritePokemon(pokemonModel);
 }

@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'stat_cache.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class StatCache {
   StatCache({
     required this.name,
