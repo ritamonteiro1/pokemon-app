@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokedex_app/modules/pokemon/presentation/pokemon_details/pokemon_stat_list_widget.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -13,14 +12,17 @@ import '../common/loading_widget.dart';
 import 'pokemon_characteristics_widget.dart';
 import 'pokemon_details_state.dart';
 import 'pokemon_details_store.dart';
+import 'pokemon_stat_list_widget.dart';
 import 'pokemon_type_list_widget.dart';
 
 class PokemonDetailsScreen extends StatefulWidget {
   const PokemonDetailsScreen({
     required this.pokemon,
+    required this.backgroundColor,
     Key? key,
   }) : super(key: key);
   final PokemonModel pokemon;
+  final Color backgroundColor;
 
   @override
   _PokemonDetailsScreenState createState() => _PokemonDetailsScreenState();
@@ -36,7 +38,7 @@ class _PokemonDetailsScreenState
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: PokedexConstantsColors.primaryColor,
+        backgroundColor: widget.backgroundColor,
         appBar: AppBar(
           elevation: 0,
           title: Row(

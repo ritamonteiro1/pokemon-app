@@ -198,6 +198,9 @@ class _PokemonListScreenState
                       return PokemonListWidget(
                         pokemonList: pokemonListState.pokemonList,
                         scrollController: scrollController,
+                        backgroundColor: controller.isBackgroundDark
+                            ? PokemonConstantsColors.darkGray
+                            : PokemonConstantsColors.white,
                       );
                     } else if (pokemonListState is ErrorPokemonListState) {
                       if (pokemonListState.exception

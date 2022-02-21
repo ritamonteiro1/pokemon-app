@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../../generated/l10n.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../constants/pokemon_constants_routes.dart';
@@ -13,10 +13,12 @@ class PokemonListWidget extends StatelessWidget {
   const PokemonListWidget({
     required this.pokemonList,
     required this.scrollController,
+    required this.backgroundColor,
     Key? key,
   }) : super(key: key);
   final List<PokemonModel> pokemonList;
   final ScrollController scrollController;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) => Expanded(
@@ -38,7 +40,7 @@ class PokemonListWidget extends StatelessWidget {
                     onTap: () {
                       Modular.to.pushNamed(
                         PokemonConstantsRoutes.pokemonDetails,
-                        arguments: pokemon,
+                        arguments: [pokemon, backgroundColor],
                       );
                     },
                     child: Card(
