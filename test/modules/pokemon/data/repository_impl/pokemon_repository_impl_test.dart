@@ -31,6 +31,8 @@ void main() {
         'THEN it should return a Pokemon Model list', () async {
       when(mockPokemonRemoteDataSource.getPokemonList())
           .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
+      when(mockPokemonCacheDataSource.getFavoritePokemonList())
+          .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
       final pokemonList = await pokemonRepositoryImpl.getPokemonList();
       expect(pokemonList, _getSuccessfulPokemonModelListMock());
       verify(mockPokemonRemoteDataSource.getPokemonList()).called(1);
