@@ -1,21 +1,32 @@
+import 'package:equatable/equatable.dart';
+
 import '../../domain/model/pokemon/pokemon_model.dart';
 
 abstract class PokemonListState {}
 
-class LoadingPokemonListState implements PokemonListState {}
+class LoadingPokemonListState extends Equatable implements PokemonListState {
+  @override
+  List<Object?> get props => [];
+}
 
-class SuccessPokemonListState implements PokemonListState {
-  SuccessPokemonListState(
+class SuccessPokemonListState extends Equatable implements PokemonListState {
+  const SuccessPokemonListState(
     this.pokemonList,
   );
 
   final List<PokemonModel> pokemonList;
+
+  @override
+  List<Object?> get props => [];
 }
 
-class ErrorPokemonListState implements PokemonListState {
-  ErrorPokemonListState(
+class ErrorPokemonListState extends Equatable implements PokemonListState {
+  const ErrorPokemonListState(
     this.exception,
   );
 
   final Exception exception;
+
+  @override
+  List<Object?> get props => [];
 }
