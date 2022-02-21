@@ -83,6 +83,9 @@ class _PokemonDetailsScreenState
                     ),
                     child: Card(
                       color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
