@@ -23,7 +23,7 @@ void main() {
   group('GIVEN a call on getPokemonList', () {
     const getPokemonListSuccessResponsePath =
         'test_resources/get_pokemon_list_success_response.json';
-    test('THEN verify if correct url is called', () async {
+    test('THEN verify if correct urls are called', () async {
       final json = await getPokemonListSuccessResponsePath.getJsonFromPath();
       when(mockDio.get(
         any,
