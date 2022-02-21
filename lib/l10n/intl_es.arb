@@ -18,5 +18,6 @@
   "hashtag": "#",
   "slash": " / ",
   "meterAbbreviation": " m",
-  "kgAbbreviation": " kg"
+  "kgAbbreviation": " kg",
+  "favoritePokemonListScreenEmptyList": "Lista vacía. agrega tus pokemons favoritos aqui"
 }

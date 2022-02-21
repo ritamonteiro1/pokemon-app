@@ -34,30 +34,30 @@ void main() {
   });
 }
 
-List<PokemonModel> _getSuccessfulPokemonModelListMock() => const <PokemonModel>[
+List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
       PokemonModel(
-          abilityList: <String>['1', '2'],
+          abilityList: const <String>['1', '2'],
           height: 10,
           id: 1,
           name: 'pokemon 1',
-          statList: <StatModel>[
+          statList: const <StatModel>[
             StatModel(base: 1, name: 'name 1'),
             StatModel(base: 2, name: 'name 2'),
           ],
-          typeList: <String>['1', '2'],
+          typeList: const <String>['1', '2'],
           weight: 10,
           image:
               'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg'),
       PokemonModel(
-          abilityList: <String>['3', '4'],
+          abilityList: const <String>['3', '4'],
           height: 20,
           id: 2,
           name: 'pokemon 2',
-          statList: <StatModel>[
+          statList: const <StatModel>[
             StatModel(base: 3, name: 'name 3'),
             StatModel(base: 4, name: 'name 4'),
           ],
-          typeList: <String>['1', '2'],
+          typeList: const <String>['1', '2'],
           weight: 20,
           image:
               'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg'),

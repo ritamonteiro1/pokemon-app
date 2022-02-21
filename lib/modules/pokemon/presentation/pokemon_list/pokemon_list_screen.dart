@@ -175,8 +175,7 @@ class _PokemonListScreenState
                         GestureDetector(
                           onTap: () {
                             Modular.to.pushNamed(
-                              PokemonConstantsRoutes.favoritePokemonList,
-                            );
+                                PokemonConstantsRoutes.favoritePokemonList);
                           },
                           child: Image.asset(
                             PokemonConstantsImages.heart,
@@ -192,7 +191,6 @@ class _PokemonListScreenState
                         child: LoadingWidget(
                           colorCircularProgressIndicator:
                               PokedexConstantsColors.primaryColor,
-                          key: ValueKey('loading-widget'),
                         ),
                       );
                     } else if (pokemonListState is SuccessPokemonListState) {

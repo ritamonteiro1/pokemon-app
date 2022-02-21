@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "appName": MessageLookupByLibrary.simpleMessage("ioasys pokédex"),
         "favoritePokemonListScreenBackText":
             MessageLookupByLibrary.simpleMessage("Regreso"),
+        "favoritePokemonListScreenEmptyList":
+            MessageLookupByLibrary.simpleMessage(
+                "Lista vacía. agrega tus pokemons favoritos aqui"),
         "favoritePokemonListScreenMyFavoritePokemons":
             MessageLookupByLibrary.simpleMessage("Mis favoritos"),
         "favoritePokemonListScreenText":

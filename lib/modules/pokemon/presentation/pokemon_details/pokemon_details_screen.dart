@@ -78,7 +78,8 @@ class _PokemonDetailsScreenState
                 colorCircularProgressIndicator:
                     PokedexConstantsColors.primaryColor,
               );
-            } else if (pokemonDetailsState is InitialPokemonDetailsState) {
+            } else if (pokemonDetailsState is InitialPokemonDetailsState ||
+                pokemonDetailsState is SuccessPokemonDetailsState) {
               return SizedBox.expand(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -99,7 +100,7 @@ class _PokemonDetailsScreenState
                                 PokemonConstantsImages.pokeball,
                                 height: 120,
                                 width: 120,
-                                color: Colors.white.withOpacity(1),
+                                color: Colors.grey.withOpacity(1),
                                 colorBlendMode: BlendMode.modulate,
                               ),
                             ),
@@ -132,17 +133,38 @@ class _PokemonDetailsScreenState
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.all(
-                                      20,
-                                    ),
-                                    child: Image(
-                                      height: 40,
-                                      width: 40,
-                                      image: AssetImage(
-                                        PokemonConstantsImages.heart,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      controller.togglePokemonFavorite(
+                                          widget.pokemon);
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(
+                                        20,
                                       ),
+                                      child: Observer(builder: (context) {
+                                        final isFavoritePokemon =
+                                            controller.isPokemonFavorite;
+                                        if (isFavoritePokemon == true &&
+                                            isFavoritePokemon != null) {
+                                          return const Image(
+                                            height: 40,
+                                            width: 40,
+                                            image: AssetImage(
+                                              PokemonConstantsImages.heart,
+                                            ),
+                                          );
+                                        } else {
+                                          return const Image(
+                                            height: 40,
+                                            width: 40,
+                                            image: AssetImage(
+                                              PokemonConstantsImages.emptyHeart,
+                                            ),
+                                          );
+                                        }
+                                      }),
                                     ),
                                   ),
                                 ],
