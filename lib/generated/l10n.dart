@@ -239,6 +239,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Empty list. Add your fav pokemons here`
+  String get favoritePokemonListScreenEmptyList {
+    return Intl.message(
+      'Empty list. Add your fav pokemons here',
+      name: 'favoritePokemonListScreenEmptyList',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

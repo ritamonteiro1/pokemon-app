@@ -17,7 +17,7 @@ class PokemonListWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   final List<PokemonModel> pokemonList;
-  final ScrollController scrollController;
+  final ScrollController? scrollController;
   final Color backgroundColor;
 
   @override

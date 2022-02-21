@@ -27,18 +27,15 @@ class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
   Future<void> removeFavoritePokemon(PokemonModel pokemonModel) async {
     final pokemonCache = pokemonModel.toPokemonCache();
     final box = await _hive.openBox(_favoritePokemonListKeyString);
-    await box.delete(pokemonCache);
+    await box.delete(pokemonCache.id);
   }
 
   @override
   Future<List<PokemonModel>> getFavoritePokemonList() async {
     final box = await _hive.openBox(_favoritePokemonListKeyString);
-    final favoritePokemonCacheList =
-        List<PokemonCache>.from(box.get(_favoritePokemonListKeyInt));
-    final favoritePokemonModelList =
-        favoritePokemonCacheList.toPokemonModelList();
-    if (favoritePokemonModelList.isNotEmpty) {
-      return favoritePokemonModelList;
+    final favoritePokemonCacheList = List<PokemonCache>.from(box.values);
+    if (favoritePokemonCacheList.isNotEmpty) {
+      return favoritePokemonCacheList.toPokemonModelList();
     } else {
       throw EmptyFavoritePokemonListException();
     }

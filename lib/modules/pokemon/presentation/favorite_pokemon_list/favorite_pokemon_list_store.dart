@@ -19,6 +19,9 @@ abstract class _FavoritePokemonListStore with Store {
   FavoritePokemonListState favoritePokemonListState =
       LoadingFavoritePokemonListState();
 
+  @observable
+  bool isBackgroundDark = false;
+
   @action
   Future<void> getFavoritePokemonList() async {
     favoritePokemonListState = LoadingFavoritePokemonListState();
@@ -29,5 +32,10 @@ abstract class _FavoritePokemonListStore with Store {
     } on Exception catch (e) {
       favoritePokemonListState = ErrorFavoritePokemonListState(e);
     }
+  }
+
+  @action
+  void toggleBackground() {
+    isBackgroundDark = !isBackgroundDark;
   }
 }

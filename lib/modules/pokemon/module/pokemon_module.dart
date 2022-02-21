@@ -49,10 +49,10 @@ class PokemonModule extends Module {
             (i) => GetPokemonTypedUseCaseImpl(pokemonRepository: i())),
         Bind.factory((i) =>
             FavoritePokemonListStore(getFavoritePokemonListUseCase: i())),
-        Bind.factory((i) => PokemonListStore(
-            getPokemonListUseCase: i(), getPokemonTypedUseCase: i())),
         Bind.factory((i) => PokemonDetailsStore(
             addFavoritePokemonUseCase: i(), removeFavoritePokemonUseCase: i())),
+        Bind.factory((i) => PokemonListStore(
+            getPokemonListUseCase: i(), getPokemonTypedUseCase: i())),
       ];
 
   @override
@@ -70,8 +70,7 @@ class PokemonModule extends Module {
         ),
         ChildRoute(
           PokemonConstantsRoutes.favoritePokemonListScreen,
-          child: (context, args) =>
-              FavoritePokemonListScreen(backgroundColor: args.data),
+          child: (context, args) => const FavoritePokemonListScreen(),
         ),
       ];
 }

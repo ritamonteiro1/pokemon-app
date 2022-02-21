@@ -26,10 +26,50 @@ mixin _$FavoritePokemonListStore on _FavoritePokemonListStore, Store {
     });
   }
 
+  final _$isBackgroundDarkAtom =
+      Atom(name: '_FavoritePokemonListStore.isBackgroundDark');
+
+  @override
+  bool get isBackgroundDark {
+    _$isBackgroundDarkAtom.reportRead();
+    return super.isBackgroundDark;
+  }
+
+  @override
+  set isBackgroundDark(bool value) {
+    _$isBackgroundDarkAtom.reportWrite(value, super.isBackgroundDark, () {
+      super.isBackgroundDark = value;
+    });
+  }
+
+  final _$getFavoritePokemonListAsyncAction =
+      AsyncAction('_FavoritePokemonListStore.getFavoritePokemonList');
+
+  @override
+  Future<void> getFavoritePokemonList() {
+    return _$getFavoritePokemonListAsyncAction
+        .run(() => super.getFavoritePokemonList());
+  }
+
+  final _$_FavoritePokemonListStoreActionController =
+      ActionController(name: '_FavoritePokemonListStore');
+
+  @override
+  void toggleBackground() {
+    final _$actionInfo = _$_FavoritePokemonListStoreActionController
+        .startAction(name: '_FavoritePokemonListStore.toggleBackground');
+    try {
+      return super.toggleBackground();
+    } finally {
+      _$_FavoritePokemonListStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-favoritePokemonListState: ${favoritePokemonListState}
+favoritePokemonListState: ${favoritePokemonListState},
+isBackgroundDark: ${isBackgroundDark}
     ''';
   }
 }
