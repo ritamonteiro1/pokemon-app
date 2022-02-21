@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 
+import '../../domain/model/pokemon/pokemon_model.dart';
 import '../../domain/use_case/add_favorite_pokemon_use_case.dart';
 import '../../domain/use_case/remove_favorite_pokemon_use_case.dart';
 import 'pokemon_details_state.dart';
@@ -29,4 +30,10 @@ abstract class _PokemonDetailsStore with Store {
     );
     pokemonDetailsState = InitialPokemonDetailsState();
   }
+
+  @observable
+  bool? toggleFavoritePokemonSuccess;
+
+  @action
+  Future<void> togglePokemonFavorite(PokemonModel pokemonModel) async {}
 }

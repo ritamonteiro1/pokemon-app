@@ -25,6 +25,23 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
     });
   }
 
+  final _$toggleFavoritePokemonSuccessAtom =
+      Atom(name: '_PokemonDetailsStore.toggleFavoritePokemonSuccess');
+
+  @override
+  bool? get toggleFavoritePokemonSuccess {
+    _$toggleFavoritePokemonSuccessAtom.reportRead();
+    return super.toggleFavoritePokemonSuccess;
+  }
+
+  @override
+  set toggleFavoritePokemonSuccess(bool? value) {
+    _$toggleFavoritePokemonSuccessAtom
+        .reportWrite(value, super.toggleFavoritePokemonSuccess, () {
+      super.toggleFavoritePokemonSuccess = value;
+    });
+  }
+
   final _$startPokemonDetailsScreenAsyncAction =
       AsyncAction('_PokemonDetailsStore.startPokemonDetailsScreen');
 
@@ -34,10 +51,20 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
         .run(() => super.startPokemonDetailsScreen());
   }
 
+  final _$togglePokemonFavoriteAsyncAction =
+      AsyncAction('_PokemonDetailsStore.togglePokemonFavorite');
+
+  @override
+  Future<void> togglePokemonFavorite(PokemonModel pokemonModel) {
+    return _$togglePokemonFavoriteAsyncAction
+        .run(() => super.togglePokemonFavorite(pokemonModel));
+  }
+
   @override
   String toString() {
     return '''
-pokemonDetailsState: ${pokemonDetailsState}
+pokemonDetailsState: ${pokemonDetailsState},
+toggleFavoritePokemonSuccess: ${toggleFavoritePokemonSuccess}
     ''';
   }
 }
