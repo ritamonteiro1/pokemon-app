@@ -1,6 +1,6 @@
 import '../../../domain/model/pokemon/pokemon_model.dart';
 
-mixin PokemonRemoteDataSource {
+abstract class PokemonRemoteDataSource {
   Future<List<PokemonModel>> getPokemonList();
 
   Future<PokemonModel> getPokemonTyped(String typedPokemon);

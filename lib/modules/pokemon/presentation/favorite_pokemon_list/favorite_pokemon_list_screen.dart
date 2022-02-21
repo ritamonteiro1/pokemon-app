@@ -130,16 +130,19 @@ class _FavoritePokemonListScreenState
                         );
                       } else if (favoritePokemonListState
                           is ErrorFavoritePokemonListState) {
-                        if (favoritePokemonListState
+                        if (favoritePokemonListState.exception
                             is EmptyFavoritePokemonListException) {
                           return Center(
-                              child: Text(S
-                                  .of(context)
-                                  .favoritePokemonListScreenEmptyList));
+                              child: Text(
+                            S.of(context).favoritePokemonListScreenEmptyList,
+                            textAlign: TextAlign.center,
+                          ));
                         } else {
                           return Center(
                               child: Text(
-                                  S.of(context).messageGenericStatusCodeError));
+                            S.of(context).messageGenericStatusCodeError,
+                            textAlign: TextAlign.center,
+                          ));
                         }
                       } else {
                         throw UnknownStateTypeException();
