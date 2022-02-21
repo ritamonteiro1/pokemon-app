@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_app/generated/l10n.dart';
-import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_colors.dart';
-import 'package:pokedex_app/pokedex_constants/pokedex_constants_colors.dart';
+
+import '../../../../generated/l10n.dart';
+import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../constants/pokemon_constants_colors.dart';
 
 class TextFieldSearchPokemonWidget extends StatelessWidget {
   const TextFieldSearchPokemonWidget({
