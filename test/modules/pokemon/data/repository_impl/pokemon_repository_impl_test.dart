@@ -86,6 +86,34 @@ void main() {
       verify(mockPokemonCacheDataSource.getFavoritePokemonList()).called(1);
     });
   });
+  group('GIVEN a call on addFavoritePokemon', () {
+    test('verify if correct url is called', () async {
+      when(mockPokemonCacheDataSource
+              .addFavoritePokemon(_getSuccessfulPokemonModelMock()))
+          .thenAnswer(
+        (_) async => _,
+      );
+      await pokemonRepositoryImpl
+          .addFavoritePokemon(_getSuccessfulPokemonModelMock());
+      verify(mockPokemonCacheDataSource
+              .addFavoritePokemon(_getSuccessfulPokemonModelMock()))
+          .called(1);
+    });
+  });
+  group('GIVEN a call on removeFavoritePokemon', () {
+    test('verify if correct url is called', () async {
+      when(mockPokemonCacheDataSource
+              .removeFavoritePokemon(_getSuccessfulPokemonModelMock()))
+          .thenAnswer(
+        (_) async => _,
+      );
+      await pokemonRepositoryImpl
+          .removeFavoritePokemon(_getSuccessfulPokemonModelMock());
+      verify(mockPokemonCacheDataSource
+              .removeFavoritePokemon(_getSuccessfulPokemonModelMock()))
+          .called(1);
+    });
+  });
 }
 
 List<PokemonModel> _getEmptyFavoritePokemonModelListMock() => <PokemonModel>[];
