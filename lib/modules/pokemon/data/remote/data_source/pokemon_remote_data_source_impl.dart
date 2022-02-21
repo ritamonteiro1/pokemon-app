@@ -13,9 +13,10 @@ import 'pokemon_remote_data_source.dart';
 class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   PokemonRemoteDataSourceImpl({
     required Dio dio,
-  }) : _dio = dio {
-    _dio.interceptors.add(LogInterceptor(responseBody: true));
-  }
+  }) : _dio = dio;
+  // {
+  //   _dio.interceptors.add(LogInterceptor(responseBody: true));
+  // }
 
   final Dio _dio;
   String? nextPage;
