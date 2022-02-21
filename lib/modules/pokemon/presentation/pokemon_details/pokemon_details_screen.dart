@@ -121,6 +121,7 @@ class _PokemonDetailsScreenState
                           ],
                         ),
                         Card(
+                          elevation: 4,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
