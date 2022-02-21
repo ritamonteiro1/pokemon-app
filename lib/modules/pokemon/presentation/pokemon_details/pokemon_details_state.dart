@@ -1,5 +1,15 @@
+import 'package:equatable/equatable.dart';
+
 abstract class PokemonDetailsState {}
 
-class LoadingPokemonDetailsState implements PokemonDetailsState {}
+class LoadingPokemonDetailsState extends Equatable
+    implements PokemonDetailsState {
+  @override
+  List<Object?> get props => [];
+}
 
-class InitialPokemonDetailsState implements PokemonDetailsState {}
+class InitialPokemonDetailsState extends Equatable
+    implements PokemonDetailsState {
+  @override
+  List<Object?> get props => [];
+}

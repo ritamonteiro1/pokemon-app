@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pokedex_app/modules/pokemon/domain/exception/generic_error_status_code_exception.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/use_case/get_pokemon_list_use_case.dart';
@@ -18,24 +19,44 @@ void main() {
   setUpAll(() {
     mockGetPokemonTypedUseCase = MockGetPokemonTypedUseCase();
     mockGetPokemonListUseCase = MockGetPokemonListUseCase();
-    pokemonListStore = PokemonListStore(
-        getPokemonListUseCase: mockGetPokemonListUseCase,
-        getPokemonTypedUseCase: mockGetPokemonTypedUseCase);
   });
   setUp(() {
     reset(mockGetPokemonListUseCase);
     reset(mockGetPokemonTypedUseCase);
   });
   group('GIVEN a call on getPokemonList', () {
-    test('WHEN request is successfully THEN it should emits a SuccessState',
-        () async {
-      expect(pokemonListStore.pokemonListState, LoadingPokemonListState());
-      expect(pokemonListStore.pokemonListState, LoadingPokemonListState());
+    test(
+        'WHEN request is successfully THEN it should emits a '
+        'SuccessPokemonListState', () async {
+      pokemonListStore = PokemonListStore(
+          getPokemonListUseCase: mockGetPokemonListUseCase,
+          getPokemonTypedUseCase: mockGetPokemonTypedUseCase);
+      await expectLater(
+          pokemonListStore.pokemonListState, LoadingPokemonListState());
+      await expectLater(
+          pokemonListStore.pokemonListState, LoadingPokemonListState());
       when(mockGetPokemonListUseCase.call())
           .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
       await pokemonListStore.getPokemonList();
-      expect(pokemonListStore.pokemonListState,
+
+      await expectLater(pokemonListStore.pokemonListState,
           SuccessPokemonListState(_getSuccessfulPokemonModelListMock()));
+    });
+    test('WHEN request is fail THEN it should emits an ErrorPokemonListState',
+        () async {
+      pokemonListStore = PokemonListStore(
+          getPokemonListUseCase: mockGetPokemonListUseCase,
+          getPokemonTypedUseCase: mockGetPokemonTypedUseCase);
+      await expectLater(
+          pokemonListStore.pokemonListState, LoadingPokemonListState());
+      await expectLater(
+          pokemonListStore.pokemonListState, LoadingPokemonListState());
+      when(mockGetPokemonListUseCase.call())
+          .thenThrow(GenericErrorStatusCodeException());
+      await pokemonListStore.getPokemonList();
+
+      await expectLater(pokemonListStore.pokemonListState,
+          ErrorPokemonListState(GenericErrorStatusCodeException()));
     });
   });
 }

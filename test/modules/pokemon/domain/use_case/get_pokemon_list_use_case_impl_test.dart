@@ -24,7 +24,7 @@ void main() {
   group('GIVEN a call', () {
     test(
         'WHEN request is successfully '
-        'THEN it should return an PokemonModel list', () async {
+        'THEN it should return a PokemonModel list', () async {
       when(mockPokemonRepository.getPokemonList())
           .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
       final pokemonList = await getPokemonListUseCase.call();

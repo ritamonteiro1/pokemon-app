@@ -24,7 +24,7 @@ void main() {
   group('GIVEN a call', () {
     test(
         'WHEN request is successfully '
-        'THEN it should return an PokemonModel', () async {
+        'THEN it should return a PokemonModel', () async {
       when(mockPokemonRepository.getPokemonTyped(any))
           .thenAnswer((_) async => _getSuccessfulPokemonModelMock());
       final pokemon = await getPokemonTypedUseCase.call('pokemon 1');

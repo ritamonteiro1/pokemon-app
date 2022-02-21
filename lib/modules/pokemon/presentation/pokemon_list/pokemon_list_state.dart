@@ -17,7 +17,9 @@ class SuccessPokemonListState extends Equatable implements PokemonListState {
   final List<PokemonModel> pokemonList;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        pokemonList,
+      ];
 }
 
 class ErrorPokemonListState extends Equatable implements PokemonListState {
@@ -28,5 +30,7 @@ class ErrorPokemonListState extends Equatable implements PokemonListState {
   final Exception exception;
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [
+        exception,
+      ];
 }

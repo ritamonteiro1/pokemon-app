@@ -24,7 +24,7 @@ void main() {
   group('GIVEN a call on getPokemonList', () {
     test(
         'WHEN request is successfully '
-        'THEN it should return an Pokemon Model list', () async {
+        'THEN it should return a Pokemon Model list', () async {
       when(mockPokemonRemoteDataSource.getPokemonList())
           .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
       final pokemonList = await pokemonRepositoryImpl.getPokemonList();
@@ -41,7 +41,7 @@ void main() {
   group('GIVEN a call on getPokemonTyped', () {
     test(
         'WHEN request is successfully '
-        'THEN it should return an Pokemon Model', () async {
+        'THEN it should return a Pokemon Model', () async {
       when(mockPokemonRemoteDataSource.getPokemonTyped(any))
           .thenAnswer((_) async => _getSuccessfulPokemonModelMock());
       final pokemon = await pokemonRepositoryImpl.getPokemonTyped('pokemon 1');
