@@ -177,8 +177,11 @@ class _PokemonListScreenState
                             Modular.to.pushNamed(
                                 PokemonConstantsRoutes.favoritePokemonList);
                           },
-                          child: Image.asset(
-                            PokemonConstantsImages.heart,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Image.asset(
+                              PokemonConstantsImages.heart,
+                            ),
                           ),
                         ),
                       ],
