@@ -24,6 +24,7 @@ void main() {
   });
   setUp(() {
     reset(mockPokemonRemoteDataSource);
+    reset(mockPokemonCacheDataSource);
   });
   group('GIVEN a call on getPokemonList', () {
     test(
@@ -61,6 +62,18 @@ void main() {
           .thenThrow(Exception());
       expect(() => pokemonRepositoryImpl.getPokemonTyped('pokemon 1'),
           throwsException);
+    });
+  });
+  group('GIVEN a call on getFavoritePokemonList', () {
+    test(
+        'WHEN request is successfully '
+        'THEN it should return a Pokemon Model list', () async {
+      when(mockPokemonCacheDataSource.getFavoritePokemonList())
+          .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
+      final favoritePokemonList =
+          await pokemonRepositoryImpl.getFavoritePokemonList();
+      expect(favoritePokemonList, _getSuccessfulPokemonModelListMock());
+      verify(mockPokemonCacheDataSource.getFavoritePokemonList()).called(1);
     });
   });
 }
