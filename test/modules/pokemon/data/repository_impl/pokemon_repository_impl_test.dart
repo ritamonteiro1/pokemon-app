@@ -22,19 +22,19 @@ void main() {
     reset(mockPokemonRemoteDataSource);
   });
   group('GIVEN a call on getPokemonList', () {
-    // test(
-    //     'WHEN request is successfully '
-    //     'THEN it should return an Pokemon Model list', () async {
-    //   when(mockPokemonRemoteDataSource.getPokemonList())
-    //       .thenAnswer((_) async => _getSuccessfulPokemonModelMock());
-    //   final pokemonList = await pokemonRepositoryImpl.getPokemonList();
-    //   expect(pokemonList, matcher);
-    //
-    // });
+    test(
+        'WHEN request is successfully '
+        'THEN it should return an Pokemon Model list', () async {
+      when(mockPokemonRemoteDataSource.getPokemonList())
+          .thenAnswer((_) async => _getSuccessfulPokemonModelMock());
+      final pokemonList = await pokemonRepositoryImpl.getPokemonList();
+      expect(pokemonList, _getSuccessfulPokemonModelMock());
+      verify(mockPokemonRemoteDataSource.getPokemonList()).called(1);
+    });
   });
 }
 
-List<PokemonModel> _getSuccessfulPokemonModelMock() => <PokemonModel>[
+List<PokemonModel> _getSuccessfulPokemonModelMock() => const <PokemonModel>[
       PokemonModel(
           abilityList: <String>['1', '2'],
           height: 10,
@@ -49,16 +49,16 @@ List<PokemonModel> _getSuccessfulPokemonModelMock() => <PokemonModel>[
           image:
               'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg'),
       PokemonModel(
-          abilityList: <String>['1', '2'],
-          height: 10,
+          abilityList: <String>['3', '4'],
+          height: 20,
           id: 2,
-          name: 'pokemon 1',
+          name: 'pokemon 2',
           statList: <StatModel>[
-            StatModel(base: 1, name: 'name 1'),
-            StatModel(base: 2, name: 'name 2'),
+            StatModel(base: 3, name: 'name 3'),
+            StatModel(base: 4, name: 'name 4'),
           ],
           typeList: <String>['1', '2'],
-          weight: 10,
+          weight: 20,
           image:
               'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg'),
     ];
