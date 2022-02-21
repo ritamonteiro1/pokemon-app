@@ -146,8 +146,9 @@ class _PokemonDetailsScreenState
                                       child: Observer(builder: (context) {
                                         final isFavoritePokemon =
                                             controller.isPokemonFavorite;
-                                        if (isFavoritePokemon == true &&
-                                            isFavoritePokemon != null) {
+                                        if ((isFavoritePokemon == true &&
+                                                isFavoritePokemon != null) ||
+                                            widget.pokemon.isFavorite) {
                                           return const Image(
                                             height: 40,
                                             width: 40,

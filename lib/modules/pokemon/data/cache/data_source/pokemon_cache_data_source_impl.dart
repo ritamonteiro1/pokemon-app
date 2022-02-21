@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
 
-import '../../../domain/exception/empty_favorite_pokemon_list_exception.dart';
 import '../../../domain/model/pokemon/pokemon_model.dart';
 import '../../mapper/cache_to_model.dart';
 import '../../mapper/model_to_cache.dart';
@@ -34,10 +33,6 @@ class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
   Future<List<PokemonModel>> getFavoritePokemonList() async {
     final box = await _hive.openBox(_favoritePokemonListKeyString);
     final favoritePokemonCacheList = List<PokemonCache>.from(box.values);
-    if (favoritePokemonCacheList.isNotEmpty) {
-      return favoritePokemonCacheList.toPokemonModelList();
-    } else {
-      throw EmptyFavoritePokemonListException();
-    }
+    return favoritePokemonCacheList.toPokemonModelList();
   }
 }
