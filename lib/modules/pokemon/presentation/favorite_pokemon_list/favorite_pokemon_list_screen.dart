@@ -16,6 +16,7 @@ class _FavoritePokemonListScreenState extends State<FavoritePokemonListScreen> {
         body: Center(
           child: Text(
             S.of(context).favoritePokemonListScreenText,
+            textAlign: TextAlign.center,
           ),
         ),
       );

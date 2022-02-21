@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/text_field_search_pokemon_widget.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -17,6 +16,7 @@ import '../common/pokemon_list_widget.dart';
 import 'not_found_pokemon_widget.dart';
 import 'pokemon_list_state.dart';
 import 'pokemon_list_store.dart';
+import 'text_field_search_pokemon_widget.dart';
 
 class PokemonListScreen extends StatefulWidget {
   const PokemonListScreen({Key? key}) : super(key: key);
@@ -66,7 +66,7 @@ class _PokemonListScreenState
               : PokemonConstantsColors.white,
           body: Padding(
             padding: const EdgeInsets.only(
-              top: 52,
+              top: 70,
               bottom: 16,
               right: 40,
               left: 40,
@@ -107,8 +107,8 @@ class _PokemonListScreenState
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      top: 52,
-                      bottom: 42,
+                      top: 40,
+                      bottom: 24,
                     ),
                     child: Row(
                       children: [
@@ -118,9 +118,8 @@ class _PokemonListScreenState
                                 controller.isEmptyPokemonTextField;
                             return TextFieldSearchPokemonWidget(
                               onChanged: (typedPokemon) {
-                                controller
-                                    .toggleSuffixIconTextFieldSearchPokemon(
-                                        typedPokemon);
+                                controller.toggleIconTextFieldSearchPokemon(
+                                    typedPokemon);
                               },
                               onEditingComplete: () {
                                 if (pokemonTypedTextEditingController
@@ -158,7 +157,7 @@ class _PokemonListScreenState
                                         pokemonTypedTextEditingController
                                             .clear();
                                         controller
-                                            .toggleSuffixIconTextFieldSearchPokemon(
+                                            .toggleIconTextFieldSearchPokemon(
                                           pokemonTypedTextEditingController
                                               .text,
                                         );

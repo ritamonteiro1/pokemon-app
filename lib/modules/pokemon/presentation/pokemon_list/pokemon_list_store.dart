@@ -62,7 +62,7 @@ abstract class _PokemonListStore with Store {
   }
 
   @action
-  void toggleSuffixIconTextFieldSearchPokemon(String? typed) {
+  void toggleIconTextFieldSearchPokemon(String? typed) {
     if (typed?.isEmpty ?? true) {
       isEmptyPokemonTextField = true;
     } else {

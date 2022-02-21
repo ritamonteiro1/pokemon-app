@@ -79,11 +79,11 @@ mixin _$PokemonListStore on _PokemonListStore, Store {
       ActionController(name: '_PokemonListStore');
 
   @override
-  void toggleSuffixIconTextFieldSearchPokemon(String? typed) {
+  void toggleIconTextFieldSearchPokemon(String? typed) {
     final _$actionInfo = _$_PokemonListStoreActionController.startAction(
-        name: '_PokemonListStore.toggleSuffixIconTextFieldSearchPokemon');
+        name: '_PokemonListStore.toggleIconTextFieldSearchPokemon');
     try {
-      return super.toggleSuffixIconTextFieldSearchPokemon(typed);
+      return super.toggleIconTextFieldSearchPokemon(typed);
     } finally {
       _$_PokemonListStoreActionController.endAction(_$actionInfo);
     }

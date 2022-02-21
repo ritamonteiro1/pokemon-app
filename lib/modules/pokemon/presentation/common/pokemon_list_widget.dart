@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pokedex_app/generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
+import 'loading_widget.dart';
 
 class PokemonListWidget extends StatelessWidget {
   const PokemonListWidget({
@@ -72,12 +73,12 @@ class PokemonListWidget extends StatelessWidget {
                           ),
                           Expanded(
                             flex: 4,
-                            child: SvgPicture.network(
-                              pokemon.image,
-                              placeholderBuilder: (context) => const Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                            ),
+                            child: SvgPicture.network(pokemon.image,
+                                placeholderBuilder: (context) =>
+                                    const LoadingWidget(
+                                      colorCircularProgressIndicator:
+                                          Colors.grey,
+                                    )),
                           ),
                           Expanded(
                             child: Container(
