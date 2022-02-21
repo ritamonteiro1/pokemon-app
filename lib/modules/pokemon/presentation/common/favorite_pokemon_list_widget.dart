@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -9,15 +9,13 @@ import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import 'loading_widget.dart';
 
-class PokemonListWidget extends StatelessWidget {
-  const PokemonListWidget({
+class FavoritePokemonListWidget extends StatelessWidget {
+  const FavoritePokemonListWidget({
     required this.pokemonList,
-    required this.scrollController,
     required this.backgroundColor,
     Key? key,
   }) : super(key: key);
   final List<PokemonModel> pokemonList;
-  final ScrollController scrollController;
   final Color backgroundColor;
 
   @override
@@ -27,7 +25,6 @@ class PokemonListWidget extends StatelessWidget {
             Expanded(
               child: GridView.builder(
                 key: const PageStorageKey(0),
-                controller: scrollController,
                 itemCount: pokemonList.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 4,
@@ -110,13 +107,32 @@ class PokemonListWidget extends StatelessWidget {
                 },
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
-                top: 10,
-              ),
-              child: Image(
-                image: AssetImage(
-                  PokemonConstantsImages.down,
+            GestureDetector(
+              onTap: () {
+                Modular.to.pop();
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                ),
+                child: Column(
+                  children: [
+                    const Image(
+                      image: AssetImage(
+                        PokemonConstantsImages.backArrow,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      S.of(context).favoritePokemonListScreenBackText,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),

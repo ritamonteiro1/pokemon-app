@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pokedex_app/modules/pokemon/domain/exception/empty_favorite_pokemon_list_exception.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
+import '../../domain/exception/empty_favorite_pokemon_list_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
+import '../common/favorite_pokemon_list_widget.dart';
 import '../common/loading_widget.dart';
-import '../common/pokemon_list_widget.dart';
 import 'favorite_pokemon_list_state.dart';
 import 'favorite_pokemon_list_store.dart';
 
@@ -121,10 +121,9 @@ class _FavoritePokemonListScreenState
                         );
                       } else if (favoritePokemonListState
                           is SuccessFavoritePokemonListState) {
-                        return PokemonListWidget(
+                        return FavoritePokemonListWidget(
                           pokemonList:
                               favoritePokemonListState.favoritePokemonList,
-                          scrollController: null,
                           backgroundColor: controller.isBackgroundDark
                               ? PokemonConstantsColors.darkGray
                               : PokemonConstantsColors.white,
