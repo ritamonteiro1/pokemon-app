@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pokedex_app/modules/pokemon/data/cache/data_source/pokemon_cache_data_source.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
 import 'package:pokedex_app/modules/pokemon/data/repository_impl/pokemon_repository_impl.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
@@ -9,14 +10,17 @@ import 'package:pokedex_app/modules/pokemon/domain/repository/pokemon_repository
 
 import 'pokemon_repository_impl_test.mocks.dart';
 
-@GenerateMocks([PokemonRemoteDataSource])
+@GenerateMocks([PokemonRemoteDataSource, PokemonCacheDataSource])
 void main() {
   late MockPokemonRemoteDataSource mockPokemonRemoteDataSource;
+  late MockPokemonCacheDataSource mockPokemonCacheDataSource;
   late PokemonRepository pokemonRepositoryImpl;
   setUpAll(() {
     mockPokemonRemoteDataSource = MockPokemonRemoteDataSource();
+    mockPokemonCacheDataSource = MockPokemonCacheDataSource();
     pokemonRepositoryImpl = PokemonRepositoryImpl(
-        pokemonRemoteDataSource: mockPokemonRemoteDataSource);
+        pokemonRemoteDataSource: mockPokemonRemoteDataSource,
+        pokemonCacheDataSource: mockPokemonCacheDataSource);
   });
   setUp(() {
     reset(mockPokemonRemoteDataSource);

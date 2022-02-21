@@ -5,6 +5,8 @@
 import 'dart:async' as _i4;
 
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:pokedex_app/modules/pokemon/data/cache/data_source/pokemon_cache_data_source.dart'
+    as _i5;
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart'
     as _i3;
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart'
@@ -43,4 +45,14 @@ class MockPokemonRemoteDataSource extends _i1.Mock
               returnValue:
                   Future<_i2.PokemonModel>.value(_FakePokemonModel_0()))
           as _i4.Future<_i2.PokemonModel>);
+}
+
+/// A class which mocks [PokemonCacheDataSource].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPokemonCacheDataSource extends _i1.Mock
+    implements _i5.PokemonCacheDataSource {
+  MockPokemonCacheDataSource() {
+    _i1.throwOnMissingStub(this);
+  }
 }
