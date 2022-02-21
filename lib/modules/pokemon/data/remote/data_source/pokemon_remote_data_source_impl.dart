@@ -14,9 +14,6 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   PokemonRemoteDataSourceImpl({
     required Dio dio,
   }) : _dio = dio;
-  // {
-  //   _dio.interceptors.add(LogInterceptor(responseBody: true));
-  // }
 
   final Dio _dio;
   String? nextPage;
