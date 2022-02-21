@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pokedex_app/modules/pokemon/presentation/pokemon_details/pokemon_stat_list_widget.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -9,8 +10,10 @@ import '../../constants/pokemon_constants_images.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import '../common/loading_widget.dart';
+import 'pokemon_characteristics_widget.dart';
 import 'pokemon_details_state.dart';
 import 'pokemon_details_store.dart';
+import 'pokemon_type_list_widget.dart';
 
 class PokemonDetailsScreen extends StatefulWidget {
   const PokemonDetailsScreen({
@@ -35,6 +38,7 @@ class _PokemonDetailsScreenState
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: PokedexConstantsColors.primaryColor,
         appBar: AppBar(
+          elevation: 0,
           title: Row(
             children: [
               Expanded(
@@ -76,188 +80,124 @@ class _PokemonDetailsScreenState
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 100,
+                      top: 20,
                       left: 8,
                       right: 8,
-                      bottom: 200,
+                      bottom: 20,
                     ),
-                    child: Card(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: Container(
-                              height: 200,
-                              width: 200,
-                              child: SvgPicture.network(
-                                widget.pokemon.image,
-                                placeholderBuilder: (context) => const Center(
-                                  child: CircularProgressIndicator(),
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Positioned(
+                              top: 10,
+                              right: 10,
+                              child: Image.asset(
+                                PokemonConstantsImages.pokeball,
+                                height: 120,
+                                width: 120,
+                                color: Colors.white.withOpacity(1),
+                                colorBlendMode: BlendMode.modulate,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 70,
+                              ),
+                              child: SizedBox(
+                                width: 200,
+                                height: 200,
+                                child: SvgPicture.network(
+                                  widget.pokemon.image,
+                                  placeholderBuilder: (context) =>
+                                      const LoadingWidget(
+                                          colorCircularProgressIndicator:
+                                              Colors.grey),
                                 ),
                               ),
                             ),
+                          ],
+                        ),
+                        Card(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                  Padding(
+                                    padding: EdgeInsets.all(
+                                      20,
+                                    ),
+                                    child: Image(
+                                      height: 40,
+                                      width: 40,
+                                      image: AssetImage(
+                                        PokemonConstantsImages.heart,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                               Padding(
-                                padding: EdgeInsets.all(
-                                  20,
+                                padding: const EdgeInsets.only(
+                                  right: 32,
+                                  left: 32,
                                 ),
-                                child: Image(
-                                  height: 32,
-                                  width: 32,
-                                  image: AssetImage(
-                                    PokemonConstantsImages.heart,
+                                child: PokemonTypeListWidget(
+                                  pokemonTypeList: widget.pokemon.typeList,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  right: 32,
+                                  left: 32,
+                                ),
+                                child: PokemonCharacteristicsWidget(
+                                  pokemonHeight: widget.pokemon.height,
+                                  pokemonWeight: widget.pokemon.weight,
+                                  pokemonAbilityList:
+                                      widget.pokemon.abilityList,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  right: 32,
+                                  left: 32,
+                                ),
+                                child: Text(
+                                  S
+                                      .of(context)
+                                      .pokemonDetailsScreenBaseStatsText,
+                                  style: const TextStyle(
+                                    color: PokedexConstantsColors.primaryColor,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              PokemonStatListWidget(
+                                  pokemonStatList: widget.pokemon.statList),
+                              const SizedBox(
+                                height: 52,
+                              ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 32,
-                              left: 32,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: widget.pokemon.typeList
-                                  .map(
-                                    (type) => Padding(
-                                      padding: const EdgeInsets.all(
-                                        4,
-                                      ),
-                                      child: FilterChip(
-                                          backgroundColor:
-                                              PokedexConstantsColors
-                                                  .primaryColor,
-                                          label: Text(
-                                            type,
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                          onSelected: (type) {}),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              right: 32,
-                              left: 32,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Image(
-                                          image: AssetImage(
-                                            PokemonConstantsImages.weightScales,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        Text(
-                                          widget.pokemon.height.toString(),
-                                          style: const TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      S
-                                          .of(context)
-                                          .pokemonDetailsScreenHeightText,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        const Image(
-                                          image: AssetImage(
-                                            PokemonConstantsImages.rulerHeight,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 4,
-                                        ),
-                                        Text(
-                                          widget.pokemon.weight.toString(),
-                                          style: const TextStyle(fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                    Text(
-                                      S
-                                          .of(context)
-                                          .pokemonDetailsScreenWeightText,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: widget.pokemon.abilityList
-                                          .map(
-                                            (ability) => Padding(
-                                              padding: const EdgeInsets.only(
-                                                right: 4,
-                                              ),
-                                              child: Text(
-                                                ability,
-                                                style: const TextStyle(
-                                                    fontSize: 14),
-                                              ),
-                                            ),
-                                          )
-                                          .toList(),
-                                    ),
-                                    Text(
-                                      S
-                                          .of(context)
-                                          .pokemonDetailsScreenMovesText,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

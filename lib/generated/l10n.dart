@@ -209,6 +209,36 @@ class S {
       args: [],
     );
   }
+
+  /// ` / `
+  String get slash {
+    return Intl.message(
+      ' / ',
+      name: 'slash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` m`
+  String get meterAbbreviation {
+    return Intl.message(
+      ' m',
+      name: 'meterAbbreviation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` kg`
+  String get kgAbbreviation {
+    return Intl.message(
+      ' kg',
+      name: 'kgAbbreviation',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

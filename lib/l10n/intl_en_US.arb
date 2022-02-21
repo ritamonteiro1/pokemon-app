@@ -15,5 +15,8 @@
   "pokemonDetailsScreenMovesText": "Moves",
   "pokemonDetailsScreenBaseStatsText": "Base Stats",
   "favoritePokemonListScreenText": "Under implementation",
-  "hashtag": "#"
+  "hashtag": "#",
+  "slash": " / ",
+  "meterAbbreviation": " m",
+  "kgAbbreviation": " kg"
 }

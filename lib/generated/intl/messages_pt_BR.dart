@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "favoritePokemonListScreenText":
             MessageLookupByLibrary.simpleMessage("Em fase de implementação"),
         "hashtag": MessageLookupByLibrary.simpleMessage("#"),
+        "kgAbbreviation": MessageLookupByLibrary.simpleMessage(" kg"),
         "messageAlertOps": MessageLookupByLibrary.simpleMessage("Ops"),
         "messageGenericStatusCodeError":
             MessageLookupByLibrary.simpleMessage("Ocorreu um erro"),
@@ -39,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Este pokemon não está aqui ;("),
         "messageTryAgain":
             MessageLookupByLibrary.simpleMessage("Tente novamente"),
+        "meterAbbreviation": MessageLookupByLibrary.simpleMessage(" m"),
         "pokemonDetailsScreenBaseStatsText":
             MessageLookupByLibrary.simpleMessage("Estatísticas básicas"),
         "pokemonDetailsScreenHeightText":
@@ -50,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pokemonListScreenTextFieldHintTextSearch":
             MessageLookupByLibrary.simpleMessage("Buscar pokemon"),
         "pokemonListScreenTextFieldLabelTextSearch":
-            MessageLookupByLibrary.simpleMessage("Buscar")
+            MessageLookupByLibrary.simpleMessage("Buscar"),
+        "slash": MessageLookupByLibrary.simpleMessage(" / ")
       };
 }
