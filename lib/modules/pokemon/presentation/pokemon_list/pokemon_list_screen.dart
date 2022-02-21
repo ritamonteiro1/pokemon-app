@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/text_field_search_pokemon_widget.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -32,6 +33,12 @@ class _PokemonListScreenState
   @override
   void initState() {
     super.initState();
+    _setScrollController();
+    pokemonTypedTextEditingController = TextEditingController();
+    controller.getPokemonList();
+  }
+
+  void _setScrollController() {
     scrollController =
         ScrollController(initialScrollOffset: 15, keepScrollOffset: true);
     scrollController.addListener(() {
@@ -41,8 +48,6 @@ class _PokemonListScreenState
         controller.getPokemonList();
       }
     });
-    pokemonTypedTextEditingController = TextEditingController();
-    controller.getPokemonList();
   }
 
   @override
@@ -83,6 +88,7 @@ class _PokemonListScreenState
                         S.of(context).appName,
                         style: const TextStyle(
                           fontSize: 24,
+                          fontWeight: FontWeight.bold,
                           color: PokedexConstantsColors.primaryColor,
                         ),
                       ),
@@ -110,12 +116,11 @@ class _PokemonListScreenState
                           child: Observer(builder: (context) {
                             final isEmptyTextField =
                                 controller.isEmptyPokemonTextField;
-                            return TextField(
-                              textInputAction: TextInputAction.search,
-                              onChanged: (typed) {
+                            return TextFieldSearchPokemonWidget(
+                              onChanged: (typedPokemon) {
                                 controller
                                     .toggleSuffixIconTextFieldSearchPokemon(
-                                        typed);
+                                        typedPokemon);
                               },
                               onEditingComplete: () {
                                 if (pokemonTypedTextEditingController
@@ -128,65 +133,40 @@ class _PokemonListScreenState
                                   controller.getPokemonList();
                                 }
                               },
-                              controller: pokemonTypedTextEditingController,
-                              decoration: InputDecoration(
-                                suffixIcon: isEmptyTextField
-                                    ? GestureDetector(
-                                        onTap: () {
-                                          if (pokemonTypedTextEditingController
-                                              .text.isNotEmpty) {
-                                            controller.getPokemonTyped(
-                                              pokemonTypedTextEditingController
-                                                  .text
-                                                  .toString(),
-                                            );
-                                          } else {
-                                            controller.getPokemonList();
-                                          }
-                                        },
-                                        child: const Icon(
-                                          Icons.search,
-                                        ),
-                                      )
-                                    : GestureDetector(
-                                        onTap: () {
-                                          pokemonTypedTextEditingController
-                                              .clear();
-                                          controller
-                                              .toggleSuffixIconTextFieldSearchPokemon(
+                              textEditingController:
+                                  pokemonTypedTextEditingController,
+                              suffixIcon: isEmptyTextField
+                                  ? GestureDetector(
+                                      onTap: () {
+                                        if (pokemonTypedTextEditingController
+                                            .text.isNotEmpty) {
+                                          controller.getPokemonTyped(
                                             pokemonTypedTextEditingController
-                                                .text,
+                                                .text
+                                                .toString(),
                                           );
-                                        },
-                                        child: const Icon(
-                                          Icons.clear,
-                                        ),
+                                        } else {
+                                          controller.getPokemonList();
+                                        }
+                                      },
+                                      child: const Icon(
+                                        Icons.search,
                                       ),
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.always,
-                                labelText: S
-                                    .of(context)
-                                    .pokemonListScreenTextFieldLabelTextSearch,
-                                hintText: S
-                                    .of(context)
-                                    .pokemonListScreenTextFieldHintTextSearch,
-                                hintStyle: const TextStyle(
-                                  color: PokemonConstantsColors.grey,
-                                  fontSize: 14,
-                                ),
-                                labelStyle: const TextStyle(
-                                  color: PokedexConstantsColors.primaryColor,
-                                  fontSize: 16,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                enabledBorder: const OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: PokedexConstantsColors.primaryColor,
-                                  ),
-                                ),
-                              ),
+                                    )
+                                  : GestureDetector(
+                                      onTap: () {
+                                        pokemonTypedTextEditingController
+                                            .clear();
+                                        controller
+                                            .toggleSuffixIconTextFieldSearchPokemon(
+                                          pokemonTypedTextEditingController
+                                              .text,
+                                        );
+                                      },
+                                      child: const Icon(
+                                        Icons.clear,
+                                      ),
+                                    ),
                             );
                           }),
                         ),

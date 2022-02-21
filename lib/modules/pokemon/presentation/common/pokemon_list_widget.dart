@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pokedex_app/generated/l10n.dart';
 
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
@@ -57,7 +58,8 @@ class PokemonListWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  pokemon.id.toString(),
+                                  '${S.of(context).hashtag}'
+                                  '${pokemon.id.toString()}',
                                   style: const TextStyle(
                                     color: PokedexConstantsColors.primaryColor,
                                   ),
@@ -78,14 +80,22 @@ class PokemonListWidget extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                bottom: 2,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                color: PokedexConstantsColors.primaryColor,
+                                borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10),
+                                ),
                               ),
-                              child: Text(
-                                pokemon.name,
-                                style: const TextStyle(
-                                  color: PokedexConstantsColors.primaryColor,
+                              width: MediaQuery.of(context).size.width,
+                              child: Center(
+                                child: Text(
+                                  pokemon.name,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
                                 ),
                               ),
                             ),
@@ -97,16 +107,13 @@ class PokemonListWidget extends StatelessWidget {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                 top: 10,
               ),
-              child: GestureDetector(
-                onTap: () {},
-                child: const Image(
-                  image: AssetImage(
-                    PokemonConstantsImages.down,
-                  ),
+              child: Image(
+                image: AssetImage(
+                  PokemonConstantsImages.down,
                 ),
               ),
             ),

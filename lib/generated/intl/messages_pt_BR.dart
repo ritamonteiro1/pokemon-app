@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Meus favoritos"),
         "favoritePokemonListScreenText":
             MessageLookupByLibrary.simpleMessage("Em fase de implementação"),
+        "hashtag": MessageLookupByLibrary.simpleMessage("#"),
         "messageAlertOps": MessageLookupByLibrary.simpleMessage("Ops"),
         "messageGenericStatusCodeError":
             MessageLookupByLibrary.simpleMessage("Ocorreu um erro"),

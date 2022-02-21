@@ -14,5 +14,6 @@
   "pokemonDetailsScreenHeightText": "Height",
   "pokemonDetailsScreenMovesText": "Moves",
   "pokemonDetailsScreenBaseStatsText": "Base Stats",
-  "favoritePokemonListScreenText": "Under implementation"
+  "favoritePokemonListScreenText": "Under implementation",
+  "hashtag": "#"
 }

@@ -199,6 +199,16 @@ class S {
       args: [],
     );
   }
+
+  /// `#`
+  String get hashtag {
+    return Intl.message(
+      '#',
+      name: 'hashtag',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
