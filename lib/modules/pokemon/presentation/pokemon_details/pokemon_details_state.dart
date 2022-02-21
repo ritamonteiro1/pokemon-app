@@ -13,3 +13,5 @@ class InitialPokemonDetailsState extends Equatable
   @override
   List<Object?> get props => [];
 }
+
+class SuccessPokemonDetailsState implements PokemonDetailsState {}

@@ -25,20 +25,37 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
     });
   }
 
-  final _$toggleFavoritePokemonSuccessAtom =
-      Atom(name: '_PokemonDetailsStore.toggleFavoritePokemonSuccess');
+  final _$addFavoritePokemonSuccessfullyAtom =
+      Atom(name: '_PokemonDetailsStore.addFavoritePokemonSuccessfully');
 
   @override
-  bool? get toggleFavoritePokemonSuccess {
-    _$toggleFavoritePokemonSuccessAtom.reportRead();
-    return super.toggleFavoritePokemonSuccess;
+  bool? get addFavoritePokemonSuccessfully {
+    _$addFavoritePokemonSuccessfullyAtom.reportRead();
+    return super.addFavoritePokemonSuccessfully;
   }
 
   @override
-  set toggleFavoritePokemonSuccess(bool? value) {
-    _$toggleFavoritePokemonSuccessAtom
-        .reportWrite(value, super.toggleFavoritePokemonSuccess, () {
-      super.toggleFavoritePokemonSuccess = value;
+  set addFavoritePokemonSuccessfully(bool? value) {
+    _$addFavoritePokemonSuccessfullyAtom
+        .reportWrite(value, super.addFavoritePokemonSuccessfully, () {
+      super.addFavoritePokemonSuccessfully = value;
+    });
+  }
+
+  final _$removeFavoritePokemonSuccessfullyAtom =
+      Atom(name: '_PokemonDetailsStore.removeFavoritePokemonSuccessfully');
+
+  @override
+  bool? get removeFavoritePokemonSuccessfully {
+    _$removeFavoritePokemonSuccessfullyAtom.reportRead();
+    return super.removeFavoritePokemonSuccessfully;
+  }
+
+  @override
+  set removeFavoritePokemonSuccessfully(bool? value) {
+    _$removeFavoritePokemonSuccessfullyAtom
+        .reportWrite(value, super.removeFavoritePokemonSuccessfully, () {
+      super.removeFavoritePokemonSuccessfully = value;
     });
   }
 
@@ -64,7 +81,8 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
   String toString() {
     return '''
 pokemonDetailsState: ${pokemonDetailsState},
-toggleFavoritePokemonSuccess: ${toggleFavoritePokemonSuccess}
+addFavoritePokemonSuccessfully: ${addFavoritePokemonSuccessfully},
+removeFavoritePokemonSuccessfully: ${removeFavoritePokemonSuccessfully}
     ''';
   }
 }

@@ -32,8 +32,24 @@ abstract class _PokemonDetailsStore with Store {
   }
 
   @observable
-  bool? toggleFavoritePokemonSuccess;
+  bool? addFavoritePokemonSuccessfully;
+
+  @observable
+  bool? removeFavoritePokemonSuccessfully;
 
   @action
-  Future<void> togglePokemonFavorite(PokemonModel pokemonModel) async {}
+  Future<void> togglePokemonFavorite(PokemonModel pokemonModel) async {
+    try {
+      if (!pokemonModel.isFavorite) {
+        await _addFavoritePokemonUseCase.call(pokemonModel);
+        addFavoritePokemonSuccessfully = true;
+      } else {
+        await _removeFavoritePokemonUseCase.call(pokemonModel);
+        removeFavoritePokemonSuccessfully = true;
+      }
+    } catch (e) {
+      removeFavoritePokemonSuccessfully = false;
+      addFavoritePokemonSuccessfully = false;
+    }
+  }
 }
