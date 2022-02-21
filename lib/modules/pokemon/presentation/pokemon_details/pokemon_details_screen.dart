@@ -132,19 +132,29 @@ class _PokemonDetailsScreenState
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.all(
-                                      20,
-                                    ),
-                                    child: Image(
-                                      height: 40,
-                                      width: 40,
-                                      image: AssetImage(
-                                        PokemonConstantsImages.heart,
+                                children: [
+                                  Observer(builder: (context) {
+                                    final pokemonDetailsState =
+                                        controller.pokemonDetailsState;
+                                    return GestureDetector(
+                                      onTap: () {
+                                        controller.togglePokemonFavorite(
+                                            widget.pokemon);
+                                      },
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(
+                                          20,
+                                        ),
+                                        child: Image(
+                                          height: 40,
+                                          width: 40,
+                                          image: AssetImage(
+                                            PokemonConstantsImages.heart,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
+                                    );
+                                  }),
                                 ],
                               ),
                               Padding(
