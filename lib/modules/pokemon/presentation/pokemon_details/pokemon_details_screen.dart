@@ -43,6 +43,7 @@ class _PokemonDetailsScreenState
                   style: const TextStyle(
                     fontSize: 24,
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -50,7 +51,8 @@ class _PokemonDetailsScreenState
                 width: 20,
               ),
               Text(
-                widget.pokemon.id.toString(),
+                '${S.of(context).hashtag}'
+                '${widget.pokemon.id.toString()}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 12,
