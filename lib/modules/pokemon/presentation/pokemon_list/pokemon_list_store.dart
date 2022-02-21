@@ -53,7 +53,8 @@ abstract class _PokemonListStore with Store {
   Future<void> getPokemonTyped(String pokemonTyped) async {
     pokemonListState = LoadingPokemonListState();
     try {
-      final pokemon = await _getPokemonTypedUseCase.call(pokemonTyped);
+      final pokemon =
+          await _getPokemonTypedUseCase.call(pokemonTyped.toLowerCase());
       final pokemonList = <PokemonModel>[pokemon];
       pokemonListState = SuccessPokemonListState(pokemonList);
     } on Exception catch (e) {
