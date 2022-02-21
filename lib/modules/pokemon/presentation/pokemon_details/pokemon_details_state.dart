@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../../domain/model/pokemon/pokemon_model.dart';
+
 abstract class PokemonDetailsState {}
 
 class LoadingPokemonDetailsState extends Equatable
@@ -14,4 +16,10 @@ class InitialPokemonDetailsState extends Equatable
   List<Object?> get props => [];
 }
 
-class SuccessPokemonDetailsState implements PokemonDetailsState {}
+class SuccessPokemonDetailsState implements PokemonDetailsState {
+  SuccessPokemonDetailsState(
+    this.pokemonModel,
+  );
+
+  final PokemonModel pokemonModel;
+}

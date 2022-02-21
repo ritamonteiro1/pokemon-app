@@ -47,6 +47,7 @@ abstract class _PokemonDetailsStore with Store {
         await _removeFavoritePokemonUseCase.call(pokemonModel);
         removeFavoritePokemonSuccessfully = true;
       }
+      pokemonDetailsState = SuccessPokemonDetailsState(pokemonModel);
     } catch (e) {
       removeFavoritePokemonSuccessfully = false;
       addFavoritePokemonSuccessfully = false;
