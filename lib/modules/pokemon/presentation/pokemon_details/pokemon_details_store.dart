@@ -22,6 +22,15 @@ abstract class _PokemonDetailsStore with Store {
   @observable
   PokemonDetailsState pokemonDetailsState = LoadingPokemonDetailsState();
 
+  @observable
+  bool? addFavoritePokemonSuccessfully;
+
+  @observable
+  bool? removeFavoritePokemonSuccessfully;
+
+  @observable
+  bool? isPokemonFavorite;
+
   @action
   Future<void> startPokemonDetailsScreen() async {
     pokemonDetailsState = LoadingPokemonDetailsState();
@@ -31,22 +40,19 @@ abstract class _PokemonDetailsStore with Store {
     pokemonDetailsState = InitialPokemonDetailsState();
   }
 
-  @observable
-  bool? addFavoritePokemonSuccessfully;
-
-  @observable
-  bool? removeFavoritePokemonSuccessfully;
-
   @action
   Future<void> togglePokemonFavorite(PokemonModel pokemonModel) async {
     try {
       if (!pokemonModel.isFavorite) {
         await _addFavoritePokemonUseCase.call(pokemonModel);
         addFavoritePokemonSuccessfully = true;
+        isPokemonFavorite = true;
       } else {
         await _removeFavoritePokemonUseCase.call(pokemonModel);
         removeFavoritePokemonSuccessfully = true;
+        isPokemonFavorite = false;
       }
+      pokemonModel.isFavorite = !pokemonModel.isFavorite;
       pokemonDetailsState = SuccessPokemonDetailsState(pokemonModel);
     } catch (e) {
       removeFavoritePokemonSuccessfully = false;

@@ -59,6 +59,22 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
     });
   }
 
+  final _$isPokemonFavoriteAtom =
+      Atom(name: '_PokemonDetailsStore.isPokemonFavorite');
+
+  @override
+  bool? get isPokemonFavorite {
+    _$isPokemonFavoriteAtom.reportRead();
+    return super.isPokemonFavorite;
+  }
+
+  @override
+  set isPokemonFavorite(bool? value) {
+    _$isPokemonFavoriteAtom.reportWrite(value, super.isPokemonFavorite, () {
+      super.isPokemonFavorite = value;
+    });
+  }
+
   final _$startPokemonDetailsScreenAsyncAction =
       AsyncAction('_PokemonDetailsStore.startPokemonDetailsScreen');
 
@@ -82,7 +98,8 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
     return '''
 pokemonDetailsState: ${pokemonDetailsState},
 addFavoritePokemonSuccessfully: ${addFavoritePokemonSuccessfully},
-removeFavoritePokemonSuccessfully: ${removeFavoritePokemonSuccessfully}
+removeFavoritePokemonSuccessfully: ${removeFavoritePokemonSuccessfully},
+isPokemonFavorite: ${isPokemonFavorite}
     ''';
   }
 }
