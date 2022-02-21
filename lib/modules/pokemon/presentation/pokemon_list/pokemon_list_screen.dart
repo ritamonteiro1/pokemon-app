@@ -175,8 +175,10 @@ class _PokemonListScreenState
                         GestureDetector(
                           onTap: () {
                             Modular.to.pushNamed(
-                              PokemonConstantsRoutes.favoritePokemonList,
-                            );
+                                PokemonConstantsRoutes.favoritePokemonList,
+                                arguments: controller.isBackgroundDark
+                                    ? PokemonConstantsColors.darkGray
+                                    : PokemonConstantsColors.white);
                           },
                           child: Image.asset(
                             PokemonConstantsImages.heart,

@@ -70,7 +70,8 @@ class PokemonModule extends Module {
         ),
         ChildRoute(
           PokemonConstantsRoutes.favoritePokemonListScreen,
-          child: (context, args) => const FavoritePokemonListScreen(),
+          child: (context, args) =>
+              FavoritePokemonListScreen(backgroundColor: args.data),
         ),
       ];
 }
