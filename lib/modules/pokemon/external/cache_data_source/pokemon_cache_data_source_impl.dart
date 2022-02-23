@@ -1,10 +1,10 @@
 import 'package:hive/hive.dart';
 
-import '../../../domain/model/pokemon/pokemon_model.dart';
-import '../../mapper/cache_to_model.dart';
-import '../../mapper/model_to_cache.dart';
-import '../model/pokemon_cache.dart';
-import 'pokemon_cache_data_source.dart';
+import '../../data/cache/data_source/pokemon_cache_data_source.dart';
+import '../../data/cache/model/pokemon_cache.dart';
+import '../../data/mapper/cache_to_model.dart';
+import '../../data/mapper/model_to_cache.dart';
+import '../../domain/model/pokemon/pokemon_model.dart';
 
 class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
   PokemonCacheDataSourceImpl({
@@ -13,7 +13,6 @@ class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
 
   final HiveInterface _hive;
   static const _favoritePokemonListKeyString = 'favoritePokemonListKeyString';
-  static const _favoritePokemonListKeyInt = 0;
 
   @override
   Future<void> addFavoritePokemon(PokemonModel pokemonModel) async {

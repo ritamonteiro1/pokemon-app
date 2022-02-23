@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 
-import '../../../constants/pokemon_constants_url_api.dart';
-import '../../../domain/exception/generic_error_status_code_exception.dart';
-import '../../../domain/exception/network_error_exception.dart';
-import '../../../domain/exception/not_found_pokemon_exception.dart';
-import '../../../domain/model/pokemon/pokemon_model.dart';
-import '../../mapper/remote_to_model.dart';
-import '../model/pokedex/pokedex_response.dart';
-import '../model/pokemon/details/pokemon_response.dart';
-import 'pokemon_remote_data_source.dart';
+import '../../constants/pokemon_constants_url_api.dart';
+import '../../data/mapper/remote_to_model.dart';
+import '../../data/remote/data_source/pokemon_remote_data_source.dart';
+import '../../data/remote/model/pokedex/pokedex_response.dart';
+import '../../data/remote/model/pokemon/details/pokemon_response.dart';
+import '../../domain/exception/generic_error_status_code_exception.dart';
+import '../../domain/exception/network_error_exception.dart';
+import '../../domain/exception/not_found_pokemon_exception.dart';
+import '../../domain/model/pokemon/pokemon_model.dart';
 
 class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   PokemonRemoteDataSourceImpl({

@@ -3,7 +3,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pokedex_app/modules/pokemon/data/cache/data_source/pokemon_cache_data_source.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
-import 'package:pokedex_app/modules/pokemon/data/repository_impl/pokemon_repository_impl.dart';
+import 'package:pokedex_app/modules/pokemon/data/repository/pokemon_repository_impl.dart';
 import 'package:pokedex_app/modules/pokemon/domain/exception/empty_favorite_pokemon_list_exception.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';

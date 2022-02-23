@@ -4,9 +4,9 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_url_api.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
-import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source_impl.dart';
+import 'package:pokedex_app/modules/pokemon/external/remote_data_source/pokemon_remote_data_source_impl.dart';
 
-import '../../../../../utils/json_extensions.dart';
+import '../../../../utils/json_extensions.dart';
 import 'pokemon_remote_data_source_impl.mocks.dart';
 
 @GenerateMocks([Dio])
