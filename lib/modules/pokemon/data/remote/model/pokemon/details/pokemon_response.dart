@@ -23,7 +23,7 @@ class PokemonResponse {
 
   final List<AbilitiesResponse>? abilities;
   final int? height;
-  final int? id;
+  final int id;
   final String? name;
   final List<StatsResponse>? stats;
   final List<TypesResponse>? types;

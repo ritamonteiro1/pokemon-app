@@ -9,7 +9,7 @@ extension PokemonResponseToPokemonModel on PokemonResponse {
                 .toList() ??
             [],
         height: height ?? -1,
-        id: id ?? -1,
+        id: id,
         name: name ?? ' - ',
         statList: stats
                 ?.map((stat) => StatModel(

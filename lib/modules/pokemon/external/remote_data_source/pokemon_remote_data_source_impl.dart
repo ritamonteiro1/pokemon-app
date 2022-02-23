@@ -5,6 +5,8 @@ import '../../data/mapper/remote_to_model.dart';
 import '../../data/remote/data_source/pokemon_remote_data_source.dart';
 import '../../data/remote/model/pokedex/pokedex_response.dart';
 import '../../data/remote/model/pokemon/details/pokemon_response.dart';
+import '../../data/remote/model/pokemon/specie/specie_response.dart';
+import '../../data/remote/model/pokemon_url/pokemon_url_response.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/not_found_pokemon_exception.dart';
@@ -27,9 +29,10 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       nextPage = pokedexResponse.nextUrl;
       final pokemonModelList = <PokemonModel>[];
       for (final pokemonUrl in pokedexResponse.pokemonUrlList) {
-        final response = await _dio.get(pokemonUrl.url);
-        final pokemonResponse = PokemonResponse.fromJson(response.data);
-        final pokemonModel = pokemonResponse.toPokemonModel();
+        final pokemonDetailsResponse = await _getPokemonDetails(pokemonUrl);
+        final pokemonSpecieResponse =
+            await _getPokemonSpecie(pokemonDetailsResponse.id);
+        final pokemonModel = pokemonDetailsResponse.toPokemonModel();
         pokemonModelList.add(pokemonModel);
       }
       return pokemonModelList;
@@ -40,6 +43,18 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
         throw NetworkErrorException();
       }
     }
+  }
+
+  Future<SpecieResponse> _getPokemonSpecie(int pokemonId) async {
+    final responseSpecie = await _dio.get(
+        '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon-species/$pokemonId');
+    return SpecieResponse.fromJson(responseSpecie.data);
+  }
+
+  Future<PokemonResponse> _getPokemonDetails(
+      PokemonUrlResponse pokemonUrl) async {
+    final response = await _dio.get(pokemonUrl.url);
+    return PokemonResponse.fromJson(response.data);
   }
 
   String _setUrl() {
