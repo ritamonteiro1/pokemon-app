@@ -1,7 +1,7 @@
 import '../model/pokemon/pokemon_model.dart';
 import '../repository/pokemon_repository.dart';
 
-mixin RemoveFavoritePokemonUseCase {
+abstract class RemoveFavoritePokemonUseCase {
   Future<void> call(PokemonModel pokemonModel);
 }
 

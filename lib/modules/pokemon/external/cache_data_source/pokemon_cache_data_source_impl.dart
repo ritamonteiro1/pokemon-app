@@ -34,13 +34,8 @@ class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
     try {
       final box = await _hive.openBox(_favoritePokemonListKeyString);
       final favoritePokemonCacheList = List<PokemonCache>.from(box.values);
-      if (favoritePokemonCacheList.isNotEmpty) {
-        return favoritePokemonCacheList.toPokemonModelList();
-      } else {
-        return [];
-      }
+      return favoritePokemonCacheList.toPokemonModelList();
     } catch (e) {
-      print(e);
       throw GenericCacheException();
     }
   }

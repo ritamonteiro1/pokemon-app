@@ -9,7 +9,9 @@ extension PokemonModelToPokemonCachel on PokemonModel {
         id: id,
         name: name,
         statList: statList
-            .map((stat) => StatCache(name: stat.name, base: stat.base))
+            .map(
+              (stat) => StatCache(name: stat.name, base: stat.base),
+            )
             .toList(),
         typeList: typeList,
         weight: weight,

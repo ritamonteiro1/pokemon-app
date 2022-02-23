@@ -23,12 +23,12 @@ class PokemonResponse {
   factory PokemonResponse.fromJson(Map<String, dynamic> json) =>
       _$PokemonResponseFromJson(json);
 
-  final List<AbilitiesResponse> abilities;
+  final List<AbilitiesResponse>? abilities;
   final int? height;
   final int id;
   final String? name;
-  final List<StatsResponse> stats;
-  final List<TypesResponse> types;
+  final List<StatsResponse>? stats;
+  final List<TypesResponse>? types;
   final int? weight;
   @JsonKey(name: 'species')
   final SpeciesResponse specie;

@@ -2,7 +2,7 @@ import '../exception/empty_favorite_pokemon_list_exception.dart';
 import '../model/pokemon/pokemon_model.dart';
 import '../repository/pokemon_repository.dart';
 
-mixin GetFavoritePokemonListUseCase {
+abstract class GetFavoritePokemonListUseCase {
   Future<List<PokemonModel>> call();
 }
 

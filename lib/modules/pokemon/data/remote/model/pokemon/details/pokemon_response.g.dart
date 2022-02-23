@@ -8,17 +8,17 @@ part of 'pokemon_response.dart';
 
 PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
     PokemonResponse(
-      (json['abilities'] as List<dynamic>)
-          .map((e) => AbilitiesResponse.fromJson(e as Map<String, dynamic>))
+      (json['abilities'] as List<dynamic>?)
+          ?.map((e) => AbilitiesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['height'] as int?,
       json['id'] as int,
       json['name'] as String?,
-      (json['stats'] as List<dynamic>)
-          .map((e) => StatsResponse.fromJson(e as Map<String, dynamic>))
+      (json['stats'] as List<dynamic>?)
+          ?.map((e) => StatsResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
-      (json['types'] as List<dynamic>)
-          .map((e) => TypesResponse.fromJson(e as Map<String, dynamic>))
+      (json['types'] as List<dynamic>?)
+          ?.map((e) => TypesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['weight'] as int?,
       SpeciesResponse.fromJson(json['species'] as Map<String, dynamic>),

@@ -1,7 +1,7 @@
 import '../model/pokemon/pokemon_model.dart';
 import '../repository/pokemon_repository.dart';
 
-mixin GetPokemonListUseCase {
+abstract class GetPokemonListUseCase {
   Future<List<PokemonModel>> call();
 }
 

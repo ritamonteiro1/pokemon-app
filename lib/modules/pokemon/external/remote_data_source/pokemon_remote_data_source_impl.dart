@@ -68,13 +68,13 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     }
   }
 
-  Future<SpecieResponse> _getPokemonSpecie(String url) async {
-    final response = await _dio.get(url);
+  Future<SpecieResponse> _getPokemonSpecie(String pokemonSpecieUrl) async {
+    final response = await _dio.get(pokemonSpecieUrl);
     return SpecieResponse.fromJson(response.data);
   }
 
-  Future<PokemonResponse> _getPokemonDetails(String url) async {
-    final response = await _dio.get(url);
+  Future<PokemonResponse> _getPokemonDetails(String pokemonDetailsUrl) async {
+    final response = await _dio.get(pokemonDetailsUrl);
     return PokemonResponse.fromJson(response.data);
   }
 
