@@ -1,4 +1,3 @@
-import '../../domain/exception/empty_favorite_pokemon_list_exception.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import '../../domain/repository/pokemon_repository.dart';
 import '../cache/data_source/pokemon_cache_data_source.dart';
@@ -40,15 +39,8 @@ class PokemonRepositoryImpl implements PokemonRepository {
       _pokemonCacheDataSource.addFavoritePokemon(pokemonModel);
 
   @override
-  Future<List<PokemonModel>> getFavoritePokemonList() async {
-    final favoritePokemonList =
-        await _pokemonCacheDataSource.getFavoritePokemonList();
-    if (favoritePokemonList.isNotEmpty) {
-      return favoritePokemonList;
-    } else {
-      throw EmptyFavoritePokemonListException();
-    }
-  }
+  Future<List<PokemonModel>> getFavoritePokemonList() async =>
+      _pokemonCacheDataSource.getFavoritePokemonList();
 
   @override
   Future<void> removeFavoritePokemon(PokemonModel pokemonModel) async =>

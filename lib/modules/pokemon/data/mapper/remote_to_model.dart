@@ -13,8 +13,10 @@ PokemonModel convertToPokemonModelList(
       id: pokemonResponse.id,
       name: pokemonResponse.name ?? ' - ',
       statList: pokemonResponse.stats
-          .map((stat) => StatModel(
-              name: stat.stat?.name ?? ' - ', base: stat.baseStat ?? -1))
+          .map(
+            (stat) => StatModel(
+                name: stat.stat?.name ?? ' - ', base: stat.baseStat ?? -1),
+          )
           .toList(),
       typeList: pokemonResponse.types
           .map((type) => type.type?.name ?? ' - ')

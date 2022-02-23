@@ -7,7 +7,10 @@ part 'specie_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SpecieResponse {
-  SpecieResponse(this.color, this.descriptionList);
+  SpecieResponse(
+    this.color,
+    this.descriptionList,
+  );
 
   factory SpecieResponse.fromJson(Map<String, dynamic> json) =>
       _$SpecieResponseFromJson(json);

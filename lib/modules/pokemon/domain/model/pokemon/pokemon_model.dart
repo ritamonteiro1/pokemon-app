@@ -25,9 +25,9 @@ class PokemonModel extends Equatable {
   final List<String> typeList;
   final int weight;
   final String image;
-  bool isFavorite;
   final String colorName;
   final String description;
+  bool isFavorite;
 
   @override
   List<Object?> get props => [

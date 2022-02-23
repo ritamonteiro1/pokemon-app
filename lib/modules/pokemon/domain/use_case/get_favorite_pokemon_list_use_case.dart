@@ -1,3 +1,4 @@
+import '../exception/empty_favorite_pokemon_list_exception.dart';
 import '../model/pokemon/pokemon_model.dart';
 import '../repository/pokemon_repository.dart';
 
@@ -14,6 +15,13 @@ class GetFavoritePokemonListUseCaseImpl
   final PokemonRepository _pokemonRepository;
 
   @override
-  Future<List<PokemonModel>> call() async =>
-      _pokemonRepository.getFavoritePokemonList();
+  Future<List<PokemonModel>> call() async {
+    final favoritePokemonList =
+        await _pokemonRepository.getFavoritePokemonList();
+    if (favoritePokemonList.isNotEmpty) {
+      return favoritePokemonList;
+    } else {
+      throw EmptyFavoritePokemonListException();
+    }
+  }
 }

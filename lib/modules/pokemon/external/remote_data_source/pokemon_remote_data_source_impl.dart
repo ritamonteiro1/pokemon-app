@@ -45,26 +45,6 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     }
   }
 
-  Future<SpecieResponse> _getPokemonSpecie(String url) async {
-    final response = await _dio.get(url);
-    return SpecieResponse.fromJson(response.data);
-  }
-
-  Future<PokemonResponse> _getPokemonDetails(String url) async {
-    final response = await _dio.get(url);
-    return PokemonResponse.fromJson(response.data);
-  }
-
-  String _setUrl() {
-    String url;
-    if (nextPage == null) {
-      url = '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/${'?limit=15'}';
-    } else {
-      url = nextPage!;
-    }
-    return url;
-  }
-
   @override
   Future<PokemonModel> getPokemonTyped(String typedPokemon) async {
     try {
@@ -86,5 +66,25 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
         throw NetworkErrorException();
       }
     }
+  }
+
+  Future<SpecieResponse> _getPokemonSpecie(String url) async {
+    final response = await _dio.get(url);
+    return SpecieResponse.fromJson(response.data);
+  }
+
+  Future<PokemonResponse> _getPokemonDetails(String url) async {
+    final response = await _dio.get(url);
+    return PokemonResponse.fromJson(response.data);
+  }
+
+  String _setUrl() {
+    String url;
+    if (nextPage == null) {
+      url = '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15';
+    } else {
+      url = nextPage!;
+    }
+    return url;
   }
 }
