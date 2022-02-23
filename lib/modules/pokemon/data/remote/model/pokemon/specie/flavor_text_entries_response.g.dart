@@ -15,5 +15,5 @@ FlavorTextEntriesResponse _$FlavorTextEntriesResponseFromJson(
 Map<String, dynamic> _$FlavorTextEntriesResponseToJson(
         FlavorTextEntriesResponse instance) =>
     <String, dynamic>{
-      'flavor_text': instance.flavorText,
+      'flavor_text': instance.description,
     };

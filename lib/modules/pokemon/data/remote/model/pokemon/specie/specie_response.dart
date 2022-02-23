@@ -7,18 +7,14 @@ part 'specie_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SpecieResponse {
-  SpecieResponse(
-    this.color,
-    this.flavorTextEntries,
-    this.id,
-  );
+  SpecieResponse(this.color, this.descriptionList);
 
   factory SpecieResponse.fromJson(Map<String, dynamic> json) =>
       _$SpecieResponseFromJson(json);
 
   final ColorResponse? color;
-  final List<FlavorTextEntriesResponse>? flavorTextEntries;
-  final int id;
+  @JsonKey(name: 'flavor_text_entries')
+  final List<FlavorTextEntriesResponse>? descriptionList;
 
   Map<String, dynamic> toJson() => _$SpecieResponseToJson(this);
 }

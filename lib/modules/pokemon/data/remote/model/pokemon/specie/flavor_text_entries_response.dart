@@ -5,14 +5,14 @@ part 'flavor_text_entries_response.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class FlavorTextEntriesResponse {
   FlavorTextEntriesResponse(
-    this.flavorText,
+    this.description,
   );
 
   factory FlavorTextEntriesResponse.fromJson(Map<String, dynamic> json) =>
       _$FlavorTextEntriesResponseFromJson(json);
 
-  final String? flavorText;
+  @JsonKey(name: 'flavor_text')
+  final String? description;
 
   Map<String, dynamic> toJson() => _$FlavorTextEntriesResponseToJson(this);
-
 }

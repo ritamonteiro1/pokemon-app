@@ -46,7 +46,9 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
           typeList: const <String>['1', '2'],
           weight: 10,
           image:
-              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg'),
+              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+        colorName: 'color 1',
+        description: 'description 1',),
       PokemonModel(
           abilityList: const <String>['3', '4'],
           height: 20,
@@ -59,5 +61,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
           typeList: const <String>['1', '2'],
           weight: 20,
           image:
-              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg'),
+              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg',
+        colorName: 'color 2',
+        description: 'description 2',),
     ];

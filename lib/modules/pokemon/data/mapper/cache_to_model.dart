@@ -15,6 +15,8 @@ extension PokemonCacheToPokemonModel on PokemonCache {
         weight: weight,
         image:
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/$id.svg',
+        colorName: colorName,
+        description: description,
       );
 }
 
@@ -30,5 +32,7 @@ extension PokemonCacheListToPokemonModelList on List<PokemonCache> {
             .toList(),
         weight: item.weight,
         abilityList: item.abilityList,
+        colorName: item.colorName,
+        description: item.description,
       )).toList();
 }

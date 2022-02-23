@@ -15,12 +15,10 @@ SpecieResponse _$SpecieResponseFromJson(Map<String, dynamic> json) =>
           ?.map((e) =>
               FlavorTextEntriesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
-      json['id'] as int,
     );
 
 Map<String, dynamic> _$SpecieResponseToJson(SpecieResponse instance) =>
     <String, dynamic>{
       'color': instance.color,
-      'flavor_text_entries': instance.flavorTextEntries,
-      'id': instance.id,
+      'flavor_text_entries': instance.descriptionList,
     };

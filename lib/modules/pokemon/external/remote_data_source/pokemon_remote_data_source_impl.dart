@@ -5,7 +5,7 @@ import '../../data/mapper/remote_to_model.dart';
 import '../../data/remote/data_source/pokemon_remote_data_source.dart';
 import '../../data/remote/model/pokedex/pokedex_response.dart';
 import '../../data/remote/model/pokemon/details/pokemon_response.dart';
-import '../../data/remote/model/pokemon_url/pokemon_url_response.dart';
+import '../../data/remote/model/pokemon/specie/specie_response.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/not_found_pokemon_exception.dart';
@@ -28,8 +28,11 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       nextPage = pokedexResponse.nextUrl;
       final pokemonModelList = <PokemonModel>[];
       for (final pokemonUrl in pokedexResponse.pokemonUrlList) {
-        final pokemonDetailsResponse = await _getPokemonDetails(pokemonUrl);
-        final pokemonModel = pokemonDetailsResponse.toPokemonModel();
+        final pokemonDetailsResponse = await _getPokemonDetails(pokemonUrl.url);
+        final pokemonSpecieResponse =
+            await _getPokemonSpecie(pokemonDetailsResponse.specie.url);
+        final pokemonModel = convertToPokemonModelList(
+            pokemonDetailsResponse, pokemonSpecieResponse);
         pokemonModelList.add(pokemonModel);
       }
       return pokemonModelList;
@@ -42,9 +45,13 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     }
   }
 
-  Future<PokemonResponse> _getPokemonDetails(
-      PokemonUrlResponse pokemonUrl) async {
-    final response = await _dio.get(pokemonUrl.url);
+  Future<SpecieResponse> _getPokemonSpecie(String url) async {
+    final response = await _dio.get(url);
+    return SpecieResponse.fromJson(response.data);
+  }
+
+  Future<PokemonResponse> _getPokemonDetails(String url) async {
+    final response = await _dio.get(url);
     return PokemonResponse.fromJson(response.data);
   }
 
@@ -63,8 +70,11 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     try {
       final response = await _dio
           .get('${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon');
-      final pokemonResponse = PokemonResponse.fromJson(response.data);
-      final pokemonModel = pokemonResponse.toPokemonModel();
+      final pokemonDetailsResponse = PokemonResponse.fromJson(response.data);
+      final pokemonSpecieResponse =
+          await _getPokemonSpecie(pokemonDetailsResponse.specie.url);
+      final pokemonModel = convertToPokemonModelList(
+          pokemonDetailsResponse, pokemonSpecieResponse);
       return pokemonModel;
     } on DioError catch (dioError, _) {
       if (dioError.type == DioErrorType.response) {
