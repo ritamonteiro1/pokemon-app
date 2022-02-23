@@ -53,18 +53,18 @@ class PokemonModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          PokemonConstantsRoutes.pokemonListScreen,
+          PokemonConstantsRoutes.pokemonList,
           child: (context, args) => const PokemonListScreen(),
         ),
         ChildRoute(
-          PokemonConstantsRoutes.pokemonDetailsScreen,
+          PokemonConstantsRoutes.pokemonDetails,
           child: (context, args) => PokemonDetailsScreen(
             pokemon: args.data[0],
             backgroundColor: args.data[1],
           ),
         ),
         ChildRoute(
-          PokemonConstantsRoutes.favoritePokemonListScreen,
+          PokemonConstantsRoutes.favoritePokemonList,
           child: (context, args) => const FavoritePokemonListScreen(),
         ),
       ];

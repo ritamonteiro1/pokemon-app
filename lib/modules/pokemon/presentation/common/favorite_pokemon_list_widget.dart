@@ -36,7 +36,7 @@ class FavoritePokemonListWidget extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       Modular.to.pushNamed(
-                        PokemonConstantsRoutes.pokemonDetails,
+                        PokemonConstantsRoutes.pokemonDetailsScreen,
                         arguments: [pokemon, backgroundColor],
                       );
                     },

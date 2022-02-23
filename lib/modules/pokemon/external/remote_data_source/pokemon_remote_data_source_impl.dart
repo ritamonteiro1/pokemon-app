@@ -45,7 +45,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   String _setUrl() {
     String url;
     if (nextPage == null) {
-      url = '${PokemonConstantsUrlApi.pokemonBaseUrl}${'?limit=15'}';
+      url = '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/${'?limit=15'}';
     } else {
       url = nextPage!;
     }
@@ -56,7 +56,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   Future<PokemonModel> getPokemonTyped(String typedPokemon) async {
     try {
       final response = await _dio
-          .get('${PokemonConstantsUrlApi.pokemonBaseUrl}$typedPokemon');
+          .get('${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon');
       final pokemonResponse = PokemonResponse.fromJson(response.data);
       final pokemonModel = pokemonResponse.toPokemonModel();
       return pokemonModel;

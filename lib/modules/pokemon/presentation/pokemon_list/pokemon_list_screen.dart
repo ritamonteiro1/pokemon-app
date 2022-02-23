@@ -174,8 +174,8 @@ class _PokemonListScreenState
                         ),
                         GestureDetector(
                           onTap: () {
-                            Modular.to.pushNamed(
-                                PokemonConstantsRoutes.favoritePokemonList);
+                            Modular.to.pushNamed(PokemonConstantsRoutes
+                                .favoritePokemonListScreen);
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8),

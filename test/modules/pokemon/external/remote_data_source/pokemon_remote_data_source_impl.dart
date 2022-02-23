@@ -32,7 +32,7 @@ void main() {
       );
       await pokemonRemoteDataSource.getPokemonList();
       verify(mockDio.get(
-        '${PokemonConstantsUrlApi.pokemonBaseUrl}?limit=15',
+        '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15',
       )).called(1);
     });
   });
