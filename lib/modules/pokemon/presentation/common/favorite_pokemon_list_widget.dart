@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
-import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import 'loading_widget.dart';
 
