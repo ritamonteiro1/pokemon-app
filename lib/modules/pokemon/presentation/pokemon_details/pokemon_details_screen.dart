@@ -198,6 +198,17 @@ class _PokemonDetailsScreenState
                                 height: 30,
                               ),
                               Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 32, left: 32),
+                                child: Text(
+                                  widget.pokemon.description,
+                                  textAlign: TextAlign.justify,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
                                 padding: const EdgeInsets.only(
                                   right: 32,
                                   left: 32,

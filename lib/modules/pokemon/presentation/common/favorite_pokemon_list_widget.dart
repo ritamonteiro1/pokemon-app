@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
-import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import 'loading_widget.dart';
 
@@ -33,75 +32,66 @@ class FavoritePokemonListWidget extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) {
                   final pokemon = pokemonList[index];
-                  return GestureDetector(
-                    onTap: () {
-                      Modular.to.pushNamed(
-                        PokemonConstantsRoutes.pokemonDetails,
-                        arguments: [pokemon, backgroundColor],
-                      );
-                    },
-                    child: Card(
-                      color: Colors.transparent,
-                      elevation: 0,
-                      margin: const EdgeInsets.all(2),
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                          color: PokedexConstantsColors.primaryColor,
-                          width: 1,
+                  return Card(
+                    color: Colors.transparent,
+                    elevation: 0,
+                    margin: const EdgeInsets.all(2),
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: PokedexConstantsColors.primaryColor,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                '${S.of(context).hashtag}'
+                                '${pokemon.id.toString()}',
+                                style: const TextStyle(
+                                  color: PokedexConstantsColors.primaryColor,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 4,
+                              ),
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  '${S.of(context).hashtag}'
-                                  '${pokemon.id.toString()}',
-                                  style: const TextStyle(
-                                    color: PokedexConstantsColors.primaryColor,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 4,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 4,
-                            child: SvgPicture.network(pokemon.image,
-                                placeholderBuilder: (context) =>
-                                    const LoadingWidget(
-                                      colorCircularProgressIndicator:
-                                          Colors.grey,
-                                    )),
-                          ),
-                          Expanded(
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                color: PokedexConstantsColors.primaryColor,
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(10),
-                                  bottomRight: Radius.circular(10),
-                                ),
+                        Expanded(
+                          flex: 4,
+                          child: SvgPicture.network(pokemon.image,
+                              placeholderBuilder: (context) =>
+                                  const LoadingWidget(
+                                    colorCircularProgressIndicator: Colors.grey,
+                                  )),
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              color: PokedexConstantsColors.primaryColor,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10),
+                                bottomRight: Radius.circular(10),
                               ),
-                              width: MediaQuery.of(context).size.width,
-                              child: Center(
-                                child: Text(
-                                  pokemon.name,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: Text(
+                                pokemon.name,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
                                 ),
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   );
                 },

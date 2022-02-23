@@ -12,7 +12,7 @@ PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
           ?.map((e) => AbilitiesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['height'] as int?,
-      json['id'] as int?,
+      json['id'] as int,
       json['name'] as String?,
       (json['stats'] as List<dynamic>?)
           ?.map((e) => StatsResponse.fromJson(e as Map<String, dynamic>))
@@ -21,6 +21,7 @@ PokemonResponse _$PokemonResponseFromJson(Map<String, dynamic> json) =>
           ?.map((e) => TypesResponse.fromJson(e as Map<String, dynamic>))
           .toList(),
       json['weight'] as int?,
+      SpeciesResponse.fromJson(json['species'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$PokemonResponseToJson(PokemonResponse instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$PokemonResponseToJson(PokemonResponse instance) =>
       'stats': instance.stats,
       'types': instance.types,
       'weight': instance.weight,
+      'species': instance.specie,
     };

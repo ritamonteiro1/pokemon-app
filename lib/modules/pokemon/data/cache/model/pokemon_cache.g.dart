@@ -25,13 +25,15 @@ class PokemonCacheAdapter extends TypeAdapter<PokemonCache> {
       typeList: (fields[5] as List).cast<String>(),
       weight: fields[6] as int,
       image: fields[7] as String,
+      colorName: fields[8] as String,
+      description: fields[9] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, PokemonCache obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.abilityList)
       ..writeByte(1)
@@ -47,7 +49,11 @@ class PokemonCacheAdapter extends TypeAdapter<PokemonCache> {
       ..writeByte(6)
       ..write(obj.weight)
       ..writeByte(7)
-      ..write(obj.image);
+      ..write(obj.image)
+      ..writeByte(8)
+      ..write(obj.colorName)
+      ..writeByte(9)
+      ..write(obj.description);
   }
 
   @override

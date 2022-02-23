@@ -5,7 +5,6 @@ import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.d
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/repository/pokemon_repository.dart';
 import 'package:pokedex_app/modules/pokemon/domain/use_case/get_pokemon_typed_use_case.dart';
-import 'package:pokedex_app/modules/pokemon/domain/use_case/get_pokemon_typed_use_case_impl.dart';
 
 import 'get_pokemon_typed_use_case_impl_test.mocks.dart';
 
@@ -35,15 +34,18 @@ void main() {
 }
 
 PokemonModel _getSuccessfulPokemonModelMock() => PokemonModel(
-    abilityList: const <String>['1', '2'],
-    height: 10,
-    id: 1,
-    name: 'pokemon 1',
-    statList: const <StatModel>[
-      StatModel(base: 1, name: 'name 1'),
-      StatModel(base: 2, name: 'name 2'),
-    ],
-    typeList: const <String>['1', '2'],
-    weight: 10,
-    image:
-        'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg');
+      abilityList: const <String>['1', '2'],
+      height: 10,
+      id: 1,
+      name: 'pokemon 1',
+      statList: const <StatModel>[
+        StatModel(base: 1, name: 'name 1'),
+        StatModel(base: 2, name: 'name 2'),
+      ],
+      typeList: const <String>['1', '2'],
+      weight: 10,
+      image:
+          'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+      colorName: 'color 1',
+      description: 'description 1',
+    );

@@ -5,7 +5,6 @@ import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.d
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/repository/pokemon_repository.dart';
 import 'package:pokedex_app/modules/pokemon/domain/use_case/get_pokemon_list_use_case.dart';
-import 'package:pokedex_app/modules/pokemon/domain/use_case/get_pokemon_list_use_case_impl.dart';
 
 import 'get_pokemon_list_use_case_impl_test.mocks.dart';
 
@@ -47,7 +46,9 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
           typeList: const <String>['1', '2'],
           weight: 10,
           image:
-              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg'),
+              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+        colorName: 'color 1',
+        description: 'description 1',),
       PokemonModel(
           abilityList: const <String>['3', '4'],
           height: 20,
@@ -60,5 +61,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
           typeList: const <String>['1', '2'],
           weight: 20,
           image:
-              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg'),
+              'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg',
+        colorName: 'color 2',
+        description: 'description 2',),
     ];

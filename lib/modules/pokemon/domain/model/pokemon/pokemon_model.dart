@@ -12,6 +12,8 @@ class PokemonModel extends Equatable {
     required this.typeList,
     required this.weight,
     required this.image,
+    required this.colorName,
+    required this.description,
     this.isFavorite = false,
   });
 
@@ -23,6 +25,8 @@ class PokemonModel extends Equatable {
   final List<String> typeList;
   final int weight;
   final String image;
+  final String colorName;
+  final String description;
   bool isFavorite;
 
   @override
@@ -35,5 +39,7 @@ class PokemonModel extends Equatable {
         typeList,
         weight,
         image,
+        colorName,
+        description,
       ];
 }

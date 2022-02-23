@@ -4,21 +4,16 @@ import 'package:hive/hive.dart';
 
 import '../constants/pokemon_constants_routes.dart';
 import '../data/cache/data_source/pokemon_cache_data_source.dart';
-import '../data/cache/data_source/pokemon_cache_data_source_impl.dart';
 import '../data/remote/data_source/pokemon_remote_data_source.dart';
-import '../data/remote/data_source/pokemon_remote_data_source_impl.dart';
-import '../data/repository_impl/pokemon_repository_impl.dart';
+import '../data/repository/pokemon_repository_impl.dart';
 import '../domain/repository/pokemon_repository.dart';
 import '../domain/use_case/add_favorite_pokemon_use_case.dart';
-import '../domain/use_case/add_favorite_pokemon_use_case_impl.dart';
 import '../domain/use_case/get_favorite_pokemon_list_use_case.dart';
-import '../domain/use_case/get_favorite_pokemon_list_use_case_impl.dart';
 import '../domain/use_case/get_pokemon_list_use_case.dart';
-import '../domain/use_case/get_pokemon_list_use_case_impl.dart';
 import '../domain/use_case/get_pokemon_typed_use_case.dart';
-import '../domain/use_case/get_pokemon_typed_use_case_impl.dart';
 import '../domain/use_case/remove_favorite_pokemon_use_case.dart';
-import '../domain/use_case/remove_favorite_pokemon_use_case_impl.dart';
+import '../external/cache_data_source/pokemon_cache_data_source_impl.dart';
+import '../external/remote_data_source/pokemon_remote_data_source_impl.dart';
 import '../presentation/favorite_pokemon_list/favorite_pokemon_list_screen.dart';
 import '../presentation/favorite_pokemon_list/favorite_pokemon_list_store.dart';
 import '../presentation/pokemon_details/pokemon_details_screen.dart';
@@ -58,18 +53,18 @@ class PokemonModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          PokemonConstantsRoutes.pokemonListScreen,
+          PokemonConstantsRoutes.pokemonList,
           child: (context, args) => const PokemonListScreen(),
         ),
         ChildRoute(
-          PokemonConstantsRoutes.pokemonDetailsScreen,
+          PokemonConstantsRoutes.pokemonDetails,
           child: (context, args) => PokemonDetailsScreen(
             pokemon: args.data[0],
             backgroundColor: args.data[1],
           ),
         ),
         ChildRoute(
-          PokemonConstantsRoutes.favoritePokemonListScreen,
+          PokemonConstantsRoutes.favoritePokemonList,
           child: (context, args) => const FavoritePokemonListScreen(),
         ),
       ];
