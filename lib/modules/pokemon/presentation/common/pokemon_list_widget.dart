@@ -79,7 +79,7 @@ class PokemonListWidget extends StatelessWidget {
                                 placeholderBuilder: (context) =>
                                     const LoadingWidget(
                                       colorCircularProgressIndicator:
-                                          Colors.grey,
+                                          PokedexConstantsColors.primaryColor,
                                     )),
                           ),
                           Expanded(

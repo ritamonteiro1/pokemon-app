@@ -67,7 +67,8 @@ class FavoritePokemonListWidget extends StatelessWidget {
                           child: SvgPicture.network(pokemon.image,
                               placeholderBuilder: (context) =>
                                   const LoadingWidget(
-                                    colorCircularProgressIndicator: Colors.grey,
+                                    colorCircularProgressIndicator:
+                                        PokedexConstantsColors.primaryColor,
                                   )),
                         ),
                         Expanded(

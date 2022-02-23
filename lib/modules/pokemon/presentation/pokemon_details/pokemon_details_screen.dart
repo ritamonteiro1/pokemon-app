@@ -116,7 +116,8 @@ class _PokemonDetailsScreenState
                                   placeholderBuilder: (context) =>
                                       const LoadingWidget(
                                           colorCircularProgressIndicator:
-                                              Colors.grey),
+                                              PokedexConstantsColors
+                                                  .primaryColor),
                                 ),
                               ),
                             ),
