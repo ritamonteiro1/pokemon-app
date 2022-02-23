@@ -1,8 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../constants/splash_constants_routes.dart';
-import '../presentation/home/splash_controller.dart';
-import '../presentation/home/splash_screen.dart';
+import '../presentation/splash/splash_controller.dart';
+import '../presentation/splash/splash_screen.dart';
 
 class SplashModule extends Module {
   @override
