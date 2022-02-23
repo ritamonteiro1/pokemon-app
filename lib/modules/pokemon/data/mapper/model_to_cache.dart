@@ -15,8 +15,7 @@ extension PokemonModelToPokemonCachel on PokemonModel {
             .toList(),
         typeList: typeList,
         weight: weight,
-        image:
-            'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/$id.svg',
+        image: image,
         colorName: colorName,
         description: description,
       );

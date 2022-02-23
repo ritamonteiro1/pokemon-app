@@ -7,7 +7,6 @@ import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../constants/pokemon_constants_routes.dart';
-import '../../domain/exception/generic_cache_exception.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
@@ -207,8 +206,7 @@ class _PokemonListScreenState
                       );
                     } else if (pokemonListState is ErrorPokemonListState) {
                       if (pokemonListState.exception
-                              is GenericErrorStatusCodeException ||
-                          pokemonListState.exception is GenericCacheException) {
+                          is GenericErrorStatusCodeException) {
                         return ErrorPokemonListWidget(
                           message: S.of(context).messageGenericStatusCodeError,
                           tryAgain: () => controller.getPokemonList(),

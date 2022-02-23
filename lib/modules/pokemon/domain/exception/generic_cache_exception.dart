@@ -1,1 +1,0 @@
-class GenericCacheException implements Exception {}

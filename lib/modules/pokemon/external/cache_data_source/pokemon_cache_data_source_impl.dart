@@ -4,7 +4,6 @@ import '../../data/cache/data_source/pokemon_cache_data_source.dart';
 import '../../data/cache/model/pokemon_cache.dart';
 import '../../data/mapper/cache_to_model.dart';
 import '../../data/mapper/model_to_cache.dart';
-import '../../domain/exception/generic_cache_exception.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 
 class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
@@ -31,12 +30,8 @@ class PokemonCacheDataSourceImpl implements PokemonCacheDataSource {
 
   @override
   Future<List<PokemonModel>> getFavoritePokemonList() async {
-    try {
-      final box = await _hive.openBox(_favoritePokemonListKeyString);
-      final favoritePokemonCacheList = List<PokemonCache>.from(box.values);
-      return favoritePokemonCacheList.toPokemonModelList();
-    } catch (e) {
-      throw GenericCacheException();
-    }
+    final box = await _hive.openBox(_favoritePokemonListKeyString);
+    final favoritePokemonCacheList = List<PokemonCache>.from(box.values);
+    return favoritePokemonCacheList.toPokemonModelList();
   }
 }
