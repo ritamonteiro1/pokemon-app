@@ -224,8 +224,8 @@ class _PokemonDetailsScreenState
                                   S
                                       .of(context)
                                       .pokemonDetailsScreenBaseStatsText,
-                                  style: const TextStyle(
-                                    color: PokedexConstantsColors.primaryColor,
+                                  style: TextStyle(
+                                    color: pokemonBackgroundColorByFirstType,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -235,7 +235,10 @@ class _PokemonDetailsScreenState
                                 height: 10,
                               ),
                               PokemonStatListWidget(
-                                  pokemonStatList: widget.pokemon.statList),
+                                pokemonStatList: widget.pokemon.statList,
+                                pokemonBackgroundColorByFirstType:
+                                    pokemonBackgroundColorByFirstType,
+                              ),
                               const SizedBox(
                                 height: 52,
                               ),

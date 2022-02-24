@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/constants_pokemon_stat_abbreviation.dart';
 import '../../domain/model/pokemon/stat_model.dart';
 
 class PokemonStatListWidget extends StatelessWidget {
   const PokemonStatListWidget({
     required this.pokemonStatList,
+    required this.pokemonBackgroundColorByFirstType,
     Key? key,
   }) : super(key: key);
   final List<StatModel> pokemonStatList;
-  static const denominatorDivisionStat = 100;
+  final Color pokemonBackgroundColorByFirstType;
+  static const _denominatorDivisionStat = 100;
 
   @override
   Widget build(BuildContext context) => ListView.builder(
@@ -28,8 +29,8 @@ class PokemonStatListWidget extends StatelessWidget {
               ),
               child: Text(
                 '${_setStatAbbreviation(index)}',
-                style: const TextStyle(
-                  color: PokedexConstantsColors.primaryColor,
+                style: TextStyle(
+                  color: pokemonBackgroundColorByFirstType,
                   fontSize: 16,
                 ),
               ),
@@ -56,10 +57,9 @@ class PokemonStatListWidget extends StatelessWidget {
           Container(
             width: 160,
             child: LinearProgressIndicator(
-              backgroundColor:
-                  PokedexConstantsColors.primaryColor.withAlpha(20),
-              color: PokedexConstantsColors.primaryColor,
-              value: pokemonStatList[index].base / denominatorDivisionStat,
+              backgroundColor: pokemonBackgroundColorByFirstType.withAlpha(20),
+              color: pokemonBackgroundColorByFirstType,
+              value: pokemonStatList[index].base / _denominatorDivisionStat,
             ),
           )
         ]),

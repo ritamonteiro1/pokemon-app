@@ -13,6 +13,8 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
   final int pokemonHeight;
   final int pokemonWeight;
   final List<String> pokemonAbilityList;
+  static const _denominatorDivisionWeightToKg = 10;
+  static const _denominatorDivisionHeightToMeter = 10;
 
   @override
   Widget build(BuildContext context) => Row(
@@ -33,7 +35,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    '${(pokemonWeight / 10).toStringAsPrecision(1)}'
+                    '${(pokemonWeight / _denominatorDivisionWeightToKg).toStringAsPrecision(1)}'
                     '${S.of(context).kgAbbreviation}',
                     style: const TextStyle(fontSize: 14),
                   ),
@@ -65,7 +67,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    '${(pokemonHeight / 10).toStringAsPrecision(1)}'
+                    '${(pokemonHeight / _denominatorDivisionHeightToMeter).toStringAsPrecision(1)}'
                     '${S.of(context).meterAbbreviation}',
                     style: const TextStyle(fontSize: 14),
                   ),
