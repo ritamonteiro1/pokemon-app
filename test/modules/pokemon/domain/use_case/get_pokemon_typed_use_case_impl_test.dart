@@ -47,6 +47,6 @@ PokemonModel _getSuccessfulPokemonModelMock() => PokemonModel(
       weight: 10,
       image:
           'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
-      color: Colors.white,
+      colorNameByFirstType: 'color',
       description: 'description 1',
     );

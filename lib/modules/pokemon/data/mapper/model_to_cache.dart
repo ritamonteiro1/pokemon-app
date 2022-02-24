@@ -16,7 +16,7 @@ extension PokemonModelToPokemonCachel on PokemonModel {
         typeList: typeList,
         weight: weight,
         image: image,
-        color: color,
+        colorNameByFirstType: colorNameByFirstType,
         description: description,
       );
 }

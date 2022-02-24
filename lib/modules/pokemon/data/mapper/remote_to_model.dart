@@ -1,5 +1,3 @@
-import 'package:pokedex_app/modules/pokemon/utils/get_pokemon_color.dart';
-
 import '../../domain/model/pokemon/pokemon_model.dart';
 import '../../domain/model/pokemon/stat_model.dart';
 import '../remote/model/pokemon/details/pokemon_response.dart';
@@ -29,6 +27,6 @@ PokemonModel convertToPokemonModelList(
       weight: pokemonResponse.weight ?? -1,
       image:
           'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonResponse.id}.svg',
-      color: getPokemonColor(pokemonResponse.types?[0].type?.name ?? ' - '),
+      colorNameByFirstType: pokemonResponse.types?[0].type?.name ?? ' - ',
       description: specieResponse.descriptionList?[9].description ?? ' - ',
     );
