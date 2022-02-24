@@ -234,10 +234,16 @@ class _PokemonDetailsScreenState
                               const SizedBox(
                                 height: 10,
                               ),
-                              PokemonStatListWidget(
-                                pokemonStatList: widget.pokemon.statList,
-                                pokemonBackgroundColorByFirstType:
-                                    pokemonBackgroundColorByFirstType,
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  right: 32,
+                                  left: 32,
+                                ),
+                                child: PokemonStatListWidget(
+                                  pokemonStatList: widget.pokemon.statList,
+                                  pokemonBackgroundColorByFirstType:
+                                      pokemonBackgroundColorByFirstType,
+                                ),
                               ),
                               const SizedBox(
                                 height: 52,

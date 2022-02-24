@@ -20,13 +20,9 @@ class PokemonStatListWidget extends StatelessWidget {
         shrinkWrap: true,
         itemCount: pokemonStatList.length,
         itemBuilder: (context, index) => Row(children: [
-          SizedBox(
-            width: 80,
-            height: 30,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 38,
-              ),
+          Expanded(
+            flex: 2,
+            child: SizedBox(
               child: Text(
                 '${_setStatAbbreviation(index)}',
                 style: TextStyle(
@@ -36,17 +32,18 @@ class PokemonStatListWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: 40,
-            height: 30,
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 8,
-              ),
-              child: Text(
-                pokemonStatList[index].base.toString(),
-                style: const TextStyle(
-                  fontSize: 16,
+          Expanded(
+            flex: 2,
+            child: SizedBox(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 8,
+                ),
+                child: Text(
+                  pokemonStatList[index].base.toString(),
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),
@@ -54,12 +51,15 @@ class PokemonStatListWidget extends StatelessWidget {
           const SizedBox(
             width: 20,
           ),
-          Container(
-            width: 160,
-            child: LinearProgressIndicator(
-              backgroundColor: pokemonBackgroundColorByFirstType.withAlpha(20),
-              color: pokemonBackgroundColorByFirstType,
-              value: pokemonStatList[index].base / _denominatorDivisionStat,
+          Expanded(
+            flex: 10,
+            child: Container(
+              child: LinearProgressIndicator(
+                backgroundColor:
+                    pokemonBackgroundColorByFirstType.withAlpha(20),
+                color: pokemonBackgroundColorByFirstType,
+                value: pokemonStatList[index].base / _denominatorDivisionStat,
+              ),
             ),
           )
         ]),
