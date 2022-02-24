@@ -131,7 +131,7 @@ PokemonModel _getSuccessfulPokemonModelMock() => PokemonModel(
       weight: 10,
       image:
           'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
-      colorName: 'color 1',
+      colorNameByFirstType: 'color',
       description: 'description 1',
     );
 
@@ -149,7 +149,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
         weight: 10,
         image:
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
-        colorName: 'color 1',
+        colorNameByFirstType: 'color',
         description: 'description 1',
       ),
       PokemonModel(
@@ -165,7 +165,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
         weight: 20,
         image:
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg',
-        colorName: 'color 1',
+        colorNameByFirstType: 'colore',
         description: 'description 1',
       ),
     ];

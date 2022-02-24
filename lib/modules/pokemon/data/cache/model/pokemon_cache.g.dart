@@ -25,7 +25,7 @@ class PokemonCacheAdapter extends TypeAdapter<PokemonCache> {
       typeList: (fields[5] as List).cast<String>(),
       weight: fields[6] as int,
       image: fields[7] as String,
-      colorName: fields[8] as String,
+      colorNameByFirstType: fields[8] as String,
       description: fields[9] as String,
     );
   }
@@ -51,7 +51,7 @@ class PokemonCacheAdapter extends TypeAdapter<PokemonCache> {
       ..writeByte(7)
       ..write(obj.image)
       ..writeByte(8)
-      ..write(obj.colorName)
+      ..write(obj.colorNameByFirstType)
       ..writeByte(9)
       ..write(obj.description);
   }

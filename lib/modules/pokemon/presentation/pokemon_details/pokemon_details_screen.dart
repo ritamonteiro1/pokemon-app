@@ -38,7 +38,8 @@ class _PokemonDetailsScreenState
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: widget.backgroundColor,
+        backgroundColor:
+            widget.pokemon.getPokemonColor(widget.pokemon.colorNameByFirstType),
         appBar: AppBar(
           elevation: 0,
           title: Row(
@@ -75,8 +76,7 @@ class _PokemonDetailsScreenState
             final pokemonDetailsState = controller.pokemonDetailsState;
             if (pokemonDetailsState is LoadingPokemonDetailsState) {
               return const LoadingWidget(
-                colorCircularProgressIndicator:
-                    PokedexConstantsColors.primaryColor,
+                colorCircularProgressIndicator: Colors.white,
               );
             } else if (pokemonDetailsState is InitialPokemonDetailsState ||
                 pokemonDetailsState is SuccessPokemonDetailsState) {
@@ -116,7 +116,8 @@ class _PokemonDetailsScreenState
                                   placeholderBuilder: (context) =>
                                       const LoadingWidget(
                                           colorCircularProgressIndicator:
-                                              Colors.grey),
+                                              PokedexConstantsColors
+                                                  .primaryColor),
                                 ),
                               ),
                             ),
@@ -200,9 +201,11 @@ class _PokemonDetailsScreenState
                               Padding(
                                 padding:
                                     const EdgeInsets.only(right: 32, left: 32),
-                                child: Text(
-                                  widget.pokemon.description,
-                                  textAlign: TextAlign.justify,
+                                child: Center(
+                                  child: Text(
+                                    widget.pokemon.description,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
                               const SizedBox(

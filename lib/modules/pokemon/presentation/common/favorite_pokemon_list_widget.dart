@@ -37,8 +37,9 @@ class FavoritePokemonListWidget extends StatelessWidget {
                     elevation: 0,
                     margin: const EdgeInsets.all(2),
                     shape: RoundedRectangleBorder(
-                      side: const BorderSide(
-                        color: PokedexConstantsColors.primaryColor,
+                      side: BorderSide(
+                        color: pokemon
+                            .getPokemonColor(pokemon.colorNameByFirstType),
                         width: 1,
                       ),
                       borderRadius: BorderRadius.circular(10),
@@ -52,8 +53,10 @@ class FavoritePokemonListWidget extends StatelessWidget {
                               Text(
                                 '${S.of(context).hashtag}'
                                 '${pokemon.id.toString()}',
-                                style: const TextStyle(
-                                  color: PokedexConstantsColors.primaryColor,
+                                style: TextStyle(
+                                  color: pokemon.getPokemonColor(
+                                      pokemon.colorNameByFirstType),
+                                  fontSize: 8,
                                 ),
                               ),
                               const SizedBox(
@@ -67,14 +70,16 @@ class FavoritePokemonListWidget extends StatelessWidget {
                           child: SvgPicture.network(pokemon.image,
                               placeholderBuilder: (context) =>
                                   const LoadingWidget(
-                                    colorCircularProgressIndicator: Colors.grey,
+                                    colorCircularProgressIndicator:
+                                        PokedexConstantsColors.primaryColor,
                                   )),
                         ),
                         Expanded(
                           child: Container(
-                            decoration: const BoxDecoration(
-                              color: PokedexConstantsColors.primaryColor,
-                              borderRadius: BorderRadius.only(
+                            decoration: BoxDecoration(
+                              color: pokemon.getPokemonColor(
+                                  pokemon.colorNameByFirstType),
+                              borderRadius: const BorderRadius.only(
                                 bottomLeft: Radius.circular(10),
                                 bottomRight: Radius.circular(10),
                               ),

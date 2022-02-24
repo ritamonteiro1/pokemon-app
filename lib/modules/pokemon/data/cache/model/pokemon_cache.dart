@@ -15,7 +15,7 @@ class PokemonCache {
     required this.typeList,
     required this.weight,
     required this.image,
-    required this.colorName,
+    required this.colorNameByFirstType,
     required this.description,
   });
 
@@ -36,7 +36,7 @@ class PokemonCache {
   @HiveField(7)
   final String image;
   @HiveField(8)
-  final String colorName;
+  final String colorNameByFirstType;
   @HiveField(9)
   final String description;
 }
