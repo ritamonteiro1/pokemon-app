@@ -5,9 +5,9 @@ class PokemonConstantsImages {
   static const downArrow = 'assets/images/down_arrow.png';
   static const reload = 'assets/images/reload.png';
   static const rightArrow = 'assets/images/right_arrow.png';
-  static const rulerHeight = 'assets/images/ruler_height.png';
+  static const rulerHeightBlack = 'assets/images/ruler_height_black.png';
   static const search = 'assets/images/search.png';
-  static const weightScales = 'assets/images/weight_scales.png';
+  static const weightScalesBlack = 'assets/images/weight_scales_black.png';
   static const heart = 'assets/images/heart.png';
   static const loading = 'assets/images/loading.png';
   static const error = 'assets/images/error.png';
@@ -17,4 +17,6 @@ class PokemonConstantsImages {
   static const emptyHeart = 'assets/images/empty_heart.png';
   static const switchValueTrue = 'assets/images/switch_true.png';
   static const switchValueFalse = 'assets/images/switch_false.png';
+  static const rulerHeightWhite = 'assets/images/ruler_height_white.png';
+  static const weightScalesWhite = 'assets/images/weight_scales_white.png';
 }

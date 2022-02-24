@@ -28,7 +28,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 children: [
                   const Image(
                     image: AssetImage(
-                      PokemonConstantsImages.weightScales,
+                      PokemonConstantsImages.weightScalesBlack,
                     ),
                   ),
                   const SizedBox(
@@ -60,7 +60,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 children: [
                   const Image(
                     image: AssetImage(
-                      PokemonConstantsImages.rulerHeight,
+                      PokemonConstantsImages.rulerHeightBlack,
                     ),
                   ),
                   const SizedBox(
