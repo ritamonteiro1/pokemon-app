@@ -131,23 +131,27 @@ class _PokemonDetailsScreenState
                           elevation: 4,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(26),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      controller.togglePokemonFavorite(
-                                          widget.pokemon);
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(
-                                        20,
-                                      ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 32,
+                              right: 32,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 18,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () {
+                                        controller.togglePokemonFavorite(
+                                            widget.pokemon);
+                                      },
                                       child: Observer(builder: (context) {
                                         final isFavoritePokemon =
                                             controller.isPokemonFavorite;
@@ -172,55 +176,39 @@ class _PokemonDetailsScreenState
                                         }
                                       }),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 32,
-                                  left: 32,
+                                  ],
                                 ),
-                                child: PokemonTypeListWidget(
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                PokemonTypeListWidget(
                                   pokemonModel: widget.pokemon,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 32,
-                                  left: 32,
+                                const SizedBox(
+                                  height: 32,
                                 ),
-                                child: PokemonCharacteristicsWidget(
+                                PokemonCharacteristicsWidget(
                                   pokemonHeight: widget.pokemon.height,
                                   pokemonWeight: widget.pokemon.weight,
                                   pokemonAbilityList:
                                       widget.pokemon.abilityList,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 30,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 32, left: 32),
-                                child: Center(
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                Center(
                                   child: Text(
                                     widget.pokemon.description,
                                     textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 32,
-                                  left: 32,
+                                const SizedBox(
+                                  height: 32,
                                 ),
-                                child: Text(
+                                Text(
                                   S
                                       .of(context)
                                       .pokemonDetailsScreenBaseStatsText,
@@ -230,25 +218,19 @@ class _PokemonDetailsScreenState
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 32,
-                                  left: 32,
+                                const SizedBox(
+                                  height: 10,
                                 ),
-                                child: PokemonStatListWidget(
+                                PokemonStatListWidget(
                                   pokemonStatList: widget.pokemon.statList,
                                   pokemonBackgroundColorByFirstType:
                                       pokemonBackgroundColorByFirstType,
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 52,
-                              ),
-                            ],
+                                const SizedBox(
+                                  height: 52,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
