@@ -35,12 +35,18 @@ abstract class _PokemonDetailsStore with Store {
   bool? isPokemonFavorite;
 
   @action
-  Future<void> startPokemonDetailsScreen() async {
+  Future<void> startPokemonDetailsScreen(PokemonModel pokemon) async {
     pokemonDetailsState = LoadingPokemonDetailsState();
     await Future.delayed(
       const Duration(seconds: 2),
     );
-    pokemonDetailsState = InitialPokemonDetailsState();
+    final isFavorite = await _verifyIfPokemonIsFavorite.call(pokemon);
+    if (isFavorite) {
+      pokemon.isFavorite = true;
+    } else {
+      pokemon.isFavorite = false;
+    }
+    pokemonDetailsState = InitialPokemonDetailsState(pokemon);
   }
 
   @action

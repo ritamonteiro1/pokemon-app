@@ -12,6 +12,12 @@ class LoadingPokemonDetailsState extends Equatable
 
 class InitialPokemonDetailsState extends Equatable
     implements PokemonDetailsState {
+  const InitialPokemonDetailsState(
+    this.pokemonModel,
+  );
+
+  final PokemonModel pokemonModel;
+
   @override
   List<Object?> get props => [];
 }

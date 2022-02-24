@@ -14,7 +14,6 @@ class VerifyIfPokemonIsFavoriteUseCaseImpl
   final PokemonRepository _pokemonRepository;
 
   @override
-  Future<bool> call(PokemonModel pokemonModel) {
-    throw UnimplementedError();
-  }
+  Future<bool> call(PokemonModel pokemonModel) =>
+      _pokemonRepository.verifyIfPokemonIsFavorite(pokemonModel);
 }

@@ -59,4 +59,9 @@ class MockPokemonRepository extends _i1.Mock implements _i3.PokemonRepository {
               returnValue:
                   Future<List<_i2.PokemonModel>>.value(<_i2.PokemonModel>[]))
           as _i4.Future<List<_i2.PokemonModel>>);
+  @override
+  _i4.Future<bool> verifyIfPokemonIsFavorite(_i2.PokemonModel? pokemonModel) =>
+      (super.noSuchMethod(
+          Invocation.method(#verifyIfPokemonIsFavorite, [pokemonModel]),
+          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
 }
