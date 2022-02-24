@@ -93,6 +93,8 @@ flutter:
     - assets/images/back.png
     - assets/images/down.png
     - assets/images/empty_heart.png
+    - assets/images/switch_true.png
+    - assets/images/switch_false.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
