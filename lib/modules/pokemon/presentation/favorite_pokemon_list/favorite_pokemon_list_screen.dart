@@ -6,6 +6,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
+import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/empty_favorite_pokemon_list_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
 import '../common/card_pokemon_list_widget.dart';
@@ -92,11 +93,26 @@ class _FavoritePokemonListScreenState
                                   itemBuilder: (context, index) {
                                     final pokemon = favoritePokemonListState
                                         .favoritePokemonList[index];
-                                    return CardPokemonListWidget(
-                                      pokemon: pokemon,
-                                      backgroundColorPokemon:
-                                          pokemon.mapPokemonTypeToColor(
-                                              pokemon.colorNameByFirstType),
+                                    return GestureDetector(
+                                      onTap: () {
+                                        Modular.to.pushNamed(
+                                          PokemonConstantsRoutes
+                                              .pokemonDetailsScreen,
+                                          arguments: [
+                                            pokemon,
+                                            if (controller.isBackgroundDark)
+                                              PokemonConstantsColors.darkGray
+                                            else
+                                              PokemonConstantsColors.white,
+                                          ],
+                                        );
+                                      },
+                                      child: CardPokemonListWidget(
+                                        pokemon: pokemon,
+                                        backgroundColorPokemon:
+                                            pokemon.mapPokemonTypeToColor(
+                                                pokemon.colorNameByFirstType),
+                                      ),
                                     );
                                   },
                                 ),

@@ -79,9 +79,9 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
       AsyncAction('_PokemonDetailsStore.startPokemonDetailsScreen');
 
   @override
-  Future<void> startPokemonDetailsScreen() {
+  Future<void> startPokemonDetailsScreen(PokemonModel pokemon) {
     return _$startPokemonDetailsScreenAsyncAction
-        .run(() => super.startPokemonDetailsScreen());
+        .run(() => super.startPokemonDetailsScreen(pokemon));
   }
 
   final _$togglePokemonFavoriteAsyncAction =

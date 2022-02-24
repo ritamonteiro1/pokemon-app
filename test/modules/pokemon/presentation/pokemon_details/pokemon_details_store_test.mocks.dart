@@ -11,6 +11,8 @@ import 'package:pokedex_app/modules/pokemon/domain/use_case/add_favorite_pokemon
     as _i2;
 import 'package:pokedex_app/modules/pokemon/domain/use_case/remove_favorite_pokemon_use_case.dart'
     as _i5;
+import 'package:pokedex_app/modules/pokemon/domain/use_case/verify_if_pokemon_is_favorite_use_case.dart'
+    as _i6;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -52,4 +54,19 @@ class MockRemoveFavoritePokemonUseCase extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#call, [pokemonModel]),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i3.Future<void>);
+}
+
+/// A class which mocks [VerifyIfPokemonIsFavoriteUseCase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockVerifyIfPokemonIsFavoriteUseCase extends _i1.Mock
+    implements _i6.VerifyIfPokemonIsFavoriteUseCase {
+  MockVerifyIfPokemonIsFavoriteUseCase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i3.Future<bool> call(_i4.PokemonModel? pokemonModel) =>
+      (super.noSuchMethod(Invocation.method(#call, [pokemonModel]),
+          returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
 }
