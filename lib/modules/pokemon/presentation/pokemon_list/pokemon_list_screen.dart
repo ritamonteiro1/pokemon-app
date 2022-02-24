@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pokedex_app/modules/pokemon/presentation/common/pokemon_list_widget.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -10,7 +11,6 @@ import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
-import '../common/card_pokemon_list_widget.dart';
 import '../common/error_pokemon_list_widget.dart';
 import '../common/header_ioasys_widget.dart';
 import '../common/loading_widget.dart';
@@ -173,58 +173,21 @@ class _PokemonListScreenState
                         ),
                       );
                     } else if (pokemonListState is SuccessPokemonListState) {
-                      return Expanded(
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: GridView.builder(
-                                key: const PageStorageKey(0),
-                                controller: scrollController,
-                                itemCount: pokemonListState.pokemonList.length,
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  mainAxisSpacing: 4,
-                                  crossAxisSpacing: 4,
-                                  crossAxisCount: 3,
-                                ),
-                                itemBuilder: (context, index) {
-                                  final pokemon =
-                                      pokemonListState.pokemonList[index];
-                                  return GestureDetector(
-                                    onTap: () {
-                                      Modular.to.pushNamed(
-                                        PokemonConstantsRoutes
-                                            .pokemonDetailsScreen,
-                                        arguments: [
-                                          pokemon,
-                                          if (controller.isBackgroundDark)
-                                            PokemonConstantsColors.darkGray
-                                          else
-                                            PokemonConstantsColors.white,
-                                        ],
-                                      );
-                                    },
-                                    child: CardPokemonListWidget(
-                                      pokemon: pokemon,
-                                      backgroundColorPokemon:
-                                          pokemon.mapPokemonTypeToColor(
-                                              pokemon.colorNameByFirstType),
-                                    ),
-                                  );
-                                },
-                              ),
+                      return PokemonListWidget(
+                        scrollController: scrollController,
+                        pokemonList: pokemonListState.pokemonList,
+                        backgroundColor: controller.isBackgroundDark
+                            ? PokemonConstantsColors.darkGray
+                            : PokemonConstantsColors.white,
+                        downWidget: const Padding(
+                          padding: EdgeInsets.only(
+                            top: 10,
+                          ),
+                          child: Image(
+                            image: AssetImage(
+                              PokemonConstantsImages.down,
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(
-                                top: 10,
-                              ),
-                              child: Image(
-                                image: AssetImage(
-                                  PokemonConstantsImages.down,
-                                ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       );
                     } else if (pokemonListState is ErrorPokemonListState) {
