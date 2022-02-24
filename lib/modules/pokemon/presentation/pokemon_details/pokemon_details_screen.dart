@@ -35,7 +35,7 @@ class _PokemonDetailsScreenState
   @override
   void initState() {
     super.initState();
-    controller.startPokemonDetailsScreen();
+    controller.startPokemonDetailsScreen(widget.pokemon);
     pokemonBackgroundColorByFirstType = widget.pokemon
         .mapPokemonTypeToColor(widget.pokemon.colorNameByFirstType);
   }

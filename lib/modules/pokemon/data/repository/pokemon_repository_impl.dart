@@ -45,4 +45,18 @@ class PokemonRepositoryImpl implements PokemonRepository {
   @override
   Future<void> removeFavoritePokemon(PokemonModel pokemonModel) async =>
       _pokemonCacheDataSource.removeFavoritePokemon(pokemonModel);
+
+  @override
+  Future<bool> verifyIfPokemonIsFavorite(PokemonModel pokemonModel) async {
+    final favoritePokemons =
+        await _pokemonCacheDataSource.getFavoritePokemonList();
+    if (favoritePokemons.isNotEmpty) {
+      for (final favoritePokemon in favoritePokemons) {
+        if (favoritePokemon.id == pokemonModel.id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 }
