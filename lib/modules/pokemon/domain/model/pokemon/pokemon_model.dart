@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../../constants/pokemon_constants_colors.dart';
+import '../../../constants/pokemon_constants_type.dart';
 import 'stat_model.dart';
 
 class PokemonModel extends Equatable {
@@ -47,58 +48,58 @@ class PokemonModel extends Equatable {
       ];
 
   Color mapPokemonTypeToColor(String pokemonType) {
-    if (pokemonType.contains('rock')) {
+    if (pokemonType.contains(PokemonConstantsType.rock)) {
       return PokemonConstantsColors.rock;
     }
-    if (pokemonType.contains('ghost')) {
+    if (pokemonType.contains(PokemonConstantsType.ghost)) {
       return PokemonConstantsColors.ghost;
     }
-    if (pokemonType.contains('steel')) {
+    if (pokemonType.contains(PokemonConstantsType.steel)) {
       return PokemonConstantsColors.steel;
     }
-    if (pokemonType.contains('water')) {
+    if (pokemonType.contains(PokemonConstantsType.water)) {
       return PokemonConstantsColors.water;
     }
-    if (pokemonType.contains('grass')) {
+    if (pokemonType.contains(PokemonConstantsType.grass)) {
       return PokemonConstantsColors.grass;
     }
-    if (pokemonType.contains('psychic')) {
+    if (pokemonType.contains(PokemonConstantsType.psychic)) {
       return PokemonConstantsColors.psychic;
     }
-    if (pokemonType.contains('ice')) {
+    if (pokemonType.contains(PokemonConstantsType.ice)) {
       return PokemonConstantsColors.ice;
     }
-    if (pokemonType.contains('dark')) {
+    if (pokemonType.contains(PokemonConstantsType.dark)) {
       return PokemonConstantsColors.dark;
     }
-    if (pokemonType.contains('fairy')) {
+    if (pokemonType.contains(PokemonConstantsType.fairy)) {
       return PokemonConstantsColors.fairy;
     }
-    if (pokemonType.contains('normal')) {
+    if (pokemonType.contains(PokemonConstantsType.normal)) {
       return PokemonConstantsColors.normal;
     }
-    if (pokemonType.contains('fighting')) {
+    if (pokemonType.contains(PokemonConstantsType.fighting)) {
       return PokemonConstantsColors.fighting;
     }
-    if (pokemonType.contains('flying')) {
+    if (pokemonType.contains(PokemonConstantsType.flying)) {
       return PokemonConstantsColors.flying;
     }
-    if (pokemonType.contains('poison')) {
+    if (pokemonType.contains(PokemonConstantsType.poison)) {
       return PokemonConstantsColors.poison;
     }
-    if (pokemonType.contains('ground')) {
+    if (pokemonType.contains(PokemonConstantsType.ground)) {
       return PokemonConstantsColors.ground;
     }
-    if (pokemonType.contains('bug')) {
+    if (pokemonType.contains(PokemonConstantsType.bug)) {
       return PokemonConstantsColors.bug;
     }
-    if (pokemonType.contains('fire')) {
+    if (pokemonType.contains(PokemonConstantsType.fire)) {
       return PokemonConstantsColors.fire;
     }
-    if (pokemonType.contains('electric')) {
+    if (pokemonType.contains(PokemonConstantsType.electric)) {
       return PokemonConstantsColors.electric;
     }
-    if (pokemonType.contains('dragon')) {
+    if (pokemonType.contains(PokemonConstantsType.dragon)) {
       return PokemonConstantsColors.dragon;
     }
     return PokedexConstantsColors.primaryColor;
