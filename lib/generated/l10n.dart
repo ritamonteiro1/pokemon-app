@@ -190,16 +190,6 @@ class S {
     );
   }
 
-  /// `Under implementation`
-  String get favoritePokemonListScreenText {
-    return Intl.message(
-      'Under implementation',
-      name: 'favoritePokemonListScreenText',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `#`
   String get hashtag {
     return Intl.message(

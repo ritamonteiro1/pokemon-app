@@ -30,8 +30,6 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Lista vacía. agrega tus pokemons favoritos aqui"),
         "favoritePokemonListScreenMyFavoritePokemons":
             MessageLookupByLibrary.simpleMessage("Mis favoritos"),
-        "favoritePokemonListScreenText":
-            MessageLookupByLibrary.simpleMessage("En fase de ejecución"),
         "hashtag": MessageLookupByLibrary.simpleMessage("#"),
         "kgAbbreviation": MessageLookupByLibrary.simpleMessage(" kg"),
         "messageAlertOps": MessageLookupByLibrary.simpleMessage("Ops"),
