@@ -10,4 +10,6 @@ abstract class PokemonRepository {
   Future<void> removeFavoritePokemon(PokemonModel pokemonModel);
 
   Future<List<PokemonModel>> getFavoritePokemonList();
+
+  Future<bool> verifyIfPokemonIsFavorite(PokemonModel pokemonModel);
 }
