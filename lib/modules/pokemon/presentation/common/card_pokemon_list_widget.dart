@@ -37,7 +37,7 @@ class CardPokemonListWidget extends StatelessWidget {
                     '${pokemon.id.toString()}',
                     style: TextStyle(
                       color: backgroundColorPokemon,
-                      fontSize: 8,
+                      fontSize: 10,
                     ),
                   ),
                   const SizedBox(

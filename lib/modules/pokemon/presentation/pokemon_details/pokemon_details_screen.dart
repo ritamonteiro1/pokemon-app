@@ -66,7 +66,7 @@ class _PokemonDetailsScreenState
                 '${widget.pokemon.id.toString()}',
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 12,
+                  fontSize: 14,
                 ),
               ),
               const SizedBox(
