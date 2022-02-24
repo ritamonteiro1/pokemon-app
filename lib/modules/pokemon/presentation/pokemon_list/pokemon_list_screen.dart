@@ -10,9 +10,10 @@ import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
+import '../common/card_pokemon_list_widget.dart';
 import '../common/error_pokemon_list_widget.dart';
+import '../common/header_ioasys_widget.dart';
 import '../common/loading_widget.dart';
-import '../common/pokemon_list_widget.dart';
 import 'not_found_pokemon_widget.dart';
 import 'pokemon_list_state.dart';
 import 'pokemon_list_store.dart';
@@ -74,37 +75,11 @@ class _PokemonListScreenState
             child: Center(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Image.asset(
-                          PokemonConstantsImages.logoIoasys,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 14,
-                      ),
-                      Text(
-                        S.of(context).appName,
-                        style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: PokedexConstantsColors.primaryColor,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 82,
-                      ),
-                      Expanded(
-                        child: Switch(
-                            value: controller.isBackgroundDark,
-                            activeColor: PokedexConstantsColors.primaryColor,
-                            onChanged: (_) {
-                              controller.toggleBackground();
-                            }),
-                      ),
-                    ],
-                  ),
+                  HeaderIoasysWidget(
+                      valueSwitch: controller.isBackgroundDark,
+                      onChangedSwitch: (_) {
+                        controller.toggleBackground();
+                      }),
                   Padding(
                     padding: const EdgeInsets.only(
                       top: 40,
@@ -174,8 +149,9 @@ class _PokemonListScreenState
                         ),
                         GestureDetector(
                           onTap: () {
-                            Modular.to.pushNamed(PokemonConstantsRoutes
-                                .favoritePokemonListScreen);
+                            Modular.to.pushNamed(
+                              PokemonConstantsRoutes.favoritePokemonListScreen,
+                            );
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(8),
@@ -197,12 +173,56 @@ class _PokemonListScreenState
                         ),
                       );
                     } else if (pokemonListState is SuccessPokemonListState) {
-                      return PokemonListWidget(
-                        pokemonList: pokemonListState.pokemonList,
-                        scrollController: scrollController,
-                        backgroundColor: controller.isBackgroundDark
-                            ? PokemonConstantsColors.darkGray
-                            : PokemonConstantsColors.white,
+                      return Expanded(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: GridView.builder(
+                                key: const PageStorageKey(0),
+                                controller: scrollController,
+                                itemCount: pokemonListState.pokemonList.length,
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisSpacing: 4,
+                                  crossAxisSpacing: 4,
+                                  crossAxisCount: 3,
+                                ),
+                                itemBuilder: (context, index) {
+                                  final pokemon =
+                                      pokemonListState.pokemonList[index];
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Modular.to.pushNamed(
+                                        PokemonConstantsRoutes
+                                            .pokemonDetailsScreen,
+                                        arguments: [
+                                          pokemon,
+                                          if (controller.isBackgroundDark)
+                                            PokemonConstantsColors.darkGray
+                                          else
+                                            PokemonConstantsColors.white,
+                                        ],
+                                      );
+                                    },
+                                    child: CardPokemonListWidget(
+                                      pokemon: pokemon,
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(
+                                top: 10,
+                              ),
+                              child: Image(
+                                image: AssetImage(
+                                  PokemonConstantsImages.down,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     } else if (pokemonListState is ErrorPokemonListState) {
                       if (pokemonListState.exception
