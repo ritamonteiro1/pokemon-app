@@ -18,11 +18,11 @@ import 'pokemon_type_list_widget.dart';
 class PokemonDetailsScreen extends StatefulWidget {
   const PokemonDetailsScreen({
     required this.pokemon,
-    required this.backgroundColor,
+    required this.backgroundColorCard,
     Key? key,
   }) : super(key: key);
   final PokemonModel pokemon;
-  final Color backgroundColor;
+  final Color backgroundColorCard;
 
   @override
   _PokemonDetailsScreenState createState() => _PokemonDetailsScreenState();
@@ -30,17 +30,21 @@ class PokemonDetailsScreen extends StatefulWidget {
 
 class _PokemonDetailsScreenState
     extends ModularState<PokemonDetailsScreen, PokemonDetailsStore> {
+  late Color pokemonBackgroundColorByFirstType;
+
   @override
   void initState() {
     super.initState();
     controller.startPokemonDetailsScreen();
+    pokemonBackgroundColorByFirstType =
+        widget.pokemon.getPokemonColor(widget.pokemon.colorNameByFirstType);
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor:
-            widget.pokemon.getPokemonColor(widget.pokemon.colorNameByFirstType),
+        backgroundColor: pokemonBackgroundColorByFirstType,
         appBar: AppBar(
+          backgroundColor: pokemonBackgroundColorByFirstType,
           elevation: 0,
           title: Row(
             children: [

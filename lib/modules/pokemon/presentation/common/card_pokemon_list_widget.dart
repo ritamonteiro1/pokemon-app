@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import 'loading_widget.dart';
 
@@ -49,9 +48,9 @@ class CardPokemonListWidget extends StatelessWidget {
             Expanded(
               flex: 4,
               child: SvgPicture.network(pokemon.image,
-                  placeholderBuilder: (context) => const LoadingWidget(
-                        colorCircularProgressIndicator:
-                            PokedexConstantsColors.primaryColor,
+                  placeholderBuilder: (context) => LoadingWidget(
+                        colorCircularProgressIndicator: pokemon
+                            .getPokemonColor(pokemon.colorNameByFirstType),
                       )),
             ),
             Expanded(

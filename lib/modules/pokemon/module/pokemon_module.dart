@@ -60,7 +60,7 @@ class PokemonModule extends Module {
           PokemonConstantsRoutes.pokemonDetails,
           child: (context, args) => PokemonDetailsScreen(
             pokemon: args.data[0],
-            backgroundColor: args.data[1],
+            backgroundColorCard: args.data[1],
           ),
         ),
         ChildRoute(
