@@ -104,7 +104,7 @@ class _PokemonDetailsScreenState
                                 PokemonConstantsImages.pokeball,
                                 height: 120,
                                 width: 120,
-                                color: Colors.grey.withOpacity(1),
+                                color: Colors.white.withOpacity(1),
                                 colorBlendMode: BlendMode.modulate,
                               ),
                             ),

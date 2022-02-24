@@ -48,10 +48,14 @@ class CardPokemonListWidget extends StatelessWidget {
             ),
             Expanded(
               flex: 4,
-              child: SvgPicture.network(pokemon.image,
-                  placeholderBuilder: (context) => LoadingWidget(
-                        colorCircularProgressIndicator: backgroundColorPokemon,
-                      )),
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: SvgPicture.network(pokemon.image,
+                    placeholderBuilder: (context) => LoadingWidget(
+                          colorCircularProgressIndicator:
+                              backgroundColorPokemon,
+                        )),
+              ),
             ),
             Expanded(
               child: Container(
