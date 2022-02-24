@@ -15,4 +15,6 @@ class PokemonConstantsImages {
   static const back = 'assets/images/back.png';
   static const down = 'assets/images/down.png';
   static const emptyHeart = 'assets/images/empty_heart.png';
+  static const switchValueTrue = 'assets/images/switch_true.png';
+  static const switchValueFalse = 'assets/images/switch_false.png';
 }

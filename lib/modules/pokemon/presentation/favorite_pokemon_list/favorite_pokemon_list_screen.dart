@@ -93,7 +93,11 @@ class _FavoritePokemonListScreenState
                                     final pokemon = favoritePokemonListState
                                         .favoritePokemonList[index];
                                     return CardPokemonListWidget(
-                                        pokemon: pokemon);
+                                      pokemon: pokemon,
+                                      backgroundColorPokemon:
+                                          pokemon.getPokemonColor(
+                                              pokemon.colorNameByFirstType),
+                                    );
                                   },
                                 ),
                               ),

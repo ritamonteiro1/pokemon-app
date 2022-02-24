@@ -8,9 +8,11 @@ import 'loading_widget.dart';
 class CardPokemonListWidget extends StatelessWidget {
   const CardPokemonListWidget({
     required this.pokemon,
+    required this.backgroundColorPokemon,
     Key? key,
   }) : super(key: key);
   final PokemonModel pokemon;
+  final Color backgroundColorPokemon;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -19,7 +21,7 @@ class CardPokemonListWidget extends StatelessWidget {
         margin: const EdgeInsets.all(2),
         shape: RoundedRectangleBorder(
           side: BorderSide(
-            color: pokemon.getPokemonColor(pokemon.colorNameByFirstType),
+            color: backgroundColorPokemon,
             width: 1,
           ),
           borderRadius: BorderRadius.circular(10),
@@ -34,8 +36,7 @@ class CardPokemonListWidget extends StatelessWidget {
                     '${S.of(context).hashtag}'
                     '${pokemon.id.toString()}',
                     style: TextStyle(
-                      color:
-                          pokemon.getPokemonColor(pokemon.colorNameByFirstType),
+                      color: backgroundColorPokemon,
                       fontSize: 8,
                     ),
                   ),
@@ -49,14 +50,13 @@ class CardPokemonListWidget extends StatelessWidget {
               flex: 4,
               child: SvgPicture.network(pokemon.image,
                   placeholderBuilder: (context) => LoadingWidget(
-                        colorCircularProgressIndicator: pokemon
-                            .getPokemonColor(pokemon.colorNameByFirstType),
+                        colorCircularProgressIndicator: backgroundColorPokemon,
                       )),
             ),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: pokemon.getPokemonColor(pokemon.colorNameByFirstType),
+                  color: backgroundColorPokemon,
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(10),
                     bottomRight: Radius.circular(10),
