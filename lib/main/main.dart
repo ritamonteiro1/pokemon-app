@@ -16,8 +16,10 @@ Future<void> main() async {
     ..registerAdapter<PokemonCache>(PokemonCacheAdapter())
     ..registerAdapter<StatCache>(StatCacheAdapter());
 
-  runApp(ModularApp(
-    module: PokedexModule(),
-    child: const PokedexApp(),
-  ));
+  runApp(
+    ModularApp(
+      module: PokedexModule(),
+      child: const PokedexApp(),
+    ),
+  );
 }
