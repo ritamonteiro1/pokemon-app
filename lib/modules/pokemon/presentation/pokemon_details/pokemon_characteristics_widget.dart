@@ -33,7 +33,8 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    '${pokemonHeight.toString()}${S.of(context).kgAbbreviation}',
+                    '${(pokemonWeight / 10).toStringAsPrecision(1)}'
+                    '${S.of(context).kgAbbreviation}',
                     style: const TextStyle(fontSize: 14),
                   ),
                 ],
@@ -64,7 +65,8 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                     width: 4,
                   ),
                   Text(
-                    '${pokemonWeight.toString()}${S.of(context).meterAbbreviation}',
+                    '${(pokemonHeight / 10).toStringAsPrecision(1)}'
+                    '${S.of(context).meterAbbreviation}',
                     style: const TextStyle(fontSize: 14),
                   ),
                 ],
