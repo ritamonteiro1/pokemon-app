@@ -36,8 +36,8 @@ class _PokemonDetailsScreenState
   void initState() {
     super.initState();
     controller.startPokemonDetailsScreen();
-    pokemonBackgroundColorByFirstType =
-        widget.pokemon.getPokemonColor(widget.pokemon.colorNameByFirstType);
+    pokemonBackgroundColorByFirstType = widget.pokemon
+        .mapPokemonTypeToColor(widget.pokemon.colorNameByFirstType);
   }
 
   @override
@@ -181,7 +181,7 @@ class _PokemonDetailsScreenState
                                   left: 32,
                                 ),
                                 child: PokemonTypeListWidget(
-                                  pokemonTypeList: widget.pokemon.typeList,
+                                  pokemonModel: widget.pokemon,
                                 ),
                               ),
                               const SizedBox(

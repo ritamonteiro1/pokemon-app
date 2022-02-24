@@ -207,7 +207,7 @@ class _PokemonListScreenState
                                     child: CardPokemonListWidget(
                                       pokemon: pokemon,
                                       backgroundColorPokemon:
-                                          pokemon.getPokemonColor(
+                                          pokemon.mapPokemonTypeToColor(
                                               pokemon.colorNameByFirstType),
                                     ),
                                   );

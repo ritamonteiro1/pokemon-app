@@ -46,7 +46,7 @@ class PokemonModel extends Equatable {
         description,
       ];
 
-  Color getPokemonColor(String pokemonType) {
+  Color mapPokemonTypeToColor(String pokemonType) {
     if (pokemonType.contains('rock')) {
       return PokemonConstantsColors.rock;
     }

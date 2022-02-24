@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 
-import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../domain/model/pokemon/pokemon_model.dart';
 
 class PokemonTypeListWidget extends StatelessWidget {
   const PokemonTypeListWidget({
-    required this.pokemonTypeList,
+    required this.pokemonModel,
     Key? key,
   }) : super(key: key);
-  final List<String> pokemonTypeList;
+  final PokemonModel pokemonModel;
 
   @override
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.start,
-        children: pokemonTypeList
+        children: pokemonModel.typeList
             .map(
               (type) => Padding(
                 padding: const EdgeInsets.all(
                   4,
                 ),
                 child: FilterChip(
-                    backgroundColor: PokedexConstantsColors.primaryColor,
+                    backgroundColor: pokemonModel.mapPokemonTypeToColor(type),
                     label: Text(
                       type,
                       style: const TextStyle(

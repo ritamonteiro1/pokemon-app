@@ -95,7 +95,7 @@ class _FavoritePokemonListScreenState
                                     return CardPokemonListWidget(
                                       pokemon: pokemon,
                                       backgroundColorPokemon:
-                                          pokemon.getPokemonColor(
+                                          pokemon.mapPokemonTypeToColor(
                                               pokemon.colorNameByFirstType),
                                     );
                                   },
