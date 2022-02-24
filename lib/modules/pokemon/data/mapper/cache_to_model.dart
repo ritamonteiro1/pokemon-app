@@ -14,7 +14,7 @@ extension PokemonCacheToPokemonModel on PokemonCache {
         typeList: typeList,
         weight: weight,
         image: image,
-        colorName: colorName,
+        color: color,
         description: description,
       );
 }
@@ -32,7 +32,7 @@ extension PokemonCacheListToPokemonModelList on List<PokemonCache> {
               .toList(),
           weight: item.weight,
           abilityList: item.abilityList,
-          colorName: item.colorName,
+          color: item.color,
           description: item.description,
         ),
       ).toList();

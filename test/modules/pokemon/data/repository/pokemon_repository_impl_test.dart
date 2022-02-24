@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -131,7 +132,7 @@ PokemonModel _getSuccessfulPokemonModelMock() => PokemonModel(
       weight: 10,
       image:
           'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
-      colorName: 'color 1',
+      color: Colors.white,
       description: 'description 1',
     );
 
@@ -149,7 +150,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
         weight: 10,
         image:
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
-        colorName: 'color 1',
+        color: Colors.white,
         description: 'description 1',
       ),
       PokemonModel(
@@ -165,7 +166,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
         weight: 20,
         image:
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg',
-        colorName: 'color 1',
+        color: Colors.white,
         description: 'description 1',
       ),
     ];

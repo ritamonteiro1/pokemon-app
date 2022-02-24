@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import 'stat_cache.dart';
@@ -15,7 +16,7 @@ class PokemonCache {
     required this.typeList,
     required this.weight,
     required this.image,
-    required this.colorName,
+    required this.color,
     required this.description,
   });
 
@@ -36,7 +37,7 @@ class PokemonCache {
   @HiveField(7)
   final String image;
   @HiveField(8)
-  final String colorName;
+  final Color color;
   @HiveField(9)
   final String description;
 }

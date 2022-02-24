@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import 'stat_model.dart';
 
@@ -12,7 +13,7 @@ class PokemonModel extends Equatable {
     required this.typeList,
     required this.weight,
     required this.image,
-    required this.colorName,
+    required this.color,
     required this.description,
     this.isFavorite = false,
   });
@@ -25,7 +26,7 @@ class PokemonModel extends Equatable {
   final List<String> typeList;
   final int weight;
   final String image;
-  final String colorName;
+  final Color color;
   final String description;
   bool isFavorite;
 
@@ -39,7 +40,7 @@ class PokemonModel extends Equatable {
         typeList,
         weight,
         image,
-        colorName,
+        color,
         description,
       ];
 }

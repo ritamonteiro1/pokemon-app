@@ -38,7 +38,7 @@ class _PokemonDetailsScreenState
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: widget.backgroundColor,
+        backgroundColor: widget.pokemon.color,
         appBar: AppBar(
           elevation: 0,
           title: Row(
