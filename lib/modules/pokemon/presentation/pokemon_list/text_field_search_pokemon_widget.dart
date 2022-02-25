@@ -10,15 +10,20 @@ class TextFieldSearchPokemonWidget extends StatelessWidget {
     required this.onEditingComplete,
     required this.textEditingController,
     required this.suffixIcon,
+    required this.textColor,
     Key? key,
   }) : super(key: key);
   final void Function(String?) onChanged;
   final void Function()? onEditingComplete;
   final TextEditingController textEditingController;
   final Widget suffixIcon;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) => TextField(
+        style: TextStyle(
+          color: textColor,
+        ),
         textInputAction: TextInputAction.search,
         onChanged: onChanged,
         onEditingComplete: onEditingComplete,

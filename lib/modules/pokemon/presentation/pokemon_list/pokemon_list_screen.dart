@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pokedex_app/modules/pokemon/presentation/common/pokemon_list_widget.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -14,6 +13,7 @@ import '../../domain/exception/unknown_state_type_exception.dart';
 import '../common/error_pokemon_list_widget.dart';
 import '../common/header_ioasys_widget.dart';
 import '../common/loading_widget.dart';
+import '../common/pokemon_list_widget.dart';
 import 'not_found_pokemon_widget.dart';
 import 'pokemon_list_state.dart';
 import 'pokemon_list_store.dart';
@@ -92,6 +92,9 @@ class _PokemonListScreenState
                             final isEmptyTextField =
                                 controller.isEmptyPokemonTextField;
                             return TextFieldSearchPokemonWidget(
+                              textColor: controller.isBackgroundDark
+                                  ? Colors.white
+                                  : PokemonConstantsColors.darkGray,
                               onChanged: (typedPokemon) {
                                 controller.toggleIconTextFieldSearchPokemon(
                                     typedPokemon);
