@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:focus_detector/focus_detector.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
@@ -15,33 +16,40 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends ModularState<SplashScreen, SplashController> {
+  final _focusDetectorKey = UniqueKey();
+
   @override
   void initState() {
     super.initState();
     controller.loadToPokemonModule();
-    PokedexConstantsColors.primaryColor.setStatusBarColor();
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        backgroundColor: PokedexConstantsColors.primaryColor,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(SplashConstantsImages.logoIoasys),
-              const SizedBox(
-                height: 20,
-              ),
-              Text(
-                S.of(context).appName,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+  Widget build(BuildContext context) => FocusDetector(
+        key: _focusDetectorKey,
+        onFocusGained: () {
+          PokedexConstantsColors.primaryColor.setStatusBarColor();
+        },
+        child: Scaffold(
+          backgroundColor: PokedexConstantsColors.primaryColor,
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(SplashConstantsImages.logoIoasys),
+                const SizedBox(
+                  height: 20,
                 ),
-              ),
-            ],
+                Text(
+                  S.of(context).appName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
