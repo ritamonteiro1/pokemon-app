@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../constants/pokemon_constants_colors.dart';
 
-class ErrorPokemonListWidget extends StatelessWidget {
-  const ErrorPokemonListWidget({
+class ErrorPokemonWidget extends StatelessWidget {
+  const ErrorPokemonWidget({
     required this.message,
     required this.tryAgain,
     Key? key,

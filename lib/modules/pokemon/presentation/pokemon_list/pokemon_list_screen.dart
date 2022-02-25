@@ -12,7 +12,7 @@ import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
-import '../common/error_pokemon_list_widget.dart';
+import '../common/error_pokemon_widget.dart';
 import '../common/header_ioasys_widget.dart';
 import '../common/loading_widget.dart';
 import '../common/pokemon_list_widget.dart';
@@ -205,14 +205,14 @@ class _PokemonListScreenState
                       } else if (pokemonListState is ErrorPokemonListState) {
                         if (pokemonListState.exception
                             is GenericErrorStatusCodeException) {
-                          return ErrorPokemonListWidget(
+                          return ErrorPokemonWidget(
                             message:
                                 S.of(context).messageGenericStatusCodeError,
                             tryAgain: () => controller.getPokemonList(),
                           );
                         } else if (pokemonListState.exception
                             is NetworkErrorException) {
-                          return ErrorPokemonListWidget(
+                          return ErrorPokemonWidget(
                             message: S.of(context).messageNetworkError,
                             tryAgain: () => controller.getPokemonList(),
                           );

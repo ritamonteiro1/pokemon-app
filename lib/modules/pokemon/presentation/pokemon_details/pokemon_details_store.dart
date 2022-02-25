@@ -39,13 +39,17 @@ abstract class _PokemonDetailsStore with Store {
     await Future.delayed(
       const Duration(seconds: 2),
     );
-    final isFavorite = await _verifyIfPokemonIsFavorite.call(pokemon);
-    if (isFavorite) {
-      pokemon.isFavorite = true;
-    } else {
-      pokemon.isFavorite = false;
+    try {
+      final isFavorite = await _verifyIfPokemonIsFavorite.call(pokemon);
+      if (isFavorite) {
+        pokemon.isFavorite = true;
+      } else {
+        pokemon.isFavorite = false;
+      }
+      pokemonDetailsState = InitialPokemonDetailsState(pokemon);
+    } catch (e) {
+      pokemonDetailsState = ErrorPokemonDetailsState();
     }
-    pokemonDetailsState = InitialPokemonDetailsState(pokemon);
   }
 
   @action

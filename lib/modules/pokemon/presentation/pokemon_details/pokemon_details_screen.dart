@@ -12,6 +12,7 @@ import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
+import '../common/error_pokemon_widget.dart';
 import '../common/loading_widget.dart';
 import 'pokemon_characteristics_widget.dart';
 import 'pokemon_details_state.dart';
@@ -296,6 +297,11 @@ class _PokemonDetailsScreenState
                     ),
                   ),
                 );
+              } else if (pokemonDetailsState is ErrorPokemonDetailsState) {
+                return ErrorPokemonWidget(
+                    message: S.of(context).messageGenericStatusCodeError,
+                    tryAgain: () =>
+                        controller.startPokemonDetailsScreen(widget.pokemon));
               } else {
                 throw UnknownStateTypeException();
               }
