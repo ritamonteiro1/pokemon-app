@@ -83,9 +83,9 @@ flutter:
     - assets/images/down_arrow.png
     - assets/images/reload.png
     - assets/images/right_arrow.png
-    - assets/images/ruler_height.png
+    - assets/images/ruler_height_black.png
     - assets/images/search.png
-    - assets/images/weight_scales.png
+    - assets/images/weight_scales_black.png
     - assets/images/heart.png
     - assets/images/error.png
     - assets/images/loading.png
@@ -93,8 +93,11 @@ flutter:
     - assets/images/back.png
     - assets/images/down.png
     - assets/images/empty_heart.png
-    - assets/images/switch_true.png
-    - assets/images/switch_false.png
+    - assets/images/switch.png
+    - assets/images/switch_off.png
+    - assets/images/switch_on.png
+    - assets/images/ruler_height_white.png
+    - assets/images/weight_scales_white.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

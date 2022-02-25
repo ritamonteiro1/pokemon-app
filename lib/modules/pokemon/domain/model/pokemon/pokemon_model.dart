@@ -104,4 +104,18 @@ class PokemonModel extends Equatable {
     }
     return PokedexConstantsColors.primaryColor;
   }
+
+  String setPokemonId(int pokemonId) {
+    const prefixForPokemonIdEqualsToOne = '#00';
+    const prefixForPokemonIdEqualToTwo = '#0';
+    const prefixForPokemonIdGreaterThanTwo = '#';
+
+    if (pokemonId.toString().length == 1) {
+      return '$prefixForPokemonIdEqualsToOne$pokemonId';
+    }
+    if (pokemonId.toString().length == 2) {
+      return '$prefixForPokemonIdEqualToTwo$pokemonId';
+    }
+    return '$prefixForPokemonIdGreaterThanTwo$pokemonId';
+  }
 }

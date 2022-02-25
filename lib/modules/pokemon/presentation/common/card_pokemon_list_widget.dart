@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../generated/l10n.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import 'loading_widget.dart';
 
@@ -33,8 +32,7 @@ class CardPokemonListWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    '${S.of(context).hashtag}'
-                    '${pokemon.id.toString()}',
+                    pokemon.setPokemonId(pokemon.id),
                     style: TextStyle(
                       color: backgroundColorPokemon,
                       fontSize: 10,
