@@ -30,4 +30,8 @@ class SuccessPokemonDetailsState implements PokemonDetailsState {
   final PokemonModel pokemonModel;
 }
 
-class ErrorPokemonDetailsState implements PokemonDetailsState {}
+class ErrorPokemonDetailsState extends Equatable
+    implements PokemonDetailsState {
+  @override
+  List<Object?> get props => [];
+}

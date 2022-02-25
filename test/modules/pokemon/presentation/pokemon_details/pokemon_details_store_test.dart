@@ -27,15 +27,15 @@ void main() {
     mockRemoveFavoritePokemonUseCase = MockRemoveFavoritePokemonUseCase();
     mockVerifyIfPokemonIsFavoriteUseCase =
         MockVerifyIfPokemonIsFavoriteUseCase();
-    pokemonDetailsStore = PokemonDetailsStore(
-        addFavoritePokemonUseCase: mockAddFavoritePokemonUseCase,
-        removeFavoritePokemonUseCase: mockRemoveFavoritePokemonUseCase,
-        verifyIfPokemonIsFavorite: mockVerifyIfPokemonIsFavoriteUseCase);
   });
   group('GIVEN a call on getPokemonList', () {
     test(
         'WHEN request is successfully THEN it should emits a '
         'InitialPokemonDetailsState', () async {
+      pokemonDetailsStore = PokemonDetailsStore(
+          addFavoritePokemonUseCase: mockAddFavoritePokemonUseCase,
+          removeFavoritePokemonUseCase: mockRemoveFavoritePokemonUseCase,
+          verifyIfPokemonIsFavorite: mockVerifyIfPokemonIsFavoriteUseCase);
       when(mockVerifyIfPokemonIsFavoriteUseCase.call(any))
           .thenAnswer((_) async => true);
       await expectLater(pokemonDetailsStore.pokemonDetailsState,
@@ -46,6 +46,24 @@ void main() {
           .startPokemonDetailsScreen(_getSuccessfulPokemonModelMock());
       await expectLater(pokemonDetailsStore.pokemonDetailsState,
           InitialPokemonDetailsState(_getSuccessfulPokemonModelMock()));
+    });
+    test(
+        'WHEN request is fail THEN it should emits a '
+        'ErrorPokemonDetailsState', () async {
+      pokemonDetailsStore = PokemonDetailsStore(
+          addFavoritePokemonUseCase: mockAddFavoritePokemonUseCase,
+          removeFavoritePokemonUseCase: mockRemoveFavoritePokemonUseCase,
+          verifyIfPokemonIsFavorite: mockVerifyIfPokemonIsFavoriteUseCase);
+      when(mockVerifyIfPokemonIsFavoriteUseCase.call(any))
+          .thenThrow(Exception());
+      await expectLater(pokemonDetailsStore.pokemonDetailsState,
+          LoadingPokemonDetailsState());
+      await expectLater(pokemonDetailsStore.pokemonDetailsState,
+          LoadingPokemonDetailsState());
+      await pokemonDetailsStore
+          .startPokemonDetailsScreen(_getSuccessfulPokemonModelMock());
+      await expectLater(
+          pokemonDetailsStore.pokemonDetailsState, ErrorPokemonDetailsState());
     });
   });
 }

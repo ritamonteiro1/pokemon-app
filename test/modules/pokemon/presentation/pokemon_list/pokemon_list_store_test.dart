@@ -42,8 +42,9 @@ void main() {
       await expectLater(pokemonListStore.pokemonListState,
           SuccessPokemonListState(_getSuccessfulPokemonModelListMock()));
     });
-    test('WHEN request is fail THEN it should emits an ErrorPokemonListState',
-        () async {
+    test(
+        'WHEN request is fail and throw a GenericErrorStatusCodeException '
+        'THEN it should emits an ErrorPokemonListState', () async {
       pokemonListStore = PokemonListStore(
           getPokemonListUseCase: mockGetPokemonListUseCase,
           getPokemonTypedUseCase: mockGetPokemonTypedUseCase);

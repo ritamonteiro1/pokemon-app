@@ -25,7 +25,6 @@ void main() {
         'SuccessFavoritePokemonListState', () async {
       favoritePokemonStore = FavoritePokemonListStore(
           getFavoritePokemonListUseCase: mockGetFavoritePokemonListUseCase);
-
       await expectLater(favoritePokemonStore.favoritePokemonListState,
           LoadingFavoritePokemonListState());
       await expectLater(favoritePokemonStore.favoritePokemonListState,
