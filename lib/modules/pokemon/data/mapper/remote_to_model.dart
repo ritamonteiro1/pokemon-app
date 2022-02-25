@@ -16,7 +16,7 @@ PokemonModel convertToPokemonModelList(
               .toList() ??
           [],
       height: pokemonResponse.height ?? -1,
-      id: pokemonResponse.id,
+      id: pokemonResponse.id ?? -1,
       name: pokemonResponse.name == null
           ? ' - '
           : pokemonResponse.name!.capitalize(),
