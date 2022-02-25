@@ -42,7 +42,7 @@ void main() {
     });
   });
   group('GIVEN a call on getPokemonTyped', () {
-    test('THEN verify if correct urls are called', () async {
+    test('THEN verify if correct url of pokemon details is called', () async {
       const typedPokemon = '1';
       final jsonPokemonDetails =
           await getPokemonDetailsSuccessResponsePath.getJsonFromPath();
