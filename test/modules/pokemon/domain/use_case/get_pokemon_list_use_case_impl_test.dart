@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -29,6 +28,13 @@ void main() {
           .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
       final pokemonList = await getPokemonListUseCase.call();
       expect(pokemonList, _getSuccessfulPokemonModelListMock());
+      verify(mockPokemonRepository.getPokemonList());
+    });
+    test(
+        'WHEN request is fail '
+        'THEN it should  throw an exception', () async {
+      when(mockPokemonRepository.getPokemonList()).thenThrow(Exception());
+      expect(() => getPokemonListUseCase.call(), throwsException);
       verify(mockPokemonRepository.getPokemonList());
     });
   });
