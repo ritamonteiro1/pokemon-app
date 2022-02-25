@@ -15,6 +15,7 @@ void main() {
   late PokemonRemoteDataSource pokemonRemoteDataSource;
   setUpAll(() {
     mockDio = MockDio();
+    pokemonRemoteDataSource = PokemonRemoteDataSourceImpl(dio: mockDio);
   });
   setUp(() {
     reset(mockDio);
@@ -27,7 +28,6 @@ void main() {
     const getSpeciePokemonSuccessResponsePath =
         'test_resources/get_specie_pokemon_success_response.json';
     test('THEN verify if correct urls are called', () async {
-      pokemonRemoteDataSource = PokemonRemoteDataSourceImpl(dio: mockDio);
       final jsonPokemonList =
           await getPokemonListSuccessResponsePath.getJsonFromPath();
       when(mockDio.get(
