@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
+
 import '../modules/pokemon/data/cache/model/pokemon_cache.dart';
 import '../modules/pokemon/data/cache/model/stat_cache.dart';
 import '../pokedex_app/pokemon_app.dart';
