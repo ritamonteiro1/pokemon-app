@@ -25,37 +25,20 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
     });
   }
 
-  final _$addFavoritePokemonSuccessfullyAtom =
-      Atom(name: '_PokemonDetailsStore.addFavoritePokemonSuccessfully');
+  final _$toggleFavoritePokemonStateAtom =
+      Atom(name: '_PokemonDetailsStore.toggleFavoritePokemonState');
 
   @override
-  bool? get addFavoritePokemonSuccessfully {
-    _$addFavoritePokemonSuccessfullyAtom.reportRead();
-    return super.addFavoritePokemonSuccessfully;
+  ToggleFavoritePokemonState get toggleFavoritePokemonState {
+    _$toggleFavoritePokemonStateAtom.reportRead();
+    return super.toggleFavoritePokemonState;
   }
 
   @override
-  set addFavoritePokemonSuccessfully(bool? value) {
-    _$addFavoritePokemonSuccessfullyAtom
-        .reportWrite(value, super.addFavoritePokemonSuccessfully, () {
-      super.addFavoritePokemonSuccessfully = value;
-    });
-  }
-
-  final _$removeFavoritePokemonSuccessfullyAtom =
-      Atom(name: '_PokemonDetailsStore.removeFavoritePokemonSuccessfully');
-
-  @override
-  bool? get removeFavoritePokemonSuccessfully {
-    _$removeFavoritePokemonSuccessfullyAtom.reportRead();
-    return super.removeFavoritePokemonSuccessfully;
-  }
-
-  @override
-  set removeFavoritePokemonSuccessfully(bool? value) {
-    _$removeFavoritePokemonSuccessfullyAtom
-        .reportWrite(value, super.removeFavoritePokemonSuccessfully, () {
-      super.removeFavoritePokemonSuccessfully = value;
+  set toggleFavoritePokemonState(ToggleFavoritePokemonState value) {
+    _$toggleFavoritePokemonStateAtom
+        .reportWrite(value, super.toggleFavoritePokemonState, () {
+      super.toggleFavoritePokemonState = value;
     });
   }
 
@@ -97,8 +80,7 @@ mixin _$PokemonDetailsStore on _PokemonDetailsStore, Store {
   String toString() {
     return '''
 pokemonDetailsState: ${pokemonDetailsState},
-addFavoritePokemonSuccessfully: ${addFavoritePokemonSuccessfully},
-removeFavoritePokemonSuccessfully: ${removeFavoritePokemonSuccessfully},
+toggleFavoritePokemonState: ${toggleFavoritePokemonState},
 isPokemonFavorite: ${isPokemonFavorite}
     ''';
   }

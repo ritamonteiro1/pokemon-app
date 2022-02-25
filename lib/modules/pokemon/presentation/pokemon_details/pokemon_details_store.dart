@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:pokedex_app/modules/pokemon/presentation/pokemon_details/toggle_favorite_pokemon_state.dart';
 
 import '../../domain/model/pokemon/pokemon_model.dart';
 import '../../domain/use_case/add_favorite_pokemon_use_case.dart';
@@ -22,14 +23,12 @@ abstract class _PokemonDetailsStore with Store {
   final AddFavoritePokemonUseCase _addFavoritePokemonUseCase;
   final RemoveFavoritePokemonUseCase _removeFavoritePokemonUseCase;
   final VerifyIfPokemonIsFavoriteUseCase _verifyIfPokemonIsFavorite;
+
   @observable
   PokemonDetailsState pokemonDetailsState = LoadingPokemonDetailsState();
 
   @observable
-  bool? addFavoritePokemonSuccessfully;
-
-  @observable
-  bool? removeFavoritePokemonSuccessfully;
+  ToggleFavoritePokemonState toggleFavoritePokemonState = NoToggleYet();
 
   @observable
   bool? isPokemonFavorite;
@@ -54,18 +53,17 @@ abstract class _PokemonDetailsStore with Store {
     try {
       if (!pokemonModel.isFavorite) {
         await _addFavoritePokemonUseCase.call(pokemonModel);
-        addFavoritePokemonSuccessfully = true;
+        toggleFavoritePokemonState = SuccessfullyAddFavoritePokemon();
         isPokemonFavorite = true;
       } else {
         await _removeFavoritePokemonUseCase.call(pokemonModel);
-        removeFavoritePokemonSuccessfully = true;
+        toggleFavoritePokemonState = SuccessfullyRemoveFavoritePokemon();
         isPokemonFavorite = false;
       }
       pokemonModel.isFavorite = !pokemonModel.isFavorite;
       pokemonDetailsState = SuccessPokemonDetailsState(pokemonModel);
     } catch (e) {
-      removeFavoritePokemonSuccessfully = false;
-      addFavoritePokemonSuccessfully = false;
+      toggleFavoritePokemonState = FailToggleFavoritePokemon();
     }
   }
 }
