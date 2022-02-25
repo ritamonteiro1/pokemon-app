@@ -45,6 +45,12 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Estatísticas básicas"),
         "pokemonDetailsScreenHeightText":
             MessageLookupByLibrary.simpleMessage("Altura"),
+        "pokemonDetailsScreenMessageSnackBarSuccessfullyAddPokemon":
+            MessageLookupByLibrary.simpleMessage(
+                "Pokemon adicionado a lista de favoritos!"),
+        "pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon":
+            MessageLookupByLibrary.simpleMessage(
+                "Pokemon removido da lista de favoritos!"),
         "pokemonDetailsScreenMovesText":
             MessageLookupByLibrary.simpleMessage("Movimentos"),
         "pokemonDetailsScreenWeightText":

@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../../../utils/status_bar_extensions.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../constants/pokemon_constants_routes.dart';
@@ -37,6 +38,7 @@ class _PokemonListScreenState
     _setScrollController();
     pokemonTypedTextEditingController = TextEditingController();
     controller.getPokemonList();
+    PokedexConstantsColors.primaryColor.setStatusBarColor();
   }
 
   void _setScrollController() {

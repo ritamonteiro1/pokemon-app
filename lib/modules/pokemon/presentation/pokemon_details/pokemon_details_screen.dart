@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:mobx/mobx.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../../../utils/status_bar_extensions.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
@@ -15,6 +17,7 @@ import 'pokemon_details_state.dart';
 import 'pokemon_details_store.dart';
 import 'pokemon_stat_list_widget.dart';
 import 'pokemon_type_list_widget.dart';
+import 'toggle_favorite_pokemon_state.dart';
 
 class PokemonDetailsScreen extends StatefulWidget {
   const PokemonDetailsScreen({
@@ -33,6 +36,7 @@ class _PokemonDetailsScreenState
     extends ModularState<PokemonDetailsScreen, PokemonDetailsStore> {
   late Color pokemonBackgroundColorScaffoldByFirstType;
   late Color textsColor;
+  late ReactionDisposer disposer;
 
   @override
   void initState() {
@@ -43,6 +47,41 @@ class _PokemonDetailsScreenState
     textsColor = widget.backgroundColorCard == PokemonConstantsColors.darkGray
         ? Colors.white
         : PokemonConstantsColors.darkGray;
+    pokemonBackgroundColorScaffoldByFirstType.setStatusBarColor();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    disposer =
+        reaction((_) => controller.toggleFavoritePokemonState, (toggleState) {
+      if (toggleState is SuccessfullyAddFavoritePokemon) {
+        _showSnackBar(S
+            .of(context)
+            .pokemonDetailsScreenMessageSnackBarSuccessfullyAddPokemon);
+      }
+      if (toggleState is SuccessfullyRemoveFavoritePokemon) {
+        _showSnackBar(S
+            .of(context)
+            .pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon);
+      }
+      if (toggleState is FailToggleFavoritePokemon) {
+        _showSnackBar(S.of(context).messageGenericStatusCodeError);
+      }
+    });
+  }
+
+  void _showSnackBar(String message) {
+    final snackBar = SnackBar(
+      content: Text(message),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  @override
+  void dispose() {
+    disposer();
+    super.dispose();
   }
 
   @override

@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../../../utils/status_bar_extensions.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../domain/exception/empty_favorite_pokemon_list_exception.dart';
@@ -31,6 +32,7 @@ class _FavoritePokemonListScreenState
   void initState() {
     super.initState();
     controller.getFavoritePokemonList();
+    PokedexConstantsColors.primaryColor.setStatusBarColor();
   }
 
   @override

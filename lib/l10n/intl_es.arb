@@ -17,5 +17,7 @@
   "slash": " / ",
   "meterAbbreviation": " m",
   "kgAbbreviation": " kg",
-  "favoritePokemonListScreenEmptyList": "Lista vacía. agrega tus pokemons favoritos aqui"
+  "favoritePokemonListScreenEmptyList": "Lista vacía. agrega tus pokemons favoritos aqui",
+  "pokemonDetailsScreenMessageSnackBarSuccessfullyAddPokemon": "Pokémon agregado a la lista de favoritos",
+  "pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon": "Pokémon eliminado de la lista de favoritos!"
 }

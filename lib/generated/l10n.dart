@@ -229,6 +229,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Pokemon added to favorites list`
+  String get pokemonDetailsScreenMessageSnackBarSuccessfullyAddPokemon {
+    return Intl.message(
+      'Pokemon added to favorites list',
+      name: 'pokemonDetailsScreenMessageSnackBarSuccessfullyAddPokemon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pokemon eliminado de la lista de favoritos!`
+  String get pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon {
+    return Intl.message(
+      'Pokemon eliminado de la lista de favoritos!',
+      name: 'pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

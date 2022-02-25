@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../../../utils/status_bar_extensions.dart';
 import '../../constants/splash_constants_images.dart';
 import 'splash_controller.dart';
 
@@ -18,6 +19,7 @@ class _SplashScreenState extends ModularState<SplashScreen, SplashController> {
   void initState() {
     super.initState();
     controller.loadToPokemonModule();
+    PokedexConstantsColors.primaryColor.setStatusBarColor();
   }
 
   @override
