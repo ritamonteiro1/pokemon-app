@@ -44,7 +44,10 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                   Text(
                     '${(pokemonWeight / _denominatorDivisionWeightToKg).toStringAsPrecision(2)}'
                     '${S.of(context).kgAbbreviation}',
-                    style: TextStyle(fontSize: 14, color: textColor),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: textColor,
+                    ),
                   ),
                 ],
               ),
@@ -53,7 +56,10 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
               ),
               Text(
                 S.of(context).pokemonDetailsScreenWeightText,
-                style: TextStyle(fontSize: 12, color: textColor),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: textColor,
+                ),
               ),
             ],
           ),
@@ -76,7 +82,10 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                   Text(
                     '${(pokemonHeight / _denominatorDivisionHeightToMeter).toStringAsPrecision(1)}'
                     '${S.of(context).meterAbbreviation}',
-                    style: TextStyle(fontSize: 14, color: textColor),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: textColor,
+                    ),
                   ),
                 ],
               ),
@@ -85,7 +94,10 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
               ),
               Text(
                 S.of(context).pokemonDetailsScreenHeightText,
-                style: TextStyle(fontSize: 12, color: textColor),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: textColor,
+                ),
               ),
             ],
           ),
@@ -97,14 +109,20 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 '${pokemonAbilityList.first}'
                 '${S.of(context).slash}'
                 '${pokemonAbilityList.last}',
-                style: TextStyle(fontSize: 14, color: textColor),
+                style: TextStyle(
+                  fontSize: 14,
+                  color: textColor,
+                ),
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
                 S.of(context).pokemonDetailsScreenMovesText,
-                style: TextStyle(fontSize: 12, color: textColor),
+                style: TextStyle(
+                  fontSize: 12,
+                  color: textColor,
+                ),
               ),
             ],
           ),

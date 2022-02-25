@@ -43,7 +43,10 @@ class PokemonStatListWidget extends StatelessWidget {
                 ),
                 child: Text(
                   pokemonStatList[index].base.toString(),
-                  style: TextStyle(fontSize: 16, color: textColor),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: textColor,
+                  ),
                 ),
               ),
             ),

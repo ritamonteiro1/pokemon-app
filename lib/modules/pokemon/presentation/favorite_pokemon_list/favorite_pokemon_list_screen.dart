@@ -44,111 +44,110 @@ class _FavoritePokemonListScreenState
           PokedexConstantsColors.primaryColor.setStatusBarColor();
         },
         child: Observer(
-            builder: (context) => Scaffold(
-                  resizeToAvoidBottomInset: false,
-                  backgroundColor: controller.isBackgroundDark
-                      ? PokemonConstantsColors.darkGray
-                      : PokemonConstantsColors.white,
-                  body: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 70,
-                      bottom: 16,
-                      right: 40,
-                      left: 40,
+          builder: (context) => Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: controller.isBackgroundDark
+                ? PokemonConstantsColors.darkGray
+                : PokemonConstantsColors.white,
+            body: Padding(
+              padding: const EdgeInsets.only(
+                top: 70,
+                bottom: 16,
+                right: 40,
+                left: 40,
+              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    HeaderIoasysWidget(
+                        valueSwitch: controller.isBackgroundDark,
+                        onChangedSwitch: (_) {
+                          controller.toggleBackground();
+                        }),
+                    const SizedBox(
+                      height: 60,
                     ),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          HeaderIoasysWidget(
-                              valueSwitch: controller.isBackgroundDark,
-                              onChangedSwitch: (_) {
-                                controller.toggleBackground();
-                              }),
-                          const SizedBox(
-                            height: 60,
+                    const TextMyFavoritePokemonsWidget(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Observer(builder: (context) {
+                      final favoritePokemonListState =
+                          controller.favoritePokemonListState;
+                      if (favoritePokemonListState
+                          is LoadingFavoritePokemonListState) {
+                        return const Expanded(
+                          child: LoadingWidget(
+                            colorCircularProgressIndicator:
+                                PokedexConstantsColors.primaryColor,
                           ),
-                          const TextMyFavoritePokemonsWidget(),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Observer(builder: (context) {
-                            final favoritePokemonListState =
-                                controller.favoritePokemonListState;
-                            if (favoritePokemonListState
-                                is LoadingFavoritePokemonListState) {
-                              return const Expanded(
-                                child: LoadingWidget(
-                                  colorCircularProgressIndicator:
-                                      PokedexConstantsColors.primaryColor,
-                                ),
-                              );
-                            } else if (favoritePokemonListState
-                                is SuccessFavoritePokemonListState) {
-                              return PokemonListWidget(
-                                scrollController: null,
-                                pokemonList: favoritePokemonListState
-                                    .favoritePokemonList,
-                                backgroundColor: controller.isBackgroundDark
-                                    ? PokemonConstantsColors.darkGray
-                                    : PokemonConstantsColors.white,
-                                downWidget: GestureDetector(
-                                  onTap: () {
-                                    Modular.to.pop();
-                                  },
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(
-                                      top: 10,
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        const Image(
-                                          image: AssetImage(
-                                            PokemonConstantsImages.backArrow,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 8,
-                                        ),
-                                        Text(
-                                          S
-                                              .of(context)
-                                              .favoritePokemonListScreenBackText,
-                                          style: const TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                      ],
+                        );
+                      } else if (favoritePokemonListState
+                          is SuccessFavoritePokemonListState) {
+                        return PokemonListWidget(
+                          scrollController: null,
+                          pokemonList:
+                              favoritePokemonListState.favoritePokemonList,
+                          backgroundColor: controller.isBackgroundDark
+                              ? PokemonConstantsColors.darkGray
+                              : PokemonConstantsColors.white,
+                          downWidget: GestureDetector(
+                            onTap: () {
+                              Modular.to.pop();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 10,
+                              ),
+                              child: Column(
+                                children: [
+                                  const Image(
+                                    image: AssetImage(
+                                      PokemonConstantsImages.backArrow,
                                     ),
                                   ),
-                                ),
-                              );
-                            } else if (favoritePokemonListState
-                                is ErrorFavoritePokemonListState) {
-                              if (favoritePokemonListState.exception
-                                  is EmptyFavoritePokemonListException) {
-                                return Center(
-                                    child: Text(
-                                  S
-                                      .of(context)
-                                      .favoritePokemonListScreenEmptyList,
-                                  textAlign: TextAlign.center,
-                                ));
-                              } else {
-                                return Center(
-                                    child: Text(
-                                  S.of(context).messageGenericStatusCodeError,
-                                  textAlign: TextAlign.center,
-                                ));
-                              }
-                            } else {
-                              throw UnknownStateTypeException();
-                            }
-                          }),
-                        ],
-                      ),
-                    ),
-                  ),
-                )),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Text(
+                                    S
+                                        .of(context)
+                                        .favoritePokemonListScreenBackText,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      } else if (favoritePokemonListState
+                          is ErrorFavoritePokemonListState) {
+                        if (favoritePokemonListState.exception
+                            is EmptyFavoritePokemonListException) {
+                          return Center(
+                              child: Text(
+                            S.of(context).favoritePokemonListScreenEmptyList,
+                            textAlign: TextAlign.center,
+                          ));
+                        } else {
+                          return Center(
+                              child: Text(
+                            S.of(context).messageGenericStatusCodeError,
+                            textAlign: TextAlign.center,
+                          ));
+                        }
+                      } else {
+                        throw UnknownStateTypeException();
+                      }
+                    }),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
       );
 }
