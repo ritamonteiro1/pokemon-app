@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_colors.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
