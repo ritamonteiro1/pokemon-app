@@ -38,6 +38,8 @@ PokemonModel convertToPokemonModelList(
       weight: pokemonResponse.weight ?? -1,
       image:
           'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${pokemonResponse.id}.svg',
-      colorNameByFirstType: pokemonResponse.types?[0].type?.name ?? ' - ',
+      colorNameByFirstType: pokemonResponse.types?[0].type?.name == null
+          ? ' - '
+          : pokemonResponse.types![0].type!.name!.capitalize(),
       description: specieResponse.descriptionList?[9].description ?? ' - ',
     );
