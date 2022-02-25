@@ -15,8 +15,9 @@ class PokemonConstantsImages {
   static const back = 'assets/images/back.png';
   static const down = 'assets/images/down.png';
   static const emptyHeart = 'assets/images/empty_heart.png';
-  static const switchValueTrue = 'assets/images/switch_true.png';
-  static const switchValueFalse = 'assets/images/switch_false.png';
+  static const switchOn = 'assets/images/switch_on.png';
+  static const switchOff = 'assets/images/switch_off.png';
+  static const switchContour = 'assets/images/switch.png';
   static const rulerHeightWhite = 'assets/images/ruler_height_white.png';
   static const weightScalesWhite = 'assets/images/weight_scales_white.png';
 }
