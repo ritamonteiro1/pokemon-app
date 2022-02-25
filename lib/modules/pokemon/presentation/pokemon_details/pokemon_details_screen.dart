@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -93,152 +92,155 @@ class _PokemonDetailsScreenState
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 20,
+                      top: 12,
                       left: 8,
                       right: 8,
-                      bottom: 20,
+                      bottom: 80,
                     ),
-                    child: Column(
+                    child: Stack(
                       children: [
-                        Stack(
-                          children: [
-                            Positioned(
-                              top: 10,
-                              right: 10,
-                              child: Image.asset(
-                                PokemonConstantsImages.pokeball,
-                                height: 120,
-                                width: 120,
-                                color: Colors.white.withOpacity(1),
-                                colorBlendMode: BlendMode.modulate,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 70,
-                              ),
-                              child: SizedBox(
-                                width: 200,
-                                height: 200,
-                                child: SvgPicture.network(
-                                  widget.pokemon.image,
-                                  placeholderBuilder: (context) =>
-                                      const LoadingWidget(
-                                          colorCircularProgressIndicator:
-                                              PokedexConstantsColors
-                                                  .primaryColor),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Card(
-                          elevation: 4,
-                          color: widget.backgroundColorCard,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(26),
-                          ),
+                        Align(
+                          alignment: Alignment.topRight,
                           child: Padding(
                             padding: const EdgeInsets.only(
-                              left: 32,
-                              right: 32,
+                              right: 20,
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  height: 18,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        controller.togglePokemonFavorite(
-                                            widget.pokemon);
-                                      },
-                                      child: Observer(builder: (context) {
-                                        final isFavoritePokemon =
-                                            controller.isPokemonFavorite;
-                                        if ((isFavoritePokemon == true &&
-                                                isFavoritePokemon != null) ||
-                                            widget.pokemon.isFavorite) {
-                                          return const Image(
-                                            height: 40,
-                                            width: 40,
-                                            image: AssetImage(
-                                              PokemonConstantsImages.heart,
-                                            ),
-                                          );
-                                        } else {
-                                          return const Image(
-                                            height: 40,
-                                            width: 40,
-                                            image: AssetImage(
-                                              PokemonConstantsImages.emptyHeart,
-                                            ),
-                                          );
-                                        }
-                                      }),
+                            child: Image.asset(
+                              PokemonConstantsImages.pokeball,
+                              height: 160,
+                              width: 160,
+                              color: Colors.white.withOpacity(1),
+                              colorBlendMode: BlendMode.modulate,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            top: 120,
+                          ),
+                          child: Card(
+                            elevation: 4,
+                            color: widget.backgroundColorCard,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(26),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 32,
+                                right: 32,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(
+                                    height: 18,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          controller.togglePokemonFavorite(
+                                              widget.pokemon);
+                                        },
+                                        child: Observer(builder: (context) {
+                                          final isFavoritePokemon =
+                                              controller.isPokemonFavorite;
+                                          if ((isFavoritePokemon == true &&
+                                                  isFavoritePokemon != null) ||
+                                              widget.pokemon.isFavorite) {
+                                            return const Image(
+                                              height: 40,
+                                              width: 40,
+                                              image: AssetImage(
+                                                PokemonConstantsImages.heart,
+                                              ),
+                                            );
+                                          } else {
+                                            return const Image(
+                                              height: 40,
+                                              width: 40,
+                                              image: AssetImage(
+                                                PokemonConstantsImages
+                                                    .emptyHeart,
+                                              ),
+                                            );
+                                          }
+                                        }),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  PokemonTypeListWidget(
+                                    pokemonModel: widget.pokemon,
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  PokemonCharacteristicsWidget(
+                                    pokemonHeight: widget.pokemon.height,
+                                    pokemonWeight: widget.pokemon.weight,
+                                    pokemonAbilityList:
+                                        widget.pokemon.abilityList,
+                                    backgroundColorCard:
+                                        widget.backgroundColorCard,
+                                    textColor: textsColor,
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  Center(
+                                    child: Text(
+                                      widget.pokemon.description,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 14, color: textsColor),
                                     ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 32,
-                                ),
-                                PokemonTypeListWidget(
-                                  pokemonModel: widget.pokemon,
-                                ),
-                                const SizedBox(
-                                  height: 32,
-                                ),
-                                PokemonCharacteristicsWidget(
-                                  pokemonHeight: widget.pokemon.height,
-                                  pokemonWeight: widget.pokemon.weight,
-                                  pokemonAbilityList:
-                                      widget.pokemon.abilityList,
-                                  backgroundColorCard:
-                                      widget.backgroundColorCard,
-                                  textColor: textsColor,
-                                ),
-                                const SizedBox(
-                                  height: 32,
-                                ),
-                                Center(
-                                  child: Text(
-                                    widget.pokemon.description,
-                                    textAlign: TextAlign.center,
+                                  ),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
+                                  Text(
+                                    S
+                                        .of(context)
+                                        .pokemonDetailsScreenBaseStatsText,
                                     style: TextStyle(
-                                        fontSize: 14, color: textsColor),
+                                      color:
+                                          pokemonBackgroundColorScaffoldByFirstType,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 32,
-                                ),
-                                Text(
-                                  S
-                                      .of(context)
-                                      .pokemonDetailsScreenBaseStatsText,
-                                  style: TextStyle(
-                                    color:
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  PokemonStatListWidget(
+                                    pokemonStatList: widget.pokemon.statList,
+                                    pokemonBackgroundColorByFirstType:
                                         pokemonBackgroundColorScaffoldByFirstType,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                    textColor: textsColor,
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                PokemonStatListWidget(
-                                  pokemonStatList: widget.pokemon.statList,
-                                  pokemonBackgroundColorByFirstType:
-                                      pokemonBackgroundColorScaffoldByFirstType,
-                                  textColor: textsColor,
-                                ),
-                                const SizedBox(
-                                  height: 52,
-                                ),
-                              ],
+                                  const SizedBox(
+                                    height: 52,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: SizedBox(
+                            width: 200,
+                            height: 200,
+                            child: SvgPicture.network(
+                              widget.pokemon.image,
+                              placeholderBuilder: (context) =>
+                                  const LoadingWidget(
+                                      colorCircularProgressIndicator:
+                                          PokedexConstantsColors.primaryColor),
                             ),
                           ),
                         ),
