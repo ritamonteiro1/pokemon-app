@@ -1,5 +1,6 @@
 import '../../domain/model/pokemon/pokemon_model.dart';
 import '../../domain/model/pokemon/stat_model.dart';
+import '../../utils/capitalize_string_extensions.dart';
 import '../remote/model/pokemon/details/pokemon_response.dart';
 import '../remote/model/pokemon/specie/specie_response.dart';
 
@@ -7,12 +8,18 @@ PokemonModel convertToPokemonModelList(
         PokemonResponse pokemonResponse, SpecieResponse specieResponse) =>
     PokemonModel(
       abilityList: pokemonResponse.abilities
-              ?.map((ability) => ability.ability?.name ?? ' - ')
+              ?.map(
+                (ability) => ability.ability?.name == null
+                    ? ' - '
+                    : ability.ability!.name!.capitalize(),
+              )
               .toList() ??
           [],
       height: pokemonResponse.height ?? -1,
       id: pokemonResponse.id,
-      name: pokemonResponse.name ?? ' - ',
+      name: pokemonResponse.name == null
+          ? ' - '
+          : pokemonResponse.name!.capitalize(),
       statList: pokemonResponse.stats
               ?.map(
                 (stat) => StatModel(
@@ -21,7 +28,11 @@ PokemonModel convertToPokemonModelList(
               .toList() ??
           [],
       typeList: pokemonResponse.types
-              ?.map((type) => type.type?.name ?? ' - ')
+              ?.map(
+                (type) => type.type?.name == null
+                    ? ' - '
+                    : type.type!.name!.capitalize(),
+              )
               .toList() ??
           [],
       weight: pokemonResponse.weight ?? -1,
