@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 
 class PokemonCharacteristicsWidget extends StatelessWidget {
@@ -8,11 +9,15 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
     required this.pokemonHeight,
     required this.pokemonWeight,
     required this.pokemonAbilityList,
+    required this.backgroundColorCard,
+    required this.textColor,
     Key? key,
   }) : super(key: key);
   final int pokemonHeight;
   final int pokemonWeight;
   final List<String> pokemonAbilityList;
+  final Color textColor;
+  final Color backgroundColorCard;
   static const _denominatorDivisionWeightToKg = 10;
   static const _denominatorDivisionHeightToMeter = 10;
 
@@ -26,9 +31,11 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Image(
+                  Image(
                     image: AssetImage(
-                      PokemonConstantsImages.weightScalesBlack,
+                      backgroundColorCard == PokemonConstantsColors.darkGray
+                          ? PokemonConstantsImages.weightScalesWhite
+                          : PokemonConstantsImages.weightScalesBlack,
                     ),
                   ),
                   const SizedBox(
@@ -37,7 +44,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                   Text(
                     '${(pokemonWeight / _denominatorDivisionWeightToKg).toStringAsPrecision(2)}'
                     '${S.of(context).kgAbbreviation}',
-                    style: const TextStyle(fontSize: 14),
+                    style: TextStyle(fontSize: 14, color: textColor),
                   ),
                 ],
               ),
@@ -46,9 +53,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
               ),
               Text(
                 S.of(context).pokemonDetailsScreenWeightText,
-                style: const TextStyle(
-                  fontSize: 12,
-                ),
+                style: TextStyle(fontSize: 12, color: textColor),
               ),
             ],
           ),
@@ -58,9 +63,11 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Image(
+                  Image(
                     image: AssetImage(
-                      PokemonConstantsImages.rulerHeightBlack,
+                      backgroundColorCard == PokemonConstantsColors.darkGray
+                          ? PokemonConstantsImages.rulerHeightWhite
+                          : PokemonConstantsImages.rulerHeightBlack,
                     ),
                   ),
                   const SizedBox(
@@ -69,7 +76,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                   Text(
                     '${(pokemonHeight / _denominatorDivisionHeightToMeter).toStringAsPrecision(1)}'
                     '${S.of(context).meterAbbreviation}',
-                    style: const TextStyle(fontSize: 14),
+                    style: TextStyle(fontSize: 14, color: textColor),
                   ),
                 ],
               ),
@@ -78,9 +85,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
               ),
               Text(
                 S.of(context).pokemonDetailsScreenHeightText,
-                style: const TextStyle(
-                  fontSize: 12,
-                ),
+                style: TextStyle(fontSize: 12, color: textColor),
               ),
             ],
           ),
@@ -92,16 +97,14 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 '${pokemonAbilityList.first}'
                 '${S.of(context).slash}'
                 '${pokemonAbilityList.last}',
-                style: const TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 14, color: textColor),
               ),
               const SizedBox(
                 height: 10,
               ),
               Text(
                 S.of(context).pokemonDetailsScreenMovesText,
-                style: const TextStyle(
-                  fontSize: 12,
-                ),
+                style: TextStyle(fontSize: 12, color: textColor),
               ),
             ],
           ),
