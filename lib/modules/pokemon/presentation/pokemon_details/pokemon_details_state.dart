@@ -29,3 +29,5 @@ class SuccessPokemonDetailsState implements PokemonDetailsState {
 
   final PokemonModel pokemonModel;
 }
+
+class ErrorPokemonDetailsState implements PokemonDetailsState {}
