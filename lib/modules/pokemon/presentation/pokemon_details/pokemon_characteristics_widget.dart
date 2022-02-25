@@ -28,14 +28,14 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 children: [
                   const Image(
                     image: AssetImage(
-                      PokemonConstantsImages.weightScales,
+                      PokemonConstantsImages.weightScalesBlack,
                     ),
                   ),
                   const SizedBox(
                     width: 4,
                   ),
                   Text(
-                    '${(pokemonWeight / _denominatorDivisionWeightToKg).toStringAsPrecision(1)}'
+                    '${(pokemonWeight / _denominatorDivisionWeightToKg).toStringAsPrecision(2)}'
                     '${S.of(context).kgAbbreviation}',
                     style: const TextStyle(fontSize: 14),
                   ),
@@ -60,7 +60,7 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 children: [
                   const Image(
                     image: AssetImage(
-                      PokemonConstantsImages.rulerHeight,
+                      PokemonConstantsImages.rulerHeightBlack,
                     ),
                   ),
                   const SizedBox(

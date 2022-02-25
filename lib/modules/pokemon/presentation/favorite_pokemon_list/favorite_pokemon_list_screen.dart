@@ -6,12 +6,11 @@ import '../../../../generated/l10n.dart';
 import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
-import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/empty_favorite_pokemon_list_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
-import '../common/card_pokemon_list_widget.dart';
 import '../common/header_ioasys_widget.dart';
 import '../common/loading_widget.dart';
+import '../common/pokemon_list_widget.dart';
 import 'favorite_pokemon_list_state.dart';
 import 'favorite_pokemon_list_store.dart';
 import 'text_my_favorite_pokemons_widget.dart';
@@ -57,11 +56,11 @@ class _FavoritePokemonListScreenState
                           controller.toggleBackground();
                         }),
                     const SizedBox(
-                      height: 84,
+                      height: 60,
                     ),
                     const TextMyFavoritePokemonsWidget(),
                     const SizedBox(
-                      height: 84,
+                      height: 20,
                     ),
                     Observer(builder: (context) {
                       final favoritePokemonListState =
@@ -76,79 +75,43 @@ class _FavoritePokemonListScreenState
                         );
                       } else if (favoritePokemonListState
                           is SuccessFavoritePokemonListState) {
-                        return Expanded(
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: GridView.builder(
-                                  key: const PageStorageKey(0),
-                                  itemCount: favoritePokemonListState
-                                      .favoritePokemonList.length,
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    mainAxisSpacing: 4,
-                                    crossAxisSpacing: 4,
-                                    crossAxisCount: 3,
-                                  ),
-                                  itemBuilder: (context, index) {
-                                    final pokemon = favoritePokemonListState
-                                        .favoritePokemonList[index];
-                                    return GestureDetector(
-                                      onTap: () {
-                                        Modular.to.pushNamed(
-                                          PokemonConstantsRoutes
-                                              .pokemonDetailsScreen,
-                                          arguments: [
-                                            pokemon,
-                                            if (controller.isBackgroundDark)
-                                              PokemonConstantsColors.darkGray
-                                            else
-                                              PokemonConstantsColors.white,
-                                          ],
-                                        );
-                                      },
-                                      child: CardPokemonListWidget(
-                                        pokemon: pokemon,
-                                        backgroundColorPokemon:
-                                            pokemon.mapPokemonTypeToColor(
-                                                pokemon.colorNameByFirstType),
-                                      ),
-                                    );
-                                  },
-                                ),
+                        return PokemonListWidget(
+                          scrollController: null,
+                          pokemonList:
+                              favoritePokemonListState.favoritePokemonList,
+                          backgroundColor: controller.isBackgroundDark
+                              ? PokemonConstantsColors.darkGray
+                              : PokemonConstantsColors.white,
+                          downWidget: GestureDetector(
+                            onTap: () {
+                              Modular.to.pop();
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                top: 10,
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  Modular.to.pop();
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                    top: 10,
+                              child: Column(
+                                children: [
+                                  const Image(
+                                    image: AssetImage(
+                                      PokemonConstantsImages.backArrow,
+                                    ),
                                   ),
-                                  child: Column(
-                                    children: [
-                                      const Image(
-                                        image: AssetImage(
-                                          PokemonConstantsImages.backArrow,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        S
-                                            .of(context)
-                                            .favoritePokemonListScreenBackText,
-                                        style: const TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                    ],
+                                  const SizedBox(
+                                    height: 8,
                                   ),
-                                ),
+                                  Text(
+                                    S
+                                        .of(context)
+                                        .favoritePokemonListScreenBackText,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         );
                       } else if (favoritePokemonListState

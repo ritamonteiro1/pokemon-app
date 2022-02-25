@@ -190,16 +190,6 @@ class S {
     );
   }
 
-  /// `#`
-  String get hashtag {
-    return Intl.message(
-      '#',
-      name: 'hashtag',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// ` / `
   String get slash {
     return Intl.message(
