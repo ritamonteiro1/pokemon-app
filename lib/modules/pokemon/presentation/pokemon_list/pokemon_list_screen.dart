@@ -205,16 +205,20 @@ class _PokemonListScreenState
                       } else if (pokemonListState is ErrorPokemonListState) {
                         if (pokemonListState.exception
                             is GenericErrorStatusCodeException) {
-                          return ErrorPokemonWidget(
-                            message:
-                                S.of(context).messageGenericStatusCodeError,
-                            tryAgain: () => controller.getPokemonList(),
+                          return Expanded(
+                            child: ErrorPokemonWidget(
+                              message:
+                                  S.of(context).messageGenericStatusCodeError,
+                              tryAgain: () => controller.getPokemonList(),
+                            ),
                           );
                         } else if (pokemonListState.exception
                             is NetworkErrorException) {
-                          return ErrorPokemonWidget(
-                            message: S.of(context).messageNetworkError,
-                            tryAgain: () => controller.getPokemonList(),
+                          return Expanded(
+                            child: ErrorPokemonWidget(
+                              message: S.of(context).messageNetworkError,
+                              tryAgain: () => controller.getPokemonList(),
+                            ),
                           );
                         } else {
                           return const NotFoundPokemonWidget();
