@@ -32,8 +32,8 @@ void main() {
         'THEN it should return a Pokemon Model list', () async {
       when(mockPokemonRemoteDataSource.getPokemonList())
           .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
-      when(mockPokemonCacheDataSource.getFavoritePokemonList())
-          .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
+      when(mockPokemonCacheDataSource.getFavoritePokemonList()).thenAnswer(
+          (_) async => _getSuccessfulFavoritePokemonModelListMock());
       final pokemonList = await pokemonRepositoryImpl.getPokemonList();
       expect(pokemonList, _getSuccessfulPokemonModelListMock());
       verify(mockPokemonRemoteDataSource.getPokemonList()).called(1);
@@ -51,8 +51,9 @@ void main() {
         'THEN it should return a Pokemon Model', () async {
       when(mockPokemonRemoteDataSource.getPokemonTyped(any))
           .thenAnswer((_) async => _getSuccessfulPokemonModelMock());
-      final pokemon = await pokemonRepositoryImpl.getPokemonTyped('pokemon 1');
-      expect(pokemon, _getSuccessfulPokemonModelMock());
+      final typedPokemon =
+          await pokemonRepositoryImpl.getPokemonTyped('pokemon 1');
+      expect(typedPokemon, _getSuccessfulPokemonModelMock());
       verify(mockPokemonRemoteDataSource.getPokemonTyped(any)).called(1);
     });
     test(
@@ -67,12 +68,12 @@ void main() {
   group('GIVEN a call on getFavoritePokemonList', () {
     test(
         'WHEN request is successfully '
-        'THEN it should return a Pokemon Model list', () async {
-      when(mockPokemonCacheDataSource.getFavoritePokemonList())
-          .thenAnswer((_) async => _getSuccessfulPokemonModelListMock());
+        'THEN it should return a Favorite Pokemon Model list', () async {
+      when(mockPokemonCacheDataSource.getFavoritePokemonList()).thenAnswer(
+          (_) async => _getSuccessfulFavoritePokemonModelListMock());
       final favoritePokemonList =
           await pokemonRepositoryImpl.getFavoritePokemonList();
-      expect(favoritePokemonList, _getSuccessfulPokemonModelListMock());
+      expect(favoritePokemonList, _getSuccessfulFavoritePokemonModelListMock());
       verify(mockPokemonCacheDataSource.getFavoritePokemonList()).called(1);
     });
     test(
@@ -82,7 +83,7 @@ void main() {
           .thenAnswer((_) async => _getEmptyFavoritePokemonModelListMock());
       final emptyPokemonList =
           await pokemonRepositoryImpl.getFavoritePokemonList();
-      expect(emptyPokemonList, []);
+      expect(emptyPokemonList, _getEmptyFavoritePokemonModelListMock());
       verify(mockPokemonCacheDataSource.getFavoritePokemonList()).called(1);
     });
   });
@@ -114,6 +115,30 @@ void main() {
           .called(1);
     });
   });
+  group('GIVEN a call on verifyIfPokemonIsFavorite', () {
+    test(
+        'WHEN select pokemon is not favorite '
+        'THEN it should return false', () async {
+      when(mockPokemonCacheDataSource.getFavoritePokemonList()).thenAnswer(
+        (_) async => _getSuccessfulFavoritePokemonModelListMock(),
+      );
+      final isFavorite = await pokemonRepositoryImpl.verifyIfPokemonIsFavorite(
+          _getSuccessfulNotFavoritePokemonModelMock());
+      expect(isFavorite, false);
+      verify(mockPokemonCacheDataSource.getFavoritePokemonList()).called(1);
+    });
+    test(
+        'WHEN select pokemon is favorite '
+        'THEN it should return true', () async {
+      when(mockPokemonCacheDataSource.getFavoritePokemonList()).thenAnswer(
+        (_) async => _getSuccessfulFavoritePokemonModelListMock(),
+      );
+      final isFavorite = await pokemonRepositoryImpl
+          .verifyIfPokemonIsFavorite(_getSuccessfulFavoritePokemonModelMock());
+      expect(isFavorite, true);
+      verify(mockPokemonCacheDataSource.getFavoritePokemonList()).called(1);
+    });
+  });
 }
 
 List<PokemonModel> _getEmptyFavoritePokemonModelListMock() => <PokemonModel>[];
@@ -122,6 +147,40 @@ PokemonModel _getSuccessfulPokemonModelMock() => PokemonModel(
       abilityList: const <String>['1', '2'],
       height: 10,
       id: 1,
+      name: 'pokemon 1',
+      statList: const <StatModel>[
+        StatModel(base: 1, name: 'name 1'),
+        StatModel(base: 2, name: 'name 2'),
+      ],
+      typeList: const <String>['1', '2'],
+      weight: 10,
+      image:
+          'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+      colorNameByFirstType: 'color',
+      description: 'description 1',
+    );
+
+PokemonModel _getSuccessfulNotFavoritePokemonModelMock() => PokemonModel(
+      abilityList: const <String>['1', '2'],
+      height: 10,
+      id: 1,
+      name: 'pokemon 1',
+      statList: const <StatModel>[
+        StatModel(base: 1, name: 'name 1'),
+        StatModel(base: 2, name: 'name 2'),
+      ],
+      typeList: const <String>['1', '2'],
+      weight: 10,
+      image:
+          'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+      colorNameByFirstType: 'color',
+      description: 'description 1',
+    );
+
+PokemonModel _getSuccessfulFavoritePokemonModelMock() => PokemonModel(
+      abilityList: const <String>['1', '2'],
+      height: 10,
+      id: 3,
       name: 'pokemon 1',
       statList: const <StatModel>[
         StatModel(base: 1, name: 'name 1'),
@@ -151,6 +210,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
         colorNameByFirstType: 'color',
         description: 'description 1',
+        isFavorite: true,
       ),
       PokemonModel(
         abilityList: const <String>['3', '4'],
@@ -167,5 +227,44 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
             'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg',
         colorNameByFirstType: 'colore',
         description: 'description 1',
+        isFavorite: true,
+      ),
+    ];
+
+List<PokemonModel> _getSuccessfulFavoritePokemonModelListMock() =>
+    <PokemonModel>[
+      PokemonModel(
+        abilityList: const <String>['1', '2'],
+        height: 10,
+        id: 3,
+        name: 'pokemon 1',
+        statList: const <StatModel>[
+          StatModel(base: 1, name: 'name 1'),
+          StatModel(base: 2, name: 'name 2'),
+        ],
+        typeList: const <String>['1', '2'],
+        weight: 10,
+        image:
+            'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+        colorNameByFirstType: 'color',
+        description: 'description 1',
+        isFavorite: true,
+      ),
+      PokemonModel(
+        abilityList: const <String>['3', '4'],
+        height: 20,
+        id: 4,
+        name: 'pokemon 2',
+        statList: const <StatModel>[
+          StatModel(base: 3, name: 'name 3'),
+          StatModel(base: 4, name: 'name 4'),
+        ],
+        typeList: const <String>['1', '2'],
+        weight: 20,
+        image:
+            'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/2.svg',
+        colorNameByFirstType: 'colore',
+        description: 'description 1',
+        isFavorite: true,
       ),
     ];
