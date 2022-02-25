@@ -7,10 +7,12 @@ class PokemonStatListWidget extends StatelessWidget {
   const PokemonStatListWidget({
     required this.pokemonStatList,
     required this.pokemonBackgroundColorByFirstType,
+    required this.textColor,
     Key? key,
   }) : super(key: key);
   final List<StatModel> pokemonStatList;
   final Color pokemonBackgroundColorByFirstType;
+  final Color textColor;
   static const _denominatorDivisionStat = 100;
 
   @override
@@ -41,9 +43,7 @@ class PokemonStatListWidget extends StatelessWidget {
                 ),
                 child: Text(
                   pokemonStatList[index].base.toString(),
-                  style: const TextStyle(
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(fontSize: 16, color: textColor),
                 ),
               ),
             ),
