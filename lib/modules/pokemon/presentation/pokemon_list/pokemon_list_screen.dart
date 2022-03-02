@@ -212,6 +212,8 @@ class _PokemonListScreenState
                             is GenericErrorStatusCodeException) {
                           return Expanded(
                             child: ErrorPokemonWidget(
+                              key: const ValueKey(PokemonConstantsKeyWidget
+                                  .errorPokemonWidgetKey),
                               message:
                                   S.of(context).messageGenericStatusCodeError,
                               tryAgain: () => controller.getPokemonList(),

@@ -6,6 +6,7 @@ import 'package:mockito/mockito.dart';
 import 'package:modular_test/modular_test.dart';
 import 'package:pokedex_app/generated/l10n.dart';
 import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_key_widgets.dart';
+import 'package:pokedex_app/modules/pokemon/domain/exception/generic_error_status_code_exception.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/module/pokemon_module.dart';
@@ -63,6 +64,23 @@ void main() {
       await expectLater(
           find.byKey(
               const ValueKey(PokemonConstantsKeyWidget.pokemonListWidgetKey)),
+          findsOneWidget);
+    });
+    testWidgets(
+        'WHEN after PokemonListScreen stars and request is fail because of '
+        'GenericErrorStatusCodeException THEN it should emits Error State '
+        'and it shows ErrorPokemonWidget', (tester) async {
+      await tester.runAsync(() async {
+        await tester.pumpWidget(testableWidget(const PokemonListScreen()));
+        await tester.pump();
+        await tester.pump();
+        await tester.pump();
+      });
+      when(mockPokemonListStore.pokemonListState).thenAnswer(
+          (_) => ErrorPokemonListState(GenericErrorStatusCodeException()));
+      await expectLater(
+          find.byKey(
+              const ValueKey(PokemonConstantsKeyWidget.errorPokemonWidgetKey)),
           findsOneWidget);
     });
   });
