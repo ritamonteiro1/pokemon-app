@@ -30,25 +30,25 @@ class PokemonListScreen extends StatefulWidget {
 
 class _PokemonListScreenState
     extends ModularState<PokemonListScreen, PokemonListStore> {
-  late TextEditingController pokemonTypedTextEditingController;
-  late ScrollController scrollController;
+  late TextEditingController _pokemonTypedTextEditingController;
+  late ScrollController _scrollController;
   final _focusDetectorKey = UniqueKey();
 
   @override
   void initState() {
     super.initState();
     _setScrollController();
-    pokemonTypedTextEditingController = TextEditingController();
+    _pokemonTypedTextEditingController = TextEditingController();
     controller.getPokemonList();
   }
 
   void _setScrollController() {
-    scrollController =
+    _scrollController =
         ScrollController(initialScrollOffset: 15, keepScrollOffset: true);
-    scrollController.addListener(() {
-      if (scrollController.offset >=
-              scrollController.position.maxScrollExtent &&
-          !scrollController.position.outOfRange) {
+    _scrollController.addListener(() {
+      if (_scrollController.offset >=
+              _scrollController.position.maxScrollExtent &&
+          !_scrollController.position.outOfRange) {
         controller.getPokemonList();
       }
     });
@@ -56,8 +56,8 @@ class _PokemonListScreenState
 
   @override
   void dispose() {
-    pokemonTypedTextEditingController.dispose();
-    scrollController.dispose();
+    _pokemonTypedTextEditingController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -108,10 +108,10 @@ class _PokemonListScreenState
                                       typedPokemon);
                                 },
                                 onEditingComplete: () {
-                                  if (pokemonTypedTextEditingController
+                                  if (_pokemonTypedTextEditingController
                                       .text.isNotEmpty) {
                                     controller.getPokemonTyped(
-                                      pokemonTypedTextEditingController.text
+                                      _pokemonTypedTextEditingController.text
                                           .toString(),
                                     );
                                   } else {
@@ -119,14 +119,14 @@ class _PokemonListScreenState
                                   }
                                 },
                                 textEditingController:
-                                    pokemonTypedTextEditingController,
+                                    _pokemonTypedTextEditingController,
                                 suffixIcon: isEmptyTextField
                                     ? GestureDetector(
                                         onTap: () {
-                                          if (pokemonTypedTextEditingController
+                                          if (_pokemonTypedTextEditingController
                                               .text.isNotEmpty) {
                                             controller.getPokemonTyped(
-                                              pokemonTypedTextEditingController
+                                              _pokemonTypedTextEditingController
                                                   .text
                                                   .toString(),
                                             );
@@ -140,11 +140,11 @@ class _PokemonListScreenState
                                       )
                                     : GestureDetector(
                                         onTap: () {
-                                          pokemonTypedTextEditingController
+                                          _pokemonTypedTextEditingController
                                               .clear();
                                           controller
                                               .toggleIconTextFieldSearchPokemon(
-                                            pokemonTypedTextEditingController
+                                            _pokemonTypedTextEditingController
                                                 .text,
                                           );
                                         },
@@ -186,7 +186,7 @@ class _PokemonListScreenState
                         );
                       } else if (pokemonListState is SuccessPokemonListState) {
                         return PokemonListWidget(
-                          scrollController: scrollController,
+                          scrollController: _scrollController,
                           pokemonList: pokemonListState.pokemonList,
                           backgroundColor: controller.isBackgroundDark
                               ? PokemonConstantsColors.darkGray

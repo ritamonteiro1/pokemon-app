@@ -36,18 +36,18 @@ class PokemonDetailsScreen extends StatefulWidget {
 
 class _PokemonDetailsScreenState
     extends ModularState<PokemonDetailsScreen, PokemonDetailsStore> {
-  late Color pokemonBackgroundColorScaffoldByFirstType;
-  late Color textsColor;
-  late ReactionDisposer disposer;
+  late Color _pokemonBackgroundColorScaffoldByFirstType;
+  late Color _textsColor;
+  late ReactionDisposer _disposer;
   final _focusDetectorKey = UniqueKey();
 
   @override
   void initState() {
     super.initState();
     controller.startPokemonDetailsScreen(widget.pokemon);
-    pokemonBackgroundColorScaffoldByFirstType = widget.pokemon
+    _pokemonBackgroundColorScaffoldByFirstType = widget.pokemon
         .mapPokemonTypeToColor(widget.pokemon.colorNameByFirstType);
-    textsColor = widget.backgroundColorCard == PokemonConstantsColors.darkGray
+    _textsColor = widget.backgroundColorCard == PokemonConstantsColors.darkGray
         ? Colors.white
         : PokemonConstantsColors.darkGray;
   }
@@ -55,7 +55,7 @@ class _PokemonDetailsScreenState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    disposer =
+    _disposer =
         reaction((_) => controller.toggleFavoritePokemonState, (toggleState) {
       if (toggleState is SuccessfullyAddFavoritePokemon) {
         _showSnackBar(S
@@ -82,7 +82,7 @@ class _PokemonDetailsScreenState
 
   @override
   void dispose() {
-    disposer();
+    _disposer();
     super.dispose();
   }
 
@@ -90,12 +90,12 @@ class _PokemonDetailsScreenState
   Widget build(BuildContext context) => FocusDetector(
         key: _focusDetectorKey,
         onFocusGained: () {
-          pokemonBackgroundColorScaffoldByFirstType.setStatusBarColor();
+          _pokemonBackgroundColorScaffoldByFirstType.setStatusBarColor();
         },
         child: Scaffold(
-          backgroundColor: pokemonBackgroundColorScaffoldByFirstType,
+          backgroundColor: _pokemonBackgroundColorScaffoldByFirstType,
           appBar: AppBar(
-            backgroundColor: pokemonBackgroundColorScaffoldByFirstType,
+            backgroundColor: _pokemonBackgroundColorScaffoldByFirstType,
             elevation: 0,
             title: Row(
               children: [
@@ -233,7 +233,7 @@ class _PokemonDetailsScreenState
                                           widget.pokemon.abilityList,
                                       backgroundColorCard:
                                           widget.backgroundColorCard,
-                                      textColor: textsColor,
+                                      textColor: _textsColor,
                                     ),
                                     const SizedBox(
                                       height: 32,
@@ -243,7 +243,7 @@ class _PokemonDetailsScreenState
                                         widget.pokemon.description,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize: 14, color: textsColor),
+                                            fontSize: 14, color: _textsColor),
                                       ),
                                     ),
                                     const SizedBox(
@@ -255,7 +255,7 @@ class _PokemonDetailsScreenState
                                           .pokemonDetailsScreenBaseStatsText,
                                       style: TextStyle(
                                         color:
-                                            pokemonBackgroundColorScaffoldByFirstType,
+                                            _pokemonBackgroundColorScaffoldByFirstType,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -266,8 +266,8 @@ class _PokemonDetailsScreenState
                                     PokemonStatListWidget(
                                       pokemonStatList: widget.pokemon.statList,
                                       pokemonBackgroundColorByFirstType:
-                                          pokemonBackgroundColorScaffoldByFirstType,
-                                      textColor: textsColor,
+                                          _pokemonBackgroundColorScaffoldByFirstType,
+                                      textColor: _textsColor,
                                     ),
                                     const SizedBox(
                                       height: 52,
