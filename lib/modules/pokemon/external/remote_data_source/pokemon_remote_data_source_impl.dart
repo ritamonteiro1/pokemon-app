@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 import '../../constants/pokemon_constants_url_api.dart';
@@ -18,7 +20,6 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
 
   final Dio _dio;
   String? _nextPage;
-  static const _httpStatusCodeNotFound = 404;
 
   @override
   Future<List<PokemonModel>> getPokemonList() async {
@@ -59,7 +60,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       return pokemonModel;
     } on DioError catch (dioError, _) {
       if (dioError.type == DioErrorType.response) {
-        if (dioError.response?.statusCode == _httpStatusCodeNotFound) {
+        if (dioError.response?.statusCode == HttpStatus.notFound) {
           throw NotFoundPokemonException();
         }
         throw GenericErrorStatusCodeException();

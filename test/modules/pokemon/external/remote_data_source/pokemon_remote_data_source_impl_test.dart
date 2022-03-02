@@ -97,3 +97,15 @@ Response<dynamic> _getSuccessfulResponseMock(json) => Response(
       statusCode: 200,
       requestOptions: RequestOptions(path: ''),
     );
+
+DioError _getErrorResponseMock(json, int httpStatusCode) => DioError(
+      response: Response(
+        data: json,
+        statusCode: httpStatusCode,
+        requestOptions: RequestOptions(
+          path: '',
+        ),
+      ),
+      type: DioErrorType.response,
+      requestOptions: RequestOptions(path: ''),
+    );
