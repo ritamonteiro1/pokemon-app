@@ -240,10 +240,10 @@ class S {
     );
   }
 
-  /// `Pokemon eliminado de la lista de favoritos!`
+  /// `Pokemon deleted from favorites list!`
   String get pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon {
     return Intl.message(
-      'Pokemon eliminado de la lista de favoritos!',
+      'Pokemon deleted from favorites list!',
       name: 'pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon',
       desc: '',
       args: [],

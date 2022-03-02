@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/constants_pokemon_stat_abbreviation.dart';
+import '../../constants/pokemon_constants_stat_abbreviation.dart';
 import '../../domain/model/pokemon/stat_model.dart';
 
 class PokemonStatListWidget extends StatelessWidget {

@@ -49,7 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
                 "Pokemon added to favorites list"),
         "pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon":
             MessageLookupByLibrary.simpleMessage(
-                "Pokemon eliminado de la lista de favoritos!"),
+                "Pokemon deleted from favorites list!"),
         "pokemonDetailsScreenMovesText":
             MessageLookupByLibrary.simpleMessage("Moves"),
         "pokemonDetailsScreenWeightText":

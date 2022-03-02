@@ -2,14 +2,20 @@
 // in pokedex_app/test/modules/pokemon/presentation/pokemon_list/pokemon_list_screen_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
-import 'dart:ui' as _i6;
+import 'dart:async' as _i5;
+import 'dart:ui' as _i7;
 
-import 'package:flutter/material.dart' as _i5;
+import 'package:flutter/material.dart' as _i6;
 import 'package:flutter_modular/src/presenter/models/modular_navigator.dart'
-    as _i2;
-import 'package:flutter_modular/src/presenter/models/route.dart' as _i3;
+    as _i3;
+import 'package:flutter_modular/src/presenter/models/route.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
+import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart'
+    as _i9;
+import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_state.dart'
+    as _i2;
+import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_store.dart'
+    as _i8;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -21,10 +27,13 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
+class _FakePokemonListState_0 extends _i1.Fake implements _i2.PokemonListState {
+}
+
 /// A class which mocks [IModularNavigator].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
+class MockIModularNavigator extends _i1.Mock implements _i3.IModularNavigator {
   MockIModularNavigator() {
     _i1.throwOnMissingStub(this);
   }
@@ -33,16 +42,16 @@ class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
   String get path =>
       (super.noSuchMethod(Invocation.getter(#path), returnValue: '') as String);
   @override
-  List<_i3.ParallelRoute<dynamic>> get navigateHistory =>
+  List<_i4.ParallelRoute<dynamic>> get navigateHistory =>
       (super.noSuchMethod(Invocation.getter(#navigateHistory),
-              returnValue: <_i3.ParallelRoute<dynamic>>[])
-          as List<_i3.ParallelRoute<dynamic>>);
+              returnValue: <_i4.ParallelRoute<dynamic>>[])
+          as List<_i4.ParallelRoute<dynamic>>);
   @override
-  _i4.Future<T?> push<T extends Object?>(_i5.Route<T>? route) =>
+  _i5.Future<T?> push<T extends Object?>(_i6.Route<T>? route) =>
       (super.noSuchMethod(Invocation.method(#push, [route]),
-          returnValue: Future<T?>.value()) as _i4.Future<T?>);
+          returnValue: Future<T?>.value()) as _i5.Future<T?>);
   @override
-  _i4.Future<T?> popAndPushNamed<T extends Object?, TO extends Object?>(
+  _i5.Future<T?> popAndPushNamed<T extends Object?, TO extends Object?>(
           String? routeName,
           {TO? result,
           Object? arguments,
@@ -50,24 +59,24 @@ class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
       (super.noSuchMethod(
           Invocation.method(#popAndPushNamed, [routeName],
               {#result: result, #arguments: arguments, #forRoot: forRoot}),
-          returnValue: Future<T?>.value()) as _i4.Future<T?>);
+          returnValue: Future<T?>.value()) as _i5.Future<T?>);
   @override
-  _i4.Future<T?> pushNamed<T extends Object?>(String? routeName,
+  _i5.Future<T?> pushNamed<T extends Object?>(String? routeName,
           {Object? arguments, bool? forRoot = false}) =>
       (super.noSuchMethod(
           Invocation.method(#pushNamed, [routeName],
               {#arguments: arguments, #forRoot: forRoot}),
-          returnValue: Future<T?>.value()) as _i4.Future<T?>);
+          returnValue: Future<T?>.value()) as _i5.Future<T?>);
   @override
-  _i4.Future<T?> pushNamedAndRemoveUntil<T extends Object?>(
-          String? newRouteName, bool Function(_i5.Route<dynamic>)? predicate,
+  _i5.Future<T?> pushNamedAndRemoveUntil<T extends Object?>(
+          String? newRouteName, bool Function(_i6.Route<dynamic>)? predicate,
           {Object? arguments, bool? forRoot = false}) =>
       (super.noSuchMethod(
           Invocation.method(#pushNamedAndRemoveUntil, [newRouteName, predicate],
               {#arguments: arguments, #forRoot: forRoot}),
-          returnValue: Future<T?>.value()) as _i4.Future<T?>);
+          returnValue: Future<T?>.value()) as _i5.Future<T?>);
   @override
-  _i4.Future<T?> pushReplacementNamed<T extends Object?, TO extends Object?>(
+  _i5.Future<T?> pushReplacementNamed<T extends Object?, TO extends Object?>(
           String? routeName,
           {TO? result,
           Object? arguments,
@@ -75,7 +84,7 @@ class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
       (super.noSuchMethod(
           Invocation.method(#pushReplacementNamed, [routeName],
               {#result: result, #arguments: arguments, #forRoot: forRoot}),
-          returnValue: Future<T?>.value()) as _i4.Future<T?>);
+          returnValue: Future<T?>.value()) as _i5.Future<T?>);
   @override
   void pop<T extends Object?>([T? result]) =>
       super.noSuchMethod(Invocation.method(#pop, [result]),
@@ -85,11 +94,11 @@ class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
       (super.noSuchMethod(Invocation.method(#canPop, []), returnValue: false)
           as bool);
   @override
-  _i4.Future<bool> maybePop<T extends Object?>([T? result]) =>
+  _i5.Future<bool> maybePop<T extends Object?>([T? result]) =>
       (super.noSuchMethod(Invocation.method(#maybePop, [result]),
-          returnValue: Future<bool>.value(false)) as _i4.Future<bool>);
+          returnValue: Future<bool>.value(false)) as _i5.Future<bool>);
   @override
-  void popUntil(bool Function(_i5.Route<dynamic>)? predicate) =>
+  void popUntil(bool Function(_i6.Route<dynamic>)? predicate) =>
       super.noSuchMethod(Invocation.method(#popUntil, [predicate]),
           returnValueForMissingStub: null);
   @override
@@ -97,19 +106,88 @@ class MockIModularNavigator extends _i1.Mock implements _i2.IModularNavigator {
       Invocation.method(#navigate, [path], {#arguments: arguments}),
       returnValueForMissingStub: null);
   @override
-  void setObserver(List<_i5.NavigatorObserver>? navigatorObservers) =>
+  void setObserver(List<_i6.NavigatorObserver>? navigatorObservers) =>
       super.noSuchMethod(Invocation.method(#setObserver, [navigatorObservers]),
           returnValueForMissingStub: null);
   @override
-  void setNavigatorKey(_i5.GlobalKey<_i5.NavigatorState>? navigatorkey) =>
+  void setNavigatorKey(_i6.GlobalKey<_i6.NavigatorState>? navigatorkey) =>
       super.noSuchMethod(Invocation.method(#setNavigatorKey, [navigatorkey]),
           returnValueForMissingStub: null);
   @override
-  void addListener(_i6.VoidCallback? listener) =>
+  void addListener(_i7.VoidCallback? listener) =>
       super.noSuchMethod(Invocation.method(#addListener, [listener]),
           returnValueForMissingStub: null);
   @override
-  void removeListener(_i6.VoidCallback? listener) =>
+  void removeListener(_i7.VoidCallback? listener) =>
       super.noSuchMethod(Invocation.method(#removeListener, [listener]),
+          returnValueForMissingStub: null);
+}
+
+/// A class which mocks [PokemonListStore].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockPokemonListStore extends _i1.Mock implements _i8.PokemonListStore {
+  MockPokemonListStore() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.PokemonListState get pokemonListState =>
+      (super.noSuchMethod(Invocation.getter(#pokemonListState),
+          returnValue: _FakePokemonListState_0()) as _i2.PokemonListState);
+  @override
+  set pokemonListState(_i2.PokemonListState? _pokemonListState) => super
+      .noSuchMethod(Invocation.setter(#pokemonListState, _pokemonListState),
+          returnValueForMissingStub: null);
+  @override
+  bool get isBackgroundDark =>
+      (super.noSuchMethod(Invocation.getter(#isBackgroundDark),
+          returnValue: false) as bool);
+  @override
+  set isBackgroundDark(bool? _isBackgroundDark) => super.noSuchMethod(
+      Invocation.setter(#isBackgroundDark, _isBackgroundDark),
+      returnValueForMissingStub: null);
+  @override
+  bool get isEmptyPokemonTextField =>
+      (super.noSuchMethod(Invocation.getter(#isEmptyPokemonTextField),
+          returnValue: false) as bool);
+  @override
+  set isEmptyPokemonTextField(bool? _isEmptyPokemonTextField) =>
+      super.noSuchMethod(
+          Invocation.setter(#isEmptyPokemonTextField, _isEmptyPokemonTextField),
+          returnValueForMissingStub: null);
+  @override
+  bool get isFetchData =>
+      (super.noSuchMethod(Invocation.getter(#isFetchData), returnValue: false)
+          as bool);
+  @override
+  set isFetchData(bool? _isFetchData) =>
+      super.noSuchMethod(Invocation.setter(#isFetchData, _isFetchData),
+          returnValueForMissingStub: null);
+  @override
+  List<_i9.PokemonModel> get pokemons =>
+      (super.noSuchMethod(Invocation.getter(#pokemons),
+          returnValue: <_i9.PokemonModel>[]) as List<_i9.PokemonModel>);
+  @override
+  set pokemons(List<_i9.PokemonModel>? _pokemons) =>
+      super.noSuchMethod(Invocation.setter(#pokemons, _pokemons),
+          returnValueForMissingStub: null);
+  @override
+  _i5.Future<void> getPokemonList() =>
+      (super.noSuchMethod(Invocation.method(#getPokemonList, []),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
+  @override
+  _i5.Future<void> getPokemonTyped(String? pokemonTyped) =>
+      (super.noSuchMethod(Invocation.method(#getPokemonTyped, [pokemonTyped]),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
+  @override
+  void toggleIconTextFieldSearchPokemon(String? typed) => super.noSuchMethod(
+      Invocation.method(#toggleIconTextFieldSearchPokemon, [typed]),
+      returnValueForMissingStub: null);
+  @override
+  void toggleBackground() =>
+      super.noSuchMethod(Invocation.method(#toggleBackground, []),
           returnValueForMissingStub: null);
 }

@@ -8,6 +8,7 @@ import '../../../../pokedex_constants/pokedex_constants_colors.dart';
 import '../../../../utils/status_bar_extensions.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
+import '../../constants/pokemon_constants_key_widgets.dart';
 import '../../constants/pokemon_constants_routes.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
@@ -182,6 +183,8 @@ class _PokemonListScreenState
                           child: LoadingWidget(
                             colorCircularProgressIndicator:
                                 PokedexConstantsColors.primaryColor,
+                            key: ValueKey(
+                                PokemonConstantsKeyWidget.loadingWidgetKey),
                           ),
                         );
                       } else if (pokemonListState is SuccessPokemonListState) {

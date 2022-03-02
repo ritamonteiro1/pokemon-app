@@ -19,5 +19,5 @@
   "kgAbbreviation": " kg",
   "favoritePokemonListScreenEmptyList": "Empty list. Add your fav pokemons here",
   "pokemonDetailsScreenMessageSnackBarSuccessfullyAddPokemon": "Pokemon added to favorites list",
-  "pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon": "Pokemon eliminado de la lista de favoritos!"
+  "pokemonDetailsScreenMessageSnackBarSuccessfullyRemovePokemon": "Pokemon deleted from favorites list!"
 }
