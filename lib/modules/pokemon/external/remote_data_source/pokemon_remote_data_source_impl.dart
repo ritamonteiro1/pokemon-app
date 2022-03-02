@@ -18,6 +18,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
 
   final Dio _dio;
   String? _nextPage;
+  static const _httpStatusCodeNotFound = 404;
 
   @override
   Future<List<PokemonModel>> getPokemonList() async {
@@ -58,7 +59,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
       return pokemonModel;
     } on DioError catch (dioError, _) {
       if (dioError.type == DioErrorType.response) {
-        if (dioError.response?.statusCode == 404) {
+        if (dioError.response?.statusCode == _httpStatusCodeNotFound) {
           throw NotFoundPokemonException();
         }
         throw GenericErrorStatusCodeException();
