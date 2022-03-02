@@ -6,6 +6,8 @@ import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_url_api.
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/model/pokedex/pokedex_response.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/details/pokemon_response.dart';
+import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
+import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/external/remote_data_source/pokemon_remote_data_source_impl.dart';
 
 import '../../../../utils/json_extensions.dart';
@@ -42,6 +44,18 @@ void main() {
         '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15',
       )).called(1);
     });
+    test('THEN status code is 200 THEN it should return a Pokemon Model List',
+        () async {
+      final jsonPokemonList =
+          await getPokemonListSuccessResponsePath.getJsonFromPath();
+      final jsonPokemon = await getPokemonSuccessResponsePath.getJsonFromPath();
+      final jsonPokemonSpecie =
+          await getPokemonSpecieSuccessResponsePath.getJsonFromPath();
+      await _mockDioResponsePokemonList(
+          mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie);
+      final pokemonModelList = await pokemonRemoteDataSource.getPokemonList();
+      expect(pokemonModelList, equals(_getSuccessfulPokemonModelListMock()));
+    });
   });
   group('GIVEN a call on getPokemonTyped', () {
     test('THEN verify if correct url is called', () async {
@@ -58,6 +72,41 @@ void main() {
     });
   });
 }
+
+List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
+      PokemonModel(
+        abilityList: const <String>['Ability 1', 'Ability 2'],
+        height: 7,
+        id: 1,
+        name: 'Name',
+        statList: const <StatModel>[
+          StatModel(base: 45, name: 'stat 1'),
+          StatModel(base: 49, name: 'stat 2'),
+        ],
+        typeList: const <String>['Type 1', 'Type 2'],
+        weight: 69,
+        image:
+            'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+        colorNameByFirstType: 'Type 1',
+        description: 'description',
+      ),
+      PokemonModel(
+        abilityList: const <String>['Ability 1', 'Ability 2'],
+        height: 7,
+        id: 1,
+        name: 'Name',
+        statList: const <StatModel>[
+          StatModel(base: 45, name: 'stat 1'),
+          StatModel(base: 49, name: 'stat 2'),
+        ],
+        typeList: const <String>['Type 1', 'Type 2'],
+        weight: 69,
+        image:
+            'https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/1.svg',
+        colorNameByFirstType: 'Type 1',
+        description: 'description',
+      ),
+    ];
 
 Future<void> _mockDioResponsePokemonTyped(MockDio mockDio, String typedPokemon,
     jsonPokemon, jsonPokemonSpecie) async {
