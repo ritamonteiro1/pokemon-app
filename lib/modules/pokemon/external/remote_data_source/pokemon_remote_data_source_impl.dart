@@ -17,7 +17,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   }) : _dio = dio;
 
   final Dio _dio;
-  String? nextPage;
+  String? _nextPage;
 
   @override
   Future<List<PokemonModel>> getPokemonList() async {
@@ -25,7 +25,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
     try {
       final response = await _dio.get(url);
       final pokedexResponse = PokedexResponse.fromJson(response.data);
-      nextPage = pokedexResponse.nextUrl;
+      _nextPage = pokedexResponse.nextUrl;
       final pokemonModelList = <PokemonModel>[];
       for (final pokemonUrl in pokedexResponse.pokemonUrlList) {
         final pokemonDetailsResponse = await _getPokemonDetails(pokemonUrl.url);
@@ -80,10 +80,10 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
 
   String _setUrl() {
     String url;
-    if (nextPage == null) {
+    if (_nextPage == null) {
       url = '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15';
     } else {
-      url = nextPage!;
+      url = _nextPage!;
     }
     return url;
   }

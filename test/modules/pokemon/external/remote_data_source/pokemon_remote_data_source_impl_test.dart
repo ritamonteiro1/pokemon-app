@@ -4,6 +4,8 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_url_api.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
+import 'package:pokedex_app/modules/pokemon/data/remote/model/pokedex/pokedex_response.dart';
+import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/details/pokemon_response.dart';
 import 'package:pokedex_app/modules/pokemon/external/remote_data_source/pokemon_remote_data_source_impl.dart';
 
 import '../../../../utils/json_extensions.dart';
@@ -14,11 +16,11 @@ void main() {
   late MockDio mockDio;
   late PokemonRemoteDataSource pokemonRemoteDataSource;
   const getPokemonListSuccessResponsePath =
-      'test_resources/get_pokemon_list_success_response.json';
-  const getPokemonDetailsSuccessResponsePath =
-      'test_resources/get_pokemon_details_success_response.json';
-  const getSpeciePokemonSuccessResponsePath =
-      'test_resources/get_specie_pokemon_success_response.json';
+      'test_resources/pokemon_list_success_response.json';
+  const getPokemonSuccessResponsePath =
+      'test_resources/pokemon_success_response.json';
+  const getPokemonSpecieSuccessResponsePath =
+      'test_resources/pokemon_specie_success_response.json';
   setUpAll(() {
     mockDio = MockDio();
     pokemonRemoteDataSource = PokemonRemoteDataSourceImpl(dio: mockDio);
@@ -27,14 +29,14 @@ void main() {
     reset(mockDio);
   });
   group('GIVEN a call on getPokemonList', () {
-    test('THEN verify if correct urls are called', () async {
+    test('THEN verify if correct url is called', () async {
       final jsonPokemonList =
           await getPokemonListSuccessResponsePath.getJsonFromPath();
-      when(mockDio.get(
-        any,
-      )).thenAnswer(
-        (_) async => _getSuccessfulResponseMock(jsonPokemonList),
-      );
+      final jsonPokemon = await getPokemonSuccessResponsePath.getJsonFromPath();
+      final jsonPokemonSpecie =
+          await getPokemonSpecieSuccessResponsePath.getJsonFromPath();
+      await _mockDioResponsePokemonList(
+          mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie);
       await pokemonRemoteDataSource.getPokemonList();
       verify(mockDio.get(
         '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15',
@@ -42,21 +44,52 @@ void main() {
     });
   });
   group('GIVEN a call on getPokemonTyped', () {
-    test('THEN verify if correct url of pokemon details is called', () async {
+    test('THEN verify if correct url is called', () async {
+      final jsonPokemon = await getPokemonSuccessResponsePath.getJsonFromPath();
+      final jsonPokemonSpecie =
+          await getPokemonSpecieSuccessResponsePath.getJsonFromPath();
       const typedPokemon = '1';
-      final jsonPokemonDetails =
-          await getPokemonDetailsSuccessResponsePath.getJsonFromPath();
-      when(mockDio.get(
-        any,
-      )).thenAnswer(
-        (_) async => _getSuccessfulResponseMock(jsonPokemonDetails),
-      );
+      await _mockDioResponsePokemonTyped(
+          mockDio, typedPokemon, jsonPokemon, jsonPokemonSpecie);
       await pokemonRemoteDataSource.getPokemonTyped(typedPokemon);
       verify(mockDio.get(
         '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
       )).called(1);
     });
   });
+}
+
+Future<void> _mockDioResponsePokemonTyped(MockDio mockDio, String typedPokemon,
+    jsonPokemon, jsonPokemonSpecie) async {
+  when(mockDio.get(
+    '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
+  )).thenAnswer(
+    (_) async => _getSuccessfulResponseMock(jsonPokemon),
+  );
+  final pokemonDetailsResponse = PokemonResponse.fromJson(jsonPokemon);
+  when(mockDio.get(
+    pokemonDetailsResponse.specie.url,
+  )).thenAnswer(
+    (_) async => _getSuccessfulResponseMock(jsonPokemonSpecie),
+  );
+}
+
+Future<void> _mockDioResponsePokemonList(
+    MockDio mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie) async {
+  when(mockDio.get('${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15'))
+      .thenAnswer(
+    (_) async => _getSuccessfulResponseMock(jsonPokemonList),
+  );
+  final pokedexResponse = PokedexResponse.fromJson(jsonPokemonList);
+  for (final pokemonUrl in pokedexResponse.pokemonUrlList) {
+    when(mockDio.get(pokemonUrl.url)).thenAnswer(
+      (_) async => _getSuccessfulResponseMock(jsonPokemon),
+    );
+    final pokemonDetailsResponse = PokemonResponse.fromJson(jsonPokemon);
+    when(mockDio.get(pokemonDetailsResponse.specie.url)).thenAnswer(
+      (_) async => _getSuccessfulResponseMock(jsonPokemonSpecie),
+    );
+  }
 }
 
 Response<dynamic> _getSuccessfulResponseMock(json) => Response(
