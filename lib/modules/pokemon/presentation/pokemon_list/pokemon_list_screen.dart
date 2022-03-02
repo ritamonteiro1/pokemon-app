@@ -181,14 +181,16 @@ class _PokemonListScreenState
                       if (pokemonListState is LoadingPokemonListState) {
                         return const Expanded(
                           child: LoadingWidget(
-                            colorCircularProgressIndicator:
-                                PokedexConstantsColors.primaryColor,
                             key: ValueKey(
                                 PokemonConstantsKeyWidget.loadingWidgetKey),
+                            colorCircularProgressIndicator:
+                                PokedexConstantsColors.primaryColor,
                           ),
                         );
                       } else if (pokemonListState is SuccessPokemonListState) {
                         return PokemonListWidget(
+                          key: const ValueKey(
+                              PokemonConstantsKeyWidget.pokemonListWidgetKey),
                           scrollController: _scrollController,
                           pokemonList: pokemonListState.pokemonList,
                           backgroundColor: controller.isBackgroundDark
