@@ -45,10 +45,8 @@ PokemonModel convertToPokemonModelList(
     colorNameByFirstType: pokemonResponse.types?[0].type?.name == null
         ? nullStringResponse
         : pokemonResponse.types![0].type!.name!.capitalize(),
-    description: (specieResponse.descriptionList != null &&
-            specieResponse.descriptionList!.length >= 10)
-        ? (specieResponse.descriptionList?[9].description ?? nullStringResponse)
-        : (specieResponse.descriptionList?[0].description ??
-            nullStringResponse),
+    description: (specieResponse.descriptionList.length >= 10)
+        ? (specieResponse.descriptionList[9].description ?? nullStringResponse)
+        : (specieResponse.descriptionList[0].description ?? nullStringResponse),
   );
 }

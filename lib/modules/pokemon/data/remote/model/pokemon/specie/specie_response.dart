@@ -14,7 +14,7 @@ class SpecieResponse {
       _$SpecieResponseFromJson(json);
 
   @JsonKey(name: 'flavor_text_entries')
-  final List<FlavorTextEntriesResponse>? descriptionList;
+  final List<FlavorTextEntriesResponse> descriptionList;
 
   Map<String, dynamic> toJson() => _$SpecieResponseToJson(this);
 }
