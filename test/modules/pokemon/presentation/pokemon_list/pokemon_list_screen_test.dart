@@ -37,13 +37,13 @@ void main() {
     testWidgets(
         'WHEN PokemonListScreen stars THEN it should emits Loading State '
         'and it shows LoadingWidget', (tester) async {
+      when(mockPokemonListStore.pokemonListState)
+          .thenAnswer((_) => LoadingPokemonListState());
       await tester.runAsync(() async {
         await tester.pumpWidget(testableWidget(const PokemonListScreen()));
         await tester.pump();
         await tester.pump();
       });
-      when(mockPokemonListStore.pokemonListState)
-          .thenAnswer((_) => LoadingPokemonListState());
       await expectLater(
           find.byKey(
               const ValueKey(PokemonConstantsKeyWidget.loadingWidgetKey)),
@@ -53,14 +53,14 @@ void main() {
         'WHEN after PokemonListScreen stars and request is successfully '
         'THEN it should emits Success State and it shows PokemonListWidget',
         (tester) async {
+      when(mockPokemonListStore.pokemonListState).thenAnswer(
+          (_) => SuccessPokemonListState(_getSuccessfulPokemonModelListMock()));
       await tester.runAsync(() async {
         await tester.pumpWidget(testableWidget(const PokemonListScreen()));
         await tester.pump();
         await tester.pump();
-        await tester.pump();
+        await tester.pumpAndSettle();
       });
-      when(mockPokemonListStore.pokemonListState).thenAnswer(
-          (_) => SuccessPokemonListState(_getSuccessfulPokemonModelListMock()));
       await expectLater(
           find.byKey(
               const ValueKey(PokemonConstantsKeyWidget.pokemonListWidgetKey)),
@@ -70,14 +70,14 @@ void main() {
         'WHEN after PokemonListScreen stars and request is fail because of '
         'GenericErrorStatusCodeException THEN it should emits Error State '
         'and it shows ErrorPokemonWidget', (tester) async {
+      when(mockPokemonListStore.pokemonListState).thenAnswer(
+          (_) => ErrorPokemonListState(GenericErrorStatusCodeException()));
       await tester.runAsync(() async {
         await tester.pumpWidget(testableWidget(const PokemonListScreen()));
         await tester.pump();
         await tester.pump();
-        await tester.pump();
+        await tester.pumpAndSettle();
       });
-      when(mockPokemonListStore.pokemonListState).thenAnswer(
-          (_) => ErrorPokemonListState(GenericErrorStatusCodeException()));
       await expectLater(
           find.byKey(
               const ValueKey(PokemonConstantsKeyWidget.errorPokemonWidgetKey)),
