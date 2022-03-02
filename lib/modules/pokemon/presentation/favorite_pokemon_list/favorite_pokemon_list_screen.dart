@@ -42,6 +42,7 @@ class _FavoritePokemonListScreenState
         key: _focusDetectorKey,
         onFocusGained: () {
           PokedexConstantsColors.primaryColor.setStatusBarColor();
+          controller.getFavoritePokemonList();
         },
         child: Observer(
           builder: (context) => Scaffold(
