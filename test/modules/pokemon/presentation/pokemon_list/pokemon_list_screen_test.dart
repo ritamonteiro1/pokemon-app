@@ -30,8 +30,9 @@ void main() {
   });
   group('Pokemon List Screen', () {
     testWidgets(
-        'WHEN PokemonListScreen stars THEN it should show Loading State',
-        (tester) async {
+        'WHEN PokemonListScreen stars THEN it should emits Loading State '
+        'and it shows LoadingWidget', (tester) async {
+      await tester.pump();
       when(mockPokemonListStore.pokemonListState)
           .thenAnswer((_) => LoadingPokemonListState());
       await tester.pump();
