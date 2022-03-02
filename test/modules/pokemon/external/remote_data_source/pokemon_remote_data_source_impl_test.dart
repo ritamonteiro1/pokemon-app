@@ -6,6 +6,7 @@ import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_url_api.
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/model/pokedex/pokedex_response.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/details/pokemon_response.dart';
+import 'package:pokedex_app/modules/pokemon/domain/exception/not_found_pokemon_exception.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/external/remote_data_source/pokemon_remote_data_source_impl.dart';
@@ -17,12 +18,14 @@ import 'pokemon_remote_data_source_impl_test.mocks.dart';
 void main() {
   late MockDio mockDio;
   late PokemonRemoteDataSource pokemonRemoteDataSource;
-  const getPokemonListSuccessResponsePath =
+  const pokemonListSuccessResponsePath =
       'test_resources/pokemon_list_success_response.json';
-  const getPokemonSuccessResponsePath =
+  const pokemonSuccessResponsePath =
       'test_resources/pokemon_success_response.json';
-  const getPokemonSpecieSuccessResponsePath =
+  const pokemonSpecieSuccessResponsePath =
       'test_resources/pokemon_specie_success_response.json';
+  const notFoundPokemonTypedResponsePath =
+      'test_resources/not_found_pokemon_typed_response.json';
   setUpAll(() {
     mockDio = MockDio();
     pokemonRemoteDataSource = PokemonRemoteDataSourceImpl(dio: mockDio);
@@ -34,10 +37,10 @@ void main() {
     test('THEN status code is 200 THEN it should return a Pokemon Model List',
         () async {
       final jsonPokemonList =
-          await getPokemonListSuccessResponsePath.getJsonFromPath();
-      final jsonPokemon = await getPokemonSuccessResponsePath.getJsonFromPath();
+          await pokemonListSuccessResponsePath.getJsonFromPath();
+      final jsonPokemon = await pokemonSuccessResponsePath.getJsonFromPath();
       final jsonPokemonSpecie =
-          await getPokemonSpecieSuccessResponsePath.getJsonFromPath();
+          await pokemonSpecieSuccessResponsePath.getJsonFromPath();
       await _mockDioResponsePokemonList(
           mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie);
       final pokemonModelList = await pokemonRemoteDataSource.getPokemonList();
@@ -49,9 +52,9 @@ void main() {
   });
   group('GIVEN a call on getPokemonTyped', () {
     test('THEN verify if correct url is called', () async {
-      final jsonPokemon = await getPokemonSuccessResponsePath.getJsonFromPath();
+      final jsonPokemon = await pokemonSuccessResponsePath.getJsonFromPath();
       final jsonPokemonSpecie =
-          await getPokemonSpecieSuccessResponsePath.getJsonFromPath();
+          await pokemonSpecieSuccessResponsePath.getJsonFromPath();
       const typedPokemon = '1';
       await _mockDioResponsePokemonTyped(
           mockDio, typedPokemon, jsonPokemon, jsonPokemonSpecie);
@@ -59,6 +62,20 @@ void main() {
       verify(mockDio.get(
         '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
       )).called(1);
+    });
+    test(
+        'THEN status code is 404 THEN it should throw a NotFoundPokemonException',
+        () async {
+      final jsonNotFoundPokemon =
+          await notFoundPokemonTypedResponsePath.getJsonFromPath();
+      const typedPokemon = 'o';
+      await _mockDioErrorResponsePokemonTyped(
+          mockDio, typedPokemon, jsonNotFoundPokemon);
+      try {
+        await pokemonRemoteDataSource.getPokemonTyped(typedPokemon);
+      } catch (e) {
+        expect(e, isA<NotFoundPokemonException>());
+      }
     });
   });
 }
@@ -97,6 +114,15 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
         description: 'description',
       ),
     ];
+
+Future<void> _mockDioErrorResponsePokemonTyped(
+    MockDio mockDio, String typedPokemon, jsonNotFoundPokemon) async {
+  when(mockDio.get(
+    '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
+  )).thenThrow(
+    _getErrorResponseMock(jsonNotFoundPokemon, 404),
+  );
+}
 
 Future<void> _mockDioResponsePokemonTyped(MockDio mockDio, String typedPokemon,
     jsonPokemon, jsonPokemonSpecie) async {
