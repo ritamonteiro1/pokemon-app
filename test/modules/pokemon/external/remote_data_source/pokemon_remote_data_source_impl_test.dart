@@ -31,19 +31,6 @@ void main() {
     reset(mockDio);
   });
   group('GIVEN a call on getPokemonList', () {
-    test('THEN verify if correct url is called', () async {
-      final jsonPokemonList =
-          await getPokemonListSuccessResponsePath.getJsonFromPath();
-      final jsonPokemon = await getPokemonSuccessResponsePath.getJsonFromPath();
-      final jsonPokemonSpecie =
-          await getPokemonSpecieSuccessResponsePath.getJsonFromPath();
-      await _mockDioResponsePokemonList(
-          mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie);
-      await pokemonRemoteDataSource.getPokemonList();
-      verify(mockDio.get(
-        '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15',
-      )).called(1);
-    });
     test('THEN status code is 200 THEN it should return a Pokemon Model List',
         () async {
       final jsonPokemonList =
@@ -54,6 +41,9 @@ void main() {
       await _mockDioResponsePokemonList(
           mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie);
       final pokemonModelList = await pokemonRemoteDataSource.getPokemonList();
+      verify(mockDio.get(
+        '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15',
+      )).called(1);
       expect(pokemonModelList, equals(_getSuccessfulPokemonModelListMock()));
     });
   });

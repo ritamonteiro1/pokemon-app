@@ -15,7 +15,6 @@
   "id": 1,
   "name": "name",
   "species": {
-    "name": "bulbasaur",
     "url": "https://pokeapi.co/api/v2/pokemon-species/1/"
   },
   "stats": [
@@ -34,13 +33,11 @@
   ],
   "types": [
     {
-      "slot": 1,
       "type": {
         "name": "type 1"
       }
     },
     {
-      "slot": 2,
       "type": {
         "name": "type 2"
       }
