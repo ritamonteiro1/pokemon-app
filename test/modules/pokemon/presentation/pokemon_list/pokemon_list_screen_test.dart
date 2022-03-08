@@ -6,7 +6,6 @@ import 'package:mockito/mockito.dart';
 import 'package:modular_test/modular_test.dart';
 import 'package:pokedex_app/generated/l10n.dart';
 import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_key_widgets.dart';
-import 'package:pokedex_app/modules/pokemon/domain/exception/generic_error_status_code_exception.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/module/pokemon_module.dart';
@@ -49,6 +48,11 @@ void main() {
               const ValueKey(PokemonConstantsKeyWidget.loadingWidgetKey)),
           findsOneWidget);
     });
+
+    /*
+    EM ANDAMENTO
+     */
+
     // testWidgets(
     //     'WHEN after PokemonListScreen stars and request is successfully '
     //     'THEN it should emits Success State and it shows PokemonListWidget',
