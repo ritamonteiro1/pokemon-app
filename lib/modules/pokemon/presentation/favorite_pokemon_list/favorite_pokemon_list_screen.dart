@@ -132,12 +132,20 @@ class _FavoritePokemonListScreenState
                               child: Text(
                             S.of(context).favoritePokemonListScreenEmptyList,
                             textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: controller.isBackgroundDark
+                                    ? Colors.white
+                                    : PokemonConstantsColors.darkGray),
                           ));
                         } else {
                           return Center(
                               child: Text(
                             S.of(context).messageGenericStatusCodeError,
                             textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: controller.isBackgroundDark
+                                    ? Colors.white
+                                    : PokemonConstantsColors.darkGray),
                           ));
                         }
                       } else {
