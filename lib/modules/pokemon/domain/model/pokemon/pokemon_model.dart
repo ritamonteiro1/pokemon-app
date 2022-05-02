@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../../../common/constants/pokedex_constants_colors.dart';
 import '../../../constants/pokemon_constants_colors.dart';
 import '../../../constants/pokemon_constants_type.dart';
 import 'stat_model.dart';

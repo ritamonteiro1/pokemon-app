@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../pokedex_constants/pokedex_constants_routes.dart';
+
+import '../../../common/constants/pokedex_constants_routes.dart';
 
 class SplashController {
   Future<void> loadToPokemonModule() async {

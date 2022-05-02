@@ -12,7 +12,7 @@ import 'package:pokedex_app/modules/pokemon/module/pokemon_module.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_screen.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_state.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_store.dart';
-import 'package:pokedex_app/pokedex_module/pokedex_module.dart';
+import 'package:pokedex_app/di/pokedex_module.dart';
 
 import '../../../../utils/testable_widget.dart';
 import 'pokemon_list_screen_test.mocks.dart';

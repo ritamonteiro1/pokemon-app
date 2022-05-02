@@ -4,8 +4,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:focus_detector/focus_detector.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../../pokedex_constants/pokedex_constants_colors.dart';
-import '../../../../utils/status_bar_extensions.dart';
+import '../../../common/constants/pokedex_constants_colors.dart';
+import '../../../common/utils/status_bar_extensions.dart';
 import '../../constants/pokemon_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 import '../../constants/pokemon_constants_key_widgets.dart';

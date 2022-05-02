@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../../pokedex_constants/pokedex_constants_colors.dart';
+import '../../../common/constants/pokedex_constants_colors.dart';
 import '../../constants/pokemon_constants_images.dart';
 
 class TextMyFavoritePokemonsWidget extends StatelessWidget {
