@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class PokedexConstantsColors {
+class AppColors {
   static const primaryColor = Color(0XFFEC0344);
 }

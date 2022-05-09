@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
 
-import '../constants/pokemon_constants_routes.dart';
+import '../constants/pokemon_routes.dart';
 import '../data/cache/data_source/pokemon_cache_data_source.dart';
 import '../data/remote/data_source/pokemon_remote_data_source.dart';
 import '../data/repository/pokemon_repository_impl.dart';
@@ -58,18 +58,18 @@ class PokemonModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute(
-          PokemonConstantsRoutes.pokemonList,
+          PokemonRoutes.pokemonList,
           child: (context, args) => const PokemonListScreen(),
         ),
         ChildRoute(
-          PokemonConstantsRoutes.pokemonDetails,
+          PokemonRoutes.pokemonDetails,
           child: (context, args) => PokemonDetailsScreen(
             pokemon: args.data[0],
             backgroundColorCard: args.data[1],
           ),
         ),
         ChildRoute(
-          PokemonConstantsRoutes.favoritePokemonList,
+          PokemonRoutes.favoritePokemonList,
           child: (context, args) => const FavoritePokemonListScreen(),
         ),
       ];

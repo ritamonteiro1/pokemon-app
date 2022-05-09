@@ -4,12 +4,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:focus_detector/focus_detector.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common/constants/pokedex_constants_colors.dart';
+import '../../../common/constants/app_colors.dart';
 import '../../../common/utils/status_bar_extensions.dart';
-import '../../constants/pokemon_constants_colors.dart';
-import '../../constants/pokemon_constants_images.dart';
-import '../../constants/pokemon_constants_key_widgets.dart';
-import '../../constants/pokemon_constants_routes.dart';
+import '../../constants/pokemon_colors.dart';
+import '../../constants/pokemon_images.dart';
+import '../../constants/pokemon_key_widgets.dart';
+import '../../constants/pokemon_routes.dart';
 import '../../domain/exception/generic_error_status_code_exception.dart';
 import '../../domain/exception/network_error_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
@@ -66,14 +66,14 @@ class _PokemonListScreenState
   Widget build(BuildContext context) => FocusDetector(
         key: _focusDetectorKey,
         onFocusGained: () {
-          PokedexConstantsColors.primaryColor.setStatusBarColor();
+          AppColors.primaryColor.setStatusBarColor();
         },
         child: Observer(
           builder: (context) => Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: controller.isBackgroundDark
-                ? PokemonConstantsColors.darkGray
-                : PokemonConstantsColors.white,
+                ? PokemonColors.darkGray
+                : PokemonColors.white,
             body: Padding(
               padding: const EdgeInsets.only(
                 top: 70,
@@ -103,7 +103,7 @@ class _PokemonListScreenState
                               return TextFieldSearchPokemonWidget(
                                 textColor: controller.isBackgroundDark
                                     ? Colors.white
-                                    : PokemonConstantsColors.darkGray,
+                                    : PokemonColors.darkGray,
                                 onChanged: (typedPokemon) {
                                   controller.toggleIconTextFieldSearchPokemon(
                                       typedPokemon);
@@ -162,14 +162,14 @@ class _PokemonListScreenState
                           GestureDetector(
                             onTap: () {
                               Modular.to.pushNamed(
-                                PokemonConstantsRoutes
+                                PokemonRoutes
                                     .favoritePokemonListScreen,
                               );
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8),
                               child: Image.asset(
-                                PokemonConstantsImages.heart,
+                                PokemonImages.heart,
                               ),
                             ),
                           ),
@@ -182,27 +182,27 @@ class _PokemonListScreenState
                         return const Expanded(
                           child: LoadingWidget(
                             key: ValueKey(
-                                PokemonConstantsKeyWidget.loadingWidgetKey),
+                                PokemonKeyWidget.loadingWidgetKey),
                             colorCircularProgressIndicator:
-                                PokedexConstantsColors.primaryColor,
+                                AppColors.primaryColor,
                           ),
                         );
                       } else if (pokemonListState is SuccessPokemonListState) {
                         return PokemonListWidget(
                           key: const ValueKey(
-                              PokemonConstantsKeyWidget.pokemonListWidgetKey),
+                              PokemonKeyWidget.pokemonListWidgetKey),
                           scrollController: _scrollController,
                           pokemonList: pokemonListState.pokemonList,
                           backgroundColor: controller.isBackgroundDark
-                              ? PokemonConstantsColors.darkGray
-                              : PokemonConstantsColors.white,
+                              ? PokemonColors.darkGray
+                              : PokemonColors.white,
                           downWidget: const Padding(
                             padding: EdgeInsets.only(
                               top: 10,
                             ),
                             child: Image(
                               image: AssetImage(
-                                PokemonConstantsImages.down,
+                                PokemonImages.down,
                               ),
                             ),
                           ),
@@ -212,7 +212,7 @@ class _PokemonListScreenState
                             is GenericErrorStatusCodeException) {
                           return Expanded(
                             child: ErrorPokemonWidget(
-                              key: const ValueKey(PokemonConstantsKeyWidget
+                              key: const ValueKey(PokemonKeyWidget
                                   .errorPokemonWidgetKey),
                               message:
                                   S.of(context).messageGenericStatusCodeError,

@@ -1,4 +1,4 @@
-class PokemonConstantsRoutes {
+class PokemonRoutes {
   static const pokemonList = '/';
   static const pokemonDetails = '/pokemon-details-screen/';
   static const favoritePokemonList = '/favorite-pokemon-list-screen/';

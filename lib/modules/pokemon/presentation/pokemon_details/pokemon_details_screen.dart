@@ -6,10 +6,10 @@ import 'package:focus_detector/focus_detector.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common/constants/pokedex_constants_colors.dart';
+import '../../../common/constants/app_colors.dart';
 import '../../../common/utils/status_bar_extensions.dart';
-import '../../constants/pokemon_constants_colors.dart';
-import '../../constants/pokemon_constants_images.dart';
+import '../../constants/pokemon_colors.dart';
+import '../../constants/pokemon_images.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import '../common/error_pokemon_widget.dart';
@@ -47,9 +47,9 @@ class _PokemonDetailsScreenState
     controller.startPokemonDetailsScreen(widget.pokemon);
     _pokemonBackgroundColorScaffoldByFirstType = widget.pokemon
         .mapPokemonTypeToColor(widget.pokemon.colorNameByFirstType);
-    _textsColor = widget.backgroundColorCard == PokemonConstantsColors.darkGray
+    _textsColor = widget.backgroundColorCard == PokemonColors.darkGray
         ? Colors.white
-        : PokemonConstantsColors.darkGray;
+        : PokemonColors.darkGray;
   }
 
   @override
@@ -152,7 +152,7 @@ class _PokemonDetailsScreenState
                                 right: 20,
                               ),
                               child: Image.asset(
-                                PokemonConstantsImages.pokeball,
+                                PokemonImages.pokeball,
                                 height: 160,
                                 width: 160,
                                 color: Colors.white.withOpacity(1),
@@ -200,7 +200,7 @@ class _PokemonDetailsScreenState
                                                 height: 40,
                                                 width: 40,
                                                 image: AssetImage(
-                                                  PokemonConstantsImages.heart,
+                                                  PokemonImages.heart,
                                                 ),
                                               );
                                             } else {
@@ -208,7 +208,7 @@ class _PokemonDetailsScreenState
                                                 height: 40,
                                                 width: 40,
                                                 image: AssetImage(
-                                                  PokemonConstantsImages
+                                                  PokemonImages
                                                       .emptyHeart,
                                                 ),
                                               );
@@ -287,7 +287,7 @@ class _PokemonDetailsScreenState
                                 placeholderBuilder: (context) =>
                                     const LoadingWidget(
                                         colorCircularProgressIndicator:
-                                            PokedexConstantsColors
+                                            AppColors
                                                 .primaryColor),
                               ),
                             ),

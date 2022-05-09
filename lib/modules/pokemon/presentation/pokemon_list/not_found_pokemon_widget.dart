@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../../generated/l10n.dart';
-import '../../constants/pokemon_constants_colors.dart';
+import '../../constants/pokemon_colors.dart';
 
 class NotFoundPokemonWidget extends StatelessWidget {
   const NotFoundPokemonWidget({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class NotFoundPokemonWidget extends StatelessWidget {
                   S.of(context).messageAlertOps,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: PokemonConstantsColors.grey,
+                    color: PokemonColors.grey,
                     fontSize: 148,
                   ),
                 ),
@@ -28,7 +29,7 @@ class NotFoundPokemonWidget extends StatelessWidget {
                   S.of(context).messageNotFoundPokemon,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: PokemonConstantsColors.grey,
+                    color: PokemonColors.grey,
                     fontSize: 30,
                   ),
                 ),

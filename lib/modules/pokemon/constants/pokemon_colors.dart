@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class PokemonConstantsColors {
+class PokemonColors {
   static const rock = Color(0xFFB69E31);
   static const ghost = Color(0XFF70559B);
   static const steel = Color(0XFFB7B9D0);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../constants/pokemon_constants_routes.dart';
+import '../../constants/pokemon_routes.dart';
 import '../../domain/model/pokemon/pokemon_model.dart';
 import 'card_pokemon_list_widget.dart';
 
@@ -37,7 +37,7 @@ class PokemonListWidget extends StatelessWidget {
                   return GestureDetector(
                     onTap: () {
                       Modular.to.pushNamed(
-                        PokemonConstantsRoutes.pokemonDetailsScreen,
+                        PokemonRoutes.pokemonDetailsScreen,
                         arguments: [
                           pokemon,
                           backgroundColor,

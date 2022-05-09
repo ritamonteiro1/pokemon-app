@@ -4,15 +4,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:modular_test/modular_test.dart';
+import 'package:pokedex_app/di/app_module.dart';
 import 'package:pokedex_app/generated/l10n.dart';
-import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_key_widgets.dart';
+import 'package:pokedex_app/modules/pokemon/constants/pokemon_key_widgets.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/pokemon_model.dart';
 import 'package:pokedex_app/modules/pokemon/domain/model/pokemon/stat_model.dart';
 import 'package:pokedex_app/modules/pokemon/module/pokemon_module.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_screen.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_state.dart';
 import 'package:pokedex_app/modules/pokemon/presentation/pokemon_list/pokemon_list_store.dart';
-import 'package:pokedex_app/di/pokedex_module.dart';
 
 import '../../../../utils/testable_widget.dart';
 import 'pokemon_list_screen_test.mocks.dart';
@@ -29,7 +29,7 @@ void main() {
   setUp(() async {
     reset(mockPokemonListStore);
     reset(navigatorMock);
-    initModules([PokedexModule(), PokemonModule()], replaceBinds: []);
+    initModules([AppModule(), PokemonModule()], replaceBinds: []);
     Modular.navigatorDelegate = navigatorMock;
   });
   group('Pokemon List Screen', () {
@@ -45,7 +45,7 @@ void main() {
       });
       await expectLater(
           find.byKey(
-              const ValueKey(PokemonConstantsKeyWidget.loadingWidgetKey)),
+              const ValueKey(PokemonKeyWidget.loadingWidgetKey)),
           findsOneWidget);
     });
 

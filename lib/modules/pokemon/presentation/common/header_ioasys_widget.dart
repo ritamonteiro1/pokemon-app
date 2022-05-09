@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common/constants/pokedex_constants_colors.dart';
-import '../../constants/pokemon_constants_images.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../constants/pokemon_images.dart';
 
 class HeaderIoasysWidget extends StatelessWidget {
   const HeaderIoasysWidget({
@@ -18,7 +18,7 @@ class HeaderIoasysWidget extends StatelessWidget {
         children: [
           Expanded(
             child: Image.asset(
-              PokemonConstantsImages.logoIoasys,
+              PokemonImages.logoIoasys,
             ),
           ),
           const SizedBox(
@@ -29,7 +29,7 @@ class HeaderIoasysWidget extends StatelessWidget {
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
-              color: PokedexConstantsColors.primaryColor,
+              color: AppColors.primaryColor,
             ),
           ),
           const SizedBox(
@@ -38,7 +38,7 @@ class HeaderIoasysWidget extends StatelessWidget {
           Expanded(
             child: Switch(
               value: valueSwitch,
-              activeColor: PokedexConstantsColors.primaryColor,
+              activeColor: AppColors.primaryColor,
               onChanged: onChangedSwitch,
             ),
           ),

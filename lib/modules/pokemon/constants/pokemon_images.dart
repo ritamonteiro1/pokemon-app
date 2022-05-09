@@ -1,4 +1,4 @@
-class PokemonConstantsImages {
+class PokemonImages {
   static const logoIoasys = 'assets/images/logo_ioasys.png';
   static const backArrow = 'assets/images/back_arrow.png';
   static const close = 'assets/images/close.png';

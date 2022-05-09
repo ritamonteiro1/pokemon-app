@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common/constants/pokedex_constants_colors.dart';
-import '../../constants/pokemon_constants_images.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../constants/pokemon_images.dart';
 
 class TextMyFavoritePokemonsWidget extends StatelessWidget {
   const TextMyFavoritePokemonsWidget({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class TextMyFavoritePokemonsWidget extends StatelessWidget {
           children: [
             const Image(
               image: AssetImage(
-                PokemonConstantsImages.heart,
+                PokemonImages.heart,
               ),
             ),
             const SizedBox(
@@ -23,7 +23,7 @@ class TextMyFavoritePokemonsWidget extends StatelessWidget {
             Text(
               S.of(context).favoritePokemonListScreenMyFavoritePokemons,
               style: const TextStyle(
-                color: PokedexConstantsColors.primaryColor,
+                color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),

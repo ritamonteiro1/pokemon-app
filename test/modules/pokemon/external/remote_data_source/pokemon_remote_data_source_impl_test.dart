@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:pokedex_app/modules/pokemon/constants/pokemon_constants_url_api.dart';
+import 'package:pokedex_app/modules/pokemon/constants/pokemon_url_api.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/data_source/pokemon_remote_data_source.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/model/pokedex/pokedex_response.dart';
 import 'package:pokedex_app/modules/pokemon/data/remote/model/pokemon/details/pokemon_response.dart';
@@ -45,7 +45,7 @@ void main() {
           mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie);
       final pokemonModelList = await pokemonRemoteDataSource.getPokemonList();
       verify(mockDio.get(
-        '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15',
+        '${PokemonUrlApi.pokemonBaseUrl}pokemon/?limit=15',
       )).called(1);
       expect(pokemonModelList, equals(_getSuccessfulPokemonModelListMock()));
     });
@@ -60,7 +60,7 @@ void main() {
           mockDio, typedPokemon, jsonPokemon, jsonPokemonSpecie);
       await pokemonRemoteDataSource.getPokemonTyped(typedPokemon);
       verify(mockDio.get(
-        '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
+        '${PokemonUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
       )).called(1);
     });
     test(
@@ -118,7 +118,7 @@ List<PokemonModel> _getSuccessfulPokemonModelListMock() => <PokemonModel>[
 Future<void> _mockDioErrorResponsePokemonTyped(
     MockDio mockDio, String typedPokemon, jsonNotFoundPokemon) async {
   when(mockDio.get(
-    '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
+    '${PokemonUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
   )).thenThrow(
     _getErrorResponseMock(jsonNotFoundPokemon, 404),
   );
@@ -127,7 +127,7 @@ Future<void> _mockDioErrorResponsePokemonTyped(
 Future<void> _mockDioResponsePokemonTyped(MockDio mockDio, String typedPokemon,
     jsonPokemon, jsonPokemonSpecie) async {
   when(mockDio.get(
-    '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
+    '${PokemonUrlApi.pokemonBaseUrl}pokemon/$typedPokemon',
   )).thenAnswer(
     (_) async => _getSuccessfulResponseMock(jsonPokemon),
   );
@@ -141,7 +141,7 @@ Future<void> _mockDioResponsePokemonTyped(MockDio mockDio, String typedPokemon,
 
 Future<void> _mockDioResponsePokemonList(
     MockDio mockDio, jsonPokemonList, jsonPokemon, jsonPokemonSpecie) async {
-  when(mockDio.get('${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15'))
+  when(mockDio.get('${PokemonUrlApi.pokemonBaseUrl}pokemon/?limit=15'))
       .thenAnswer(
     (_) async => _getSuccessfulResponseMock(jsonPokemonList),
   );

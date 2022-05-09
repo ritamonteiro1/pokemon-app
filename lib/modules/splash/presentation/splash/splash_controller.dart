@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../common/constants/pokedex_constants_routes.dart';
+import '../../../common/constants/app_routes.dart';
 
 class SplashController {
   Future<void> loadToPokemonModule() async {
@@ -9,7 +9,7 @@ class SplashController {
     );
 
     Modular.to.navigate(
-      PokedexConstantsRoutes.pokemonModule,
+      AppRoutes.pokemonModule,
     );
   }
 }

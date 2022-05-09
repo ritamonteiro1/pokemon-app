@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common/constants/pokedex_constants_colors.dart';
-import '../../constants/pokemon_constants_colors.dart';
+import '../../../common/constants/app_colors.dart';
+import '../../constants/pokemon_colors.dart';
 
 class TextFieldSearchPokemonWidget extends StatelessWidget {
   const TextFieldSearchPokemonWidget({
@@ -34,11 +34,11 @@ class TextFieldSearchPokemonWidget extends StatelessWidget {
           labelText: S.of(context).pokemonListScreenTextFieldLabelTextSearch,
           hintText: S.of(context).pokemonListScreenTextFieldHintTextSearch,
           hintStyle: const TextStyle(
-            color: PokemonConstantsColors.grey,
+            color: PokemonColors.grey,
             fontSize: 14,
           ),
           labelStyle: const TextStyle(
-            color: PokedexConstantsColors.primaryColor,
+            color: AppColors.primaryColor,
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
@@ -47,7 +47,7 @@ class TextFieldSearchPokemonWidget extends StatelessWidget {
           ),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(
-              color: PokedexConstantsColors.primaryColor,
+              color: AppColors.primaryColor,
             ),
           ),
         ),

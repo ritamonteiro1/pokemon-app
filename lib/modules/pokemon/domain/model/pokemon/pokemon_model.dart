@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../common/constants/pokedex_constants_colors.dart';
-import '../../../constants/pokemon_constants_colors.dart';
-import '../../../constants/pokemon_constants_type.dart';
+import '../../../../common/constants/app_colors.dart';
+import '../../../constants/pokemon_colors.dart';
+import '../../../constants/pokemon_type.dart';
 import 'stat_model.dart';
 
 class PokemonModel extends Equatable {
@@ -48,61 +48,61 @@ class PokemonModel extends Equatable {
       ];
 
   Color mapPokemonTypeToColor(String pokemonType) {
-    if (pokemonType.contains(PokemonConstantsType.rock)) {
-      return PokemonConstantsColors.rock;
+    if (pokemonType.contains(PokemonType.rock)) {
+      return PokemonColors.rock;
     }
-    if (pokemonType.contains(PokemonConstantsType.ghost)) {
-      return PokemonConstantsColors.ghost;
+    if (pokemonType.contains(PokemonType.ghost)) {
+      return PokemonColors.ghost;
     }
-    if (pokemonType.contains(PokemonConstantsType.steel)) {
-      return PokemonConstantsColors.steel;
+    if (pokemonType.contains(PokemonType.steel)) {
+      return PokemonColors.steel;
     }
-    if (pokemonType.contains(PokemonConstantsType.water)) {
-      return PokemonConstantsColors.water;
+    if (pokemonType.contains(PokemonType.water)) {
+      return PokemonColors.water;
     }
-    if (pokemonType.contains(PokemonConstantsType.grass)) {
-      return PokemonConstantsColors.grass;
+    if (pokemonType.contains(PokemonType.grass)) {
+      return PokemonColors.grass;
     }
-    if (pokemonType.contains(PokemonConstantsType.psychic)) {
-      return PokemonConstantsColors.psychic;
+    if (pokemonType.contains(PokemonType.psychic)) {
+      return PokemonColors.psychic;
     }
-    if (pokemonType.contains(PokemonConstantsType.ice)) {
-      return PokemonConstantsColors.ice;
+    if (pokemonType.contains(PokemonType.ice)) {
+      return PokemonColors.ice;
     }
-    if (pokemonType.contains(PokemonConstantsType.dark)) {
-      return PokemonConstantsColors.dark;
+    if (pokemonType.contains(PokemonType.dark)) {
+      return PokemonColors.dark;
     }
-    if (pokemonType.contains(PokemonConstantsType.fairy)) {
-      return PokemonConstantsColors.fairy;
+    if (pokemonType.contains(PokemonType.fairy)) {
+      return PokemonColors.fairy;
     }
-    if (pokemonType.contains(PokemonConstantsType.normal)) {
-      return PokemonConstantsColors.normal;
+    if (pokemonType.contains(PokemonType.normal)) {
+      return PokemonColors.normal;
     }
-    if (pokemonType.contains(PokemonConstantsType.fighting)) {
-      return PokemonConstantsColors.fighting;
+    if (pokemonType.contains(PokemonType.fighting)) {
+      return PokemonColors.fighting;
     }
-    if (pokemonType.contains(PokemonConstantsType.flying)) {
-      return PokemonConstantsColors.flying;
+    if (pokemonType.contains(PokemonType.flying)) {
+      return PokemonColors.flying;
     }
-    if (pokemonType.contains(PokemonConstantsType.poison)) {
-      return PokemonConstantsColors.poison;
+    if (pokemonType.contains(PokemonType.poison)) {
+      return PokemonColors.poison;
     }
-    if (pokemonType.contains(PokemonConstantsType.ground)) {
-      return PokemonConstantsColors.ground;
+    if (pokemonType.contains(PokemonType.ground)) {
+      return PokemonColors.ground;
     }
-    if (pokemonType.contains(PokemonConstantsType.bug)) {
-      return PokemonConstantsColors.bug;
+    if (pokemonType.contains(PokemonType.bug)) {
+      return PokemonColors.bug;
     }
-    if (pokemonType.contains(PokemonConstantsType.fire)) {
-      return PokemonConstantsColors.fire;
+    if (pokemonType.contains(PokemonType.fire)) {
+      return PokemonColors.fire;
     }
-    if (pokemonType.contains(PokemonConstantsType.electric)) {
-      return PokemonConstantsColors.electric;
+    if (pokemonType.contains(PokemonType.electric)) {
+      return PokemonColors.electric;
     }
-    if (pokemonType.contains(PokemonConstantsType.dragon)) {
-      return PokemonConstantsColors.dragon;
+    if (pokemonType.contains(PokemonType.dragon)) {
+      return PokemonColors.dragon;
     }
-    return PokedexConstantsColors.primaryColor;
+    return AppColors.primaryColor;
   }
 
   String setPokemonId(int pokemonId) {

@@ -1,4 +1,4 @@
-class PokemonConstantsStatAbbreviation {
+class PokemonStatAbbreviation {
   static const hp = 'HP';
   static const atk = 'ATK';
   static const def = 'DEF';

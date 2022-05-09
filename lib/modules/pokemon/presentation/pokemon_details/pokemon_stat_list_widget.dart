@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/pokemon_constants_stat_abbreviation.dart';
+import '../../constants/pokemon_stat_abbreviation.dart';
 import '../../domain/model/pokemon/stat_model.dart';
 
 class PokemonStatListWidget extends StatelessWidget {
@@ -71,19 +71,19 @@ class PokemonStatListWidget extends StatelessWidget {
   String _setStatAbbreviation(int index) {
     switch (index) {
       case 0:
-        return PokemonConstantsStatAbbreviation.hp;
+        return PokemonStatAbbreviation.hp;
       case 1:
-        return PokemonConstantsStatAbbreviation.atk;
+        return PokemonStatAbbreviation.atk;
       case 2:
-        return PokemonConstantsStatAbbreviation.def;
+        return PokemonStatAbbreviation.def;
       case 3:
-        return PokemonConstantsStatAbbreviation.satk;
+        return PokemonStatAbbreviation.satk;
       case 4:
-        return PokemonConstantsStatAbbreviation.sdef;
+        return PokemonStatAbbreviation.sdef;
       case 5:
-        return PokemonConstantsStatAbbreviation.spd;
+        return PokemonStatAbbreviation.spd;
       default:
-        return PokemonConstantsStatAbbreviation.empty;
+        return PokemonStatAbbreviation.empty;
     }
   }
 }

@@ -1,4 +1,4 @@
-class PokemonConstantsType {
+class PokemonType {
   static const rock = 'Rock';
   static const ghost = 'Ghost';
   static const steel = 'Steel';

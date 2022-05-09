@@ -4,10 +4,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:focus_detector/focus_detector.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../../common/constants/pokedex_constants_colors.dart';
+import '../../../common/constants/app_colors.dart';
 import '../../../common/utils/status_bar_extensions.dart';
-import '../../constants/pokemon_constants_colors.dart';
-import '../../constants/pokemon_constants_images.dart';
+import '../../constants/pokemon_colors.dart';
+import '../../constants/pokemon_images.dart';
 import '../../domain/exception/empty_favorite_pokemon_list_exception.dart';
 import '../../domain/exception/unknown_state_type_exception.dart';
 import '../common/header_ioasys_widget.dart';
@@ -41,15 +41,15 @@ class _FavoritePokemonListScreenState
   Widget build(BuildContext context) => FocusDetector(
         key: _focusDetectorKey,
         onFocusGained: () {
-          PokedexConstantsColors.primaryColor.setStatusBarColor();
+          AppColors.primaryColor.setStatusBarColor();
           controller.getFavoritePokemonList();
         },
         child: Observer(
           builder: (context) => Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: controller.isBackgroundDark
-                ? PokemonConstantsColors.darkGray
-                : PokemonConstantsColors.white,
+                ? PokemonColors.darkGray
+                : PokemonColors.white,
             body: Padding(
               padding: const EdgeInsets.only(
                 top: 70,
@@ -80,7 +80,7 @@ class _FavoritePokemonListScreenState
                         return const Expanded(
                           child: LoadingWidget(
                             colorCircularProgressIndicator:
-                                PokedexConstantsColors.primaryColor,
+                                AppColors.primaryColor,
                           ),
                         );
                       } else if (favoritePokemonListState
@@ -90,8 +90,8 @@ class _FavoritePokemonListScreenState
                           pokemonList:
                               favoritePokemonListState.favoritePokemonList,
                           backgroundColor: controller.isBackgroundDark
-                              ? PokemonConstantsColors.darkGray
-                              : PokemonConstantsColors.white,
+                              ? PokemonColors.darkGray
+                              : PokemonColors.white,
                           downWidget: GestureDetector(
                             onTap: () {
                               Modular.to.pop();
@@ -104,7 +104,7 @@ class _FavoritePokemonListScreenState
                                 children: [
                                   const Image(
                                     image: AssetImage(
-                                      PokemonConstantsImages.backArrow,
+                                      PokemonImages.backArrow,
                                     ),
                                   ),
                                   const SizedBox(
@@ -135,7 +135,7 @@ class _FavoritePokemonListScreenState
                             style: TextStyle(
                                 color: controller.isBackgroundDark
                                     ? Colors.white
-                                    : PokemonConstantsColors.darkGray),
+                                    : PokemonColors.darkGray),
                           ));
                         } else {
                           return Center(
@@ -145,7 +145,7 @@ class _FavoritePokemonListScreenState
                             style: TextStyle(
                                 color: controller.isBackgroundDark
                                     ? Colors.white
-                                    : PokemonConstantsColors.darkGray),
+                                    : PokemonColors.darkGray),
                           ));
                         }
                       } else {

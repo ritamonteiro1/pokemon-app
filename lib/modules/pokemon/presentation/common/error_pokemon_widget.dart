@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../../generated/l10n.dart';
-import '../../constants/pokemon_constants_colors.dart';
+import '../../constants/pokemon_colors.dart';
 
 class ErrorPokemonWidget extends StatelessWidget {
   const ErrorPokemonWidget({
@@ -23,7 +24,7 @@ class ErrorPokemonWidget extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 24,
-                color: PokemonConstantsColors.grey,
+                color: PokemonColors.grey,
               ),
             ),
             const SizedBox(

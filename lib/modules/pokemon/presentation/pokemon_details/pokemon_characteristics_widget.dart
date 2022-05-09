@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../generated/l10n.dart';
-import '../../constants/pokemon_constants_colors.dart';
-import '../../constants/pokemon_constants_images.dart';
+import '../../constants/pokemon_colors.dart';
+import '../../constants/pokemon_images.dart';
 
 class PokemonCharacteristicsWidget extends StatelessWidget {
   const PokemonCharacteristicsWidget({
@@ -33,9 +33,9 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 children: [
                   Image(
                     image: AssetImage(
-                      backgroundColorCard == PokemonConstantsColors.darkGray
-                          ? PokemonConstantsImages.weightScalesWhite
-                          : PokemonConstantsImages.weightScalesBlack,
+                      backgroundColorCard == PokemonColors.darkGray
+                          ? PokemonImages.weightScalesWhite
+                          : PokemonImages.weightScalesBlack,
                     ),
                   ),
                   const SizedBox(
@@ -71,9 +71,9 @@ class PokemonCharacteristicsWidget extends StatelessWidget {
                 children: [
                   Image(
                     image: AssetImage(
-                      backgroundColorCard == PokemonConstantsColors.darkGray
-                          ? PokemonConstantsImages.rulerHeightWhite
-                          : PokemonConstantsImages.rulerHeightBlack,
+                      backgroundColorCard == PokemonColors.darkGray
+                          ? PokemonImages.rulerHeightWhite
+                          : PokemonImages.rulerHeightBlack,
                     ),
                   ),
                   const SizedBox(

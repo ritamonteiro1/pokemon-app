@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../../constants/pokemon_constants_url_api.dart';
+import '../../constants/pokemon_url_api.dart';
 import '../../data/mapper/remote_to_model.dart';
 import '../../data/remote/data_source/pokemon_remote_data_source.dart';
 import '../../data/remote/model/pokedex/pokedex_response.dart';
@@ -51,7 +51,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   Future<PokemonModel> getPokemonTyped(String typedPokemon) async {
     try {
       final response = await _dio
-          .get('${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/$typedPokemon');
+          .get('${PokemonUrlApi.pokemonBaseUrl}pokemon/$typedPokemon');
       final pokemonDetailsResponse = PokemonResponse.fromJson(response.data);
       final pokemonSpecieResponse =
           await _getPokemonSpecie(pokemonDetailsResponse.specie.url);
@@ -83,7 +83,7 @@ class PokemonRemoteDataSourceImpl implements PokemonRemoteDataSource {
   String _setUrl() {
     String url;
     if (_nextPage == null) {
-      url = '${PokemonConstantsUrlApi.pokemonBaseUrl}pokemon/?limit=15';
+      url = '${PokemonUrlApi.pokemonBaseUrl}pokemon/?limit=15';
     } else {
       url = _nextPage!;
     }

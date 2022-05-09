@@ -4,10 +4,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'di/pokedex_module.dart';
+import 'di/app_module.dart';
 import 'generated/l10n.dart';
-import 'modules/common/constants/pokedex_constants_colors.dart';
-import 'modules/common/constants/pokedex_constants_fonts.dart';
+import 'modules/common/constants/app_colors.dart';
+import 'modules/common/constants/app_fonts.dart';
 import 'modules/pokemon/data/cache/model/pokemon_cache.dart';
 import 'modules/pokemon/data/cache/model/stat_cache.dart';
 
@@ -21,23 +21,23 @@ Future<void> main() async {
 
   runApp(
     ModularApp(
-      module: PokedexModule(),
-      child: const PokedexApp(),
+      module: AppModule(),
+      child: const AppWidget(),
     ),
   );
 }
 
-class PokedexApp extends StatelessWidget {
-  const PokedexApp({Key? key}) : super(key: key);
+class AppWidget extends StatelessWidget {
+  const AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          fontFamily: PokedexConstantsFonts.poppins,
+          fontFamily: AppFonts.poppins,
           primarySwatch: Colors.blue,
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: PokedexConstantsColors.primaryColor,
+            primary: AppColors.primaryColor,
           ),
         ),
         localizationsDelegates: const [
