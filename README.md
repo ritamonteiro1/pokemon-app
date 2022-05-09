@@ -10,6 +10,8 @@ Telas do app:
    
 3. Tela de pokemons favoritos: é mostrada a lista de pokemons favoritados pelo usuário na tela de detalhes.
 
+##
+
 Principais bibliotecas utilizadas:
 - Para requisições api REST: Dio
 - Banco local: Hive
