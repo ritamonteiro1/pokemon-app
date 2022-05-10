@@ -15,7 +15,7 @@ Telas do app:
 Principais bibliotecas utilizadas:
 - Para requisições api REST: Dio
 - Banco local: Hive
-- Injeção de dependência: Flutter Modular
+- Injeção de dependência e gerenciamento de rotas: Flutter Modular
 - Gerenciamento de estado: MobX
 - Testes unitários: Mockito
 
